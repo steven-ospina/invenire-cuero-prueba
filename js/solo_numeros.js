@@ -1,4 +1,4 @@
-     //solo numeros
+     //solo numero
 
     function numbersonly(e) {
         var unicode = e.charCode ? e.charCode : e.keyCode
