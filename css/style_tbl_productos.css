@@ -1,0 +1,16 @@
+.auto-style1 {
+    width: 51%;
+    height: 312px;
+    border: 1px solid black;
+    background:silver;
+    margin:0 auto;
+}
+.auto-style2 {
+    width: 185px;
+}
+.auto-style3 {
+    margin-bottom: 8px;
+}
+.titulo{
+    text-align:center;
+}
