@@ -12,6 +12,7 @@
             height: 90px;
         }
     </style>
+        <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
     <form id="form1" runat="server">

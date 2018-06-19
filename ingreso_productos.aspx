@@ -13,6 +13,7 @@
             margin-top: 19px;
         }
     </style>
+        <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -56,9 +57,7 @@
                         <asp:Label ID="Label5" runat="server" Text="Fecha De Ingreso"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="16px" ImageUrl="~/imagenes/calendario.ico" OnClick="ImageButton1_Click" Width="16px" />
-                        <asp:Calendar ID="Calendar1" runat="server" Height="138px" OnSelectionChanged="Calendar1_SelectionChanged" Width="184px"></asp:Calendar>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Date"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -66,9 +65,7 @@
                         <asp:Label ID="Label6" runat="server" Text="Fecha De Caducidad"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton2" runat="server" Height="16px" ImageUrl="~/imagenes/calendario.ico" OnClick="ImageButton2_Click" Width="16px" />
-                        <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
+                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Date"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
