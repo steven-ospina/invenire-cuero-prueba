@@ -45,7 +45,7 @@ public partial class ingreso_usuarios : System.Web.UI.Page
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
         int codRol;
-        string  docUsuario, NombreUsuario, apeUsuario,estado,contrasena,email,genero,telefono;
+        string  docUsuario, NombreUsuario, apeUsuario,estado,contrasena, repecontrasena, email,genero,telefono;
 
 
         docUsuario = TextBox1.Text;
@@ -57,6 +57,7 @@ public partial class ingreso_usuarios : System.Web.UI.Page
         email = TextBox6.Text;
         genero = DropDownList2.SelectedValue.ToString();
         telefono = TextBox7.Text;
+        repecontrasena = TextBox9.Text;
 
         //SE VALIAM LOS CAMPOS
         if (docUsuario == "")
@@ -83,6 +84,10 @@ public partial class ingreso_usuarios : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
         }
+        else if (repecontrasena != contrasena)
+        {
+            Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
+        }
         else if (email == "")
         {
             Response.Write("<script>alert('Ingrese el Estado del usuario')</script>");
@@ -95,19 +100,24 @@ public partial class ingreso_usuarios : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese el Telefono del usuario')</script>");
         }
-
-        //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_usuario)
-        int resultado = usuarios.guardar_tbl_usuario(docUsuario,NombreUsuario,apeUsuario,codRol,estado,contrasena,email,genero,telefono);
-
-        if (resultado == 1)
-        {
-            Response.Write("<script>alert('Usuario registrado correctamente')</script>");
-            Response.Redirect("form_usuarios.aspx");
-        }
         else
         {
-            Response.Write("<script>alert('Error al registrar el Usuario')</script>");
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_usuario)
+            int resultado = usuarios.guardar_tbl_usuario(docUsuario, NombreUsuario, apeUsuario, codRol, estado, contrasena, email, genero, telefono);
+
+            if (resultado == 1)
+            {
+                Response.Write("<script>alert('Usuario registrado correctamente')</script>");
+                Response.Redirect("form_usuarios.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Error al registrar el Usuario')</script>");
+            }
+
         }
+
+
 
     }
 
@@ -118,4 +128,19 @@ public partial class ingreso_usuarios : System.Web.UI.Page
         Response.Redirect("validar_login.aspx");
     
     }
+   
+    //protected void TextBox2_TextChanged(object sender, EventArgs e)
+    //{
+
+
+    //}
+    //private void textBox1_KeyPress(object sender, EventArgs e)
+    //{
+    //    if (Asc(e.Keychar) == 13)
+    //    {
+    //        e.handled =  False;
+    //    }
+
+
+    //}
 }

@@ -20,6 +20,10 @@
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
+
+   
+
+    <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body style="width: 513px; height: 236px">
 
@@ -39,7 +43,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Nombre Usuario"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -47,12 +51,12 @@
                         <asp:Label ID="Label3" runat="server" Text="Apellidos Usuario"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label4" runat="server" Text="Codigo-Rol del Usuario"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="Rol del Usuario"></asp:Label>
                     </td>
                     <td class="auto-style3">
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol">
@@ -77,6 +81,14 @@
                     </td>
                     <td class="auto-style3">
                         <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label10" runat="server" Text="Repetir Contraseña"></asp:Label>
+                    </td>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -129,7 +141,7 @@
                 <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" ReadOnly="True" SortExpression="doc_usu" />
                 <asp:BoundField DataField="nom_usu" HeaderText="Nombre" SortExpression="nom_usu" />
                 <asp:BoundField DataField="ape_usu" HeaderText="Apellidos" SortExpression="ape_usu" />
-                <asp:TemplateField HeaderText="Codigo Rol" SortExpression="cod_rol">
+                <asp:TemplateField HeaderText="Rol Usuario" SortExpression="cod_rol">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource1" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
