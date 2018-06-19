@@ -22,12 +22,24 @@ public partial class validar_login : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        bool re,rel;
         string documento, clave;
 
         documento = TextBox1.Text;
         clave = TextBox2.Text;
+        re = documento.Contains("=");
+        rel = clave.Contains("=");
 
-        if (documento == "")
+        if (re == true)
+        {
+            Response.Write("<script>alert('SEÑOR USUARIO EL CARACTER < = > NO ESTA PERMITIDO ')</script>");
+        }
+        else if (rel == true)
+        {
+            Response.Write("<script>alert('SEÑOR USUARIO EL CARACTER < = > NO ESTA PERMITIDO ')</script>");
+
+        }
+        else if (documento == "")
         {
             Response.Write("<script>alert('Ingrese el Documento')</script>");
         }
@@ -56,5 +68,10 @@ public partial class validar_login : System.Web.UI.Page
             //CLOK$, COM1 a COM8, CON, CONFIG$, LPT1 a LPT8 , NUL y PRN
             //AND 1=1, OR 1=1
         }
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+
     }
 }
