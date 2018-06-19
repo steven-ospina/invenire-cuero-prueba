@@ -17,6 +17,7 @@
     </style>
      <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
+        <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -39,9 +40,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td>
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Ingresar" Width="116px" />
+                    <td colspan="2">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Ingresar" Width="276px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Olvide Mi Contraseña</asp:LinkButton>
                     </td>
                 </tr>
             </table>
