@@ -23,8 +23,8 @@ public partial class ingreso_productos : System.Web.UI.Page
 
         //SE EJECUTA AL CARGAR LA PAGINA
 
-        Calendar1.Visible = false;
-        Calendar2.Visible = false;
+        //Calendar1.Visible = false;
+        //Calendar2.Visible = false;
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -75,45 +75,47 @@ public partial class ingreso_productos : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese  el descuento del producto')</script>");
         }
-        //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO
-        int rdo = producto.guardar_tbl_productos(codProducto, nomProducto, cantProducto, descProducto,fechIngreso,fechCaducidad,ubicacion);
-
-        if (rdo == 1)
-        {
-            Response.Write("<script>alert(' producto guardo correctamente')</script>");
-            Response.Redirect("ingreso_productos.aspx");
-        }
-        else if (rdo == 0)
-        {
-            Response.Write("<script>alert('Error al guardar el producto')</script>");
-        }
         else
         {
-            Response.Write("<script>alert('Verificar, Código del producto repetido')</script>");
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO
+            int rdo = producto.guardar_tbl_productos(codProducto, nomProducto, cantProducto, descProducto, fechIngreso, fechCaducidad, ubicacion);
+
+            if (rdo == 1)
+            {
+                Response.Write("<script>alert(' producto guardo correctamente')</script>");
+                Response.Redirect("ingreso_productos.aspx");
+            }
+            else if (rdo == 0)
+            {
+                Response.Write("<script>alert('Error al guardar el producto')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Verificar, Código del producto repetido')</script>");
+            }
+
         }
-
-
     }
 
-    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-    {
-        Calendar1.Visible = true;
-    }
+    //protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    //{
+    //    Calendar1.Visible = true;
+    //}
 
-    protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
-    {
-        Calendar2.Visible = true;
-    }
+    //protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+    //{
+    //    Calendar2.Visible = true;
+    //}
 
-    protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-    {
-        TextBox5.Text = Calendar1.SelectedDate.ToShortDateString();
-        Calendar1.Visible = false;
-    }
+    //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+    //{
+    //    TextBox5.Text = Calendar1.SelectedDate.ToShortDateString();
+    //    Calendar1.Visible = false;
+    //}
 
-    protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-    {
-        TextBox6.Text = Calendar1.SelectedDate.ToShortDateString();
-        Calendar2.Visible = false;
-    }
+    //protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+    //{
+    //    TextBox6.Text = Calendar1.SelectedDate.ToShortDateString();
+    //    Calendar2.Visible = false;
+    //}
 }

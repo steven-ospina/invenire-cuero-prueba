@@ -48,6 +48,7 @@
             height: 12px;
         }
     </style>
+        <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -58,7 +59,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Codigo Del Producto"></asp:Label>
                     </td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Width="128px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -66,9 +67,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Fecha"></asp:Label>
                     </td>
                     <td class="auto-style4">
-                        <asp:TextBox ID="TextBox2" runat="server" Width="119px"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="17px" ImageUrl="~/imagenes/calendario.ico" OnClick="ImageButton1_Click1" Width="18px" />
-                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" Width="139px"></asp:Calendar>
+                        <asp:TextBox ID="TextBox2" runat="server" Width="128px" TextMode="Date"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +75,7 @@
                         <asp:Label ID="Label3" runat="server" Text="Documento  Del Usuario"></asp:Label>
                     </td>
                     <td class="auto-style8">
-                        <asp:TextBox ID="TextBox3" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" TextMode="Number" Width="128px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -84,7 +83,7 @@
                         <asp:Label ID="Label4" runat="server" Text="Estado"></asp:Label>
                     </td>
                     <td class="auto-style10">
-                        <asp:DropDownList ID="DropDownList1" runat="server" Width="127px" Height="16px">
+                        <asp:DropDownList ID="DropDownList1" runat="server" Width="136px" Height="16px">
                             <asp:ListItem>Cancelado</asp:ListItem>
                             <asp:ListItem>Pendiente</asp:ListItem>
                             <asp:ListItem>Entregado</asp:ListItem>

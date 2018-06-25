@@ -21,8 +21,8 @@ public partial class ingreso_pedidos : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //SE EJECUTA AL CARGAR LA PAGINA
-        Calendar1.Visible = false;
-
+        //Calendar1.Visible = false;
+ 
 
     }
 
@@ -58,30 +58,31 @@ public partial class ingreso_pedidos : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese el estado del producto')</script>");
         }
-        //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_pedidos)
-        int resultado = pedido.guardar_tbl_pedidos(codProducto,fecha,docUsuario ,estado);
-
-        if (resultado == 1)
-        {
-            Response.Write("<script>alert('pedido registrado correctamente')</script>");
-            Response.Redirect("ingreso_pedidos.aspx");
-        }
         else
         {
-            Response.Write("<script>alert('Error al registrar el pedido')</script>");
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_pedidos)
+            int resultado = pedido.guardar_tbl_pedidos(codProducto, fecha, docUsuario, estado);
+
+            if (resultado == 1)
+            {
+                Response.Write("<script>alert('pedido registrado correctamente')</script>");
+                Response.Redirect("ingreso_pedidos.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Error al registrar el pedido')</script>");
+            }
         }
-
-
     }
 
-    protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
-    {
-        Calendar1.Visible = true;
-    }
+    //protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
+    //{
+    //    Calendar1.Visible = true;
+    //}
 
-    protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-    {
-        TextBox2.Text = Calendar1.SelectedDate.ToShortDateString();
-        Calendar1.Visible = false;
-    }
+    //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+    //{
+    //    TextBox2.Text = Calendar1.SelectedDate.ToShortDateString();
+    //    Calendar1.Visible = false;
+    //}
 }

@@ -46,19 +46,20 @@ public partial class ingreso_rol : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese rol del  usuario')</script>");
         }
-
-
-        //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_rol)
-        int resultado = roles.guardar_tbl_rol(cod_rol,nombre_rol);
-
-        if (resultado == 1)
-        {
-            Response.Write("<script>alert('el rol registrado correctamente')</script>");
-            Response.Redirect("ingreso_rol.aspx");
-        }
         else
         {
-            Response.Write("<script>alert('Erro al registrar el rol')</script>");
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_rol)
+            int resultado = roles.guardar_tbl_rol(cod_rol, nombre_rol);
+
+            if (resultado == 1)
+            {
+                Response.Write("<script>alert('el rol registrado correctamente')</script>");
+                Response.Redirect("ingreso_rol.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Erro al registrar el rol')</script>");
+            }
         }
     }
 }

@@ -114,11 +114,7 @@ public partial class ingreso_usuarios : System.Web.UI.Page
             {
                 Response.Write("<script>alert('Error al registrar el Usuario')</script>");
             }
-
         }
-
-
-
     }
 
     protected void LinkButton1_Click(object sender, EventArgs e)
