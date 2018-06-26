@@ -14,7 +14,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
 {
     //24_06_2018
     //EL_SOCIO:AQUI SE INSTANCIA LA CLASE: tbl_productos_terminados.cs
-    //que es intancia? consiste en crear un apodo (usuarios) para la clase
+    //que es intancia? consiste en crear un apodo (productos) para la clase
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_productos_terminados productos = new tbl_productos_terminados();
 
