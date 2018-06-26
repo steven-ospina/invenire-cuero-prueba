@@ -52,7 +52,7 @@ public partial class form_devolucion : System.Web.UI.Page
             if (resultado == 1)
             {
                 Response.Write("<script>alert('Se registrado correctamente LA DEVOLUCION')</script>");
-                Response.Redirect("form_detalle_reserva.aspx");
+                Response.Redirect("form_devolucion.aspx");
             }
             else
             {
