@@ -42,5 +42,5 @@ public class tbl_detalle_pedidos
         {
         }
         return REsultado;
-    }
+    }//final del gurdar detalle_pedidos
 }
