@@ -14,9 +14,9 @@ public partial class form_reserva : System.Web.UI.Page
 {
     //24_06_2018
     //EL_SOCIO:AQUI SE INSTANCIA LA CLASE: tbl_permisos.cs
-    //que es intancia? consiste en crear un apodo (usuarios) para la clase
+    //que es intancia? consiste en crear un apodo (reservas) para la clase
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
-    tbl_reserva reservas = new tbl_reserva();//estoy creando una instancia ala tbl_permisos:para leer datos de la clase
+    tbl_reserva reservas = new tbl_reserva();//estoy creando una instancia ala tbl_reserva:para leer datos de la clase
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -45,7 +45,7 @@ public partial class form_reserva : System.Web.UI.Page
         }
         else
         {
-            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_usuario)
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_reserva)
             int resultado = reservas.guardar_tbl_reserva(fecha_reserva ,doc_usuario);
 
             if (resultado == 1)
