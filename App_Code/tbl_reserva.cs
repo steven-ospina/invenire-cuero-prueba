@@ -21,7 +21,7 @@ public class tbl_reserva
     }
     //24_06_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
-    //este metodo se usa para insertar registros de equipos en la BD
+    //este metodo se usa para insertar registros de reserva en la BD
     public int guardar_tbl_reserva( string fecha_reserva, string doc_usuario)
     {
         int REsultado = 1;
@@ -43,5 +43,5 @@ public class tbl_reserva
         }
         return REsultado;
 
-    }//final del gurdar permiso
+    }//final del gurdar reserva
 }

@@ -49,7 +49,7 @@
                         <asp:Label ID="Label4" runat="server" Text="Descripcion Del Producto"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" Height="49px" TextMode="MultiLine" Width="177px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
