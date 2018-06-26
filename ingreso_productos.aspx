@@ -85,7 +85,7 @@
             </table>
         </div>
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="auto-style4">
-            <AlternatingRowStyle BackColor="White" />
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="cod_prod" HeaderText="Codigo Producto" ReadOnly="True" SortExpression="cod_prod" />
                 <asp:BoundField DataField="nom_prod" HeaderText="Nombre Producto" SortExpression="nom_prod" />
@@ -95,16 +95,16 @@
                 <asp:BoundField DataField="fecha_caducidad" HeaderText="Fecha de Caducidad" SortExpression="fecha_caducidad" />
                 <asp:BoundField DataField="ubicacion" HeaderText="Ubicacion" SortExpression="ubicacion" />
             </Columns>
-            <EditRowStyle BackColor="#7C6F57" />
-            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#E3EAEB" />
-            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F8FAFA" />
-            <SortedAscendingHeaderStyle BackColor="#246B61" />
-            <SortedDescendingCellStyle BackColor="#D4DFE1" />
-            <SortedDescendingHeaderStyle BackColor="#15524A" />
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_productos] WHERE [cod_prod] = @cod_prod" InsertCommand="INSERT INTO [tbl_productos] ([cod_prod], [nom_prod], [cant_prod], [desc_prod], [fecha_ing], [fecha_caducidad], [ubicacion]) VALUES (@cod_prod, @nom_prod, @cant_prod, @desc_prod, @fecha_ing, @fecha_caducidad, @ubicacion)" SelectCommand="SELECT * FROM [tbl_productos]" UpdateCommand="UPDATE [tbl_productos] SET [nom_prod] = @nom_prod, [cant_prod] = @cant_prod, [desc_prod] = @desc_prod, [fecha_ing] = @fecha_ing, [fecha_caducidad] = @fecha_caducidad, [ubicacion] = @ubicacion WHERE [cod_prod] = @cod_prod">
             <DeleteParameters>
