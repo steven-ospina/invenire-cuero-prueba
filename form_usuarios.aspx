@@ -152,7 +152,6 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
-                <asp:BoundField DataField="contrasena" HeaderText="Contraseña" SortExpression="contrasena" />
                 <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
                 <asp:BoundField DataField="genero" HeaderText="Genero" SortExpression="genero" />
                 <asp:BoundField DataField="telefono" HeaderText="Telefono" SortExpression="telefono" />
