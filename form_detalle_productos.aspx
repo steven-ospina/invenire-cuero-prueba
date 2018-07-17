@@ -27,7 +27,9 @@
                         <asp:Label ID="Label1" runat="server" Text="id Producto"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="id_prod" DataValueField="id_prod">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +42,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Nombre del Producto"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
@@ -49,7 +51,7 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Guardar" />
+                        <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
                     </td>
                 </tr>
             </table>

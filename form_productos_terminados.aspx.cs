@@ -9,6 +9,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+//EL_SOCIO_17_07_2018
+//librerias para trabajar con bases de datos
+using System.IO;
 
 public partial class form_productos_terminados : System.Web.UI.Page
 {
@@ -30,10 +33,14 @@ public partial class form_productos_terminados : System.Web.UI.Page
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
 
-        string fecha,doc_usuario;
+        string fecha, doc_usuario, nom_producto;
+        byte[] imagenbyte;
+        
 
         fecha = TextBox1.Text;
         doc_usuario = TextBox2.Text;
+        nom_producto = TextBox3.Text;
+        imagenbyte = FileUpload1.FileBytes;
 
         //SE VALIAM LOS CAMPOS
         if (fecha == "")
@@ -44,12 +51,14 @@ public partial class form_productos_terminados : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese el DOCUMENTO del USUARIO')</script>");
         }
+        else if (nom_producto == "")
+        {
+            Response.Write("<script>alert('Ingrese el NOMBRE del PRODUCTO')</script>");
+        }
         else
         {
-            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_productos_terminados.cs)
-            int resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario);
-
-            if (resultado == 1)
+            string resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario, nom_producto, imagenbyte);
+            if (resultado == "1")
             {
                 Response.Write("<script>alert('PRODUCTO TERMINADO se registrado correctamente')</script>");
                 Response.Redirect("form_productos_terminados.aspx");
@@ -59,6 +68,21 @@ public partial class form_productos_terminados : System.Web.UI.Page
                 Response.Write("<script>alert('Error al registrar el  PRODUCTO TERMINADO')</script>");
             }
         }
+        //else
+        //{
+        //    //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_productos_terminados.cs)
+        //    int resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario,nom_producto);
+
+        //    if (resultado == 1)
+        //    {
+        //        Response.Write("<script>alert('PRODUCTO TERMINADO se registrado correctamente')</script>");
+        //        Response.Redirect("form_productos_terminados.aspx");
+        //    }
+        //    else
+        //    {
+        //        Response.Write("<script>alert('Error al registrar el  PRODUCTO TERMINADO')</script>");
+        //    }
+        //}
 
     }
 }

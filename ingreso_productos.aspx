@@ -84,9 +84,10 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="auto-style4">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="auto-style4">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
                 <asp:BoundField DataField="cod_prod" HeaderText="Codigo Producto" ReadOnly="True" SortExpression="cod_prod" />
                 <asp:BoundField DataField="nom_prod" HeaderText="Nombre Producto" SortExpression="nom_prod" />
                 <asp:BoundField DataField="cant_prod" HeaderText="Cantidad del Producto" SortExpression="cant_prod" />

@@ -22,24 +22,27 @@ public class tbl_productos_terminados
     //24_06_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int guardar_tbl_productos_terminados(string fecha, string doc_usuario)
+    public string guardar_tbl_productos_terminados(string fecha, string doc_usuario, string nom_producto, byte [] imagenbyte)
     {
-        int REsultado = 1;
+        string REsultado = "1";
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_productos_terminados values('" + fecha+ "','" + doc_usuario + "')";
-            var comando = new SqlCommand(insertar, conex);
-            conex.Open();
-            int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta
-            if (resultado == 0)
+            using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ToString()))
+            using (SqlCommand cmd = new SqlCommand("ingreso_imagen", conexi))
             {
-                REsultado = 0;
-                conex.Close();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("fecha",fecha);
+                cmd.Parameters.AddWithValue("doc_usu", doc_usuario);
+                cmd.Parameters.AddWithValue("nom_prod", nom_producto);
+                cmd.Parameters.AddWithValue("imagen", imagenbyte);
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
             }
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
+            REsultado = ex.Message.ToString();
         }
         return REsultado;
     }//final del gurdar permiso

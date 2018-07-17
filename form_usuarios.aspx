@@ -78,7 +78,7 @@
                         <asp:Label ID="Label6" runat="server" Text="Contraseña"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@
                         <asp:Label ID="Label10" runat="server" Text="Repetir Contraseña"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox9" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
