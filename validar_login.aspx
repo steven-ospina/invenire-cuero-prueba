@@ -7,36 +7,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
+        /*.auto-style1 {
             width: 28%;
             height: 155px;
         }
         .auto-style2 {
             width: 114px;
-        }
+        }*/
     </style>
+    <link rel="stylesheet" href="file_css/style_validar_login.css"/>
      <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
-        <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
+    <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label1" runat="server" Text="Documento"></asp:Label>
-                    </td>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server" onkeypress="return numbersonly(event);" ></asp:TextBox>
+                        <img src="file_img/caja-invenire-cuero.png" alt="" width="10" class="imagen_login"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label2" runat="server" Text="Contraseña"></asp:Label>
-                    </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" onkeypress="return numbersonly(event);" placeholder="Documento" ></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link rel="stylesheet" href="css/style_tbl_productos.css" />
+    <link rel="stylesheet" href="file_css/style_tbl_productos.css" />
     <style type="text/css">
         .auto-style4 {
             margin-left: 0px;

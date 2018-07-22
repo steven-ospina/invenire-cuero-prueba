@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
+  <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
  <script src="js/solo_numeros.js"></script>
     <title></title>
     <style type="text/css">

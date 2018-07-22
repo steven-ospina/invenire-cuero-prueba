@@ -20,7 +20,6 @@
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
-    <script src="js/block_copi_pake.js"></script>
 
     <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
@@ -42,7 +41,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Nombre Usuario"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
