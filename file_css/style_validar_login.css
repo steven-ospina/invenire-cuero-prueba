@@ -1,0 +1,108 @@
+/*========================================================================================*/
+/*==Globales==*/
+/*========================================================================================*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url(../file_img/inventario.jpg) no-repeat center;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh ;
+}
+
+/*========================================================================================*/
+/*==estilo login==*/
+/*========================================================================================*/
+
+.auto-style1{
+    width: 320px;
+    height: 500px;
+    background: #000000c4;
+    color: #fff;
+    /* margin: auto; */
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 60px 70px;
+}
+
+.auto-style1 #TextBox1,#TextBox2{
+    width: 100%;
+    margin-bottom: 20px; 
+}
+.auto-style1 #TextBox1 {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.auto-style1 #TextBox2 {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.auto-style1 #Button1{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.auto-style1 #Button1:hover{
+    background: #50060e;
+    color: #fff;
+}
+
+.auto-style1 #LinkButton1{
+    text-decoration: none;
+    /* line-height: 20px; */
+    color: darkgray;
+    font-size: 20px;
+    margin-top: 300px;
+    margin-left: 40px;
+}
+.auto-style1 #LinkButton1:hover{
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.auto-style1 #TextBox1:hover,
+.auto-style1 #TextBox2:hover{
+    border: none;
+    border-bottom: 1px solid rgb(218, 25, 25);
+    background: transparent;
+    outline: none;
+    color: rgb(226, 12, 12);
+    font-size: 22px;
+}
+
+/*========================================================================================*/
+/*==editor de imagen usuario==*/
+/*========================================================================================*/
+.imagen_login{
+    margin: auto 40px 30px;
+    width: 70%;
+    height: auto;
+}
+
+
+
+
+
