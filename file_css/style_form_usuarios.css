@@ -1,0 +1,76 @@
+/*========================================================================================*/
+/*==Globales==*/
+/*========================================================================================*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url(../file_img/fondo_lading_4.jpg) no-repeat center;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    /* background: #4aada8; */
+}
+
+/*========================================================================================*/
+/*==estilo login==*/
+/*========================================================================================*/
+
+.auto-style1 {
+    max-width: 500px;
+    width: 100%;
+    height: 540px;
+    background-color: #606266b4;
+    margin: auto 400px;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.auto-style1 h2{
+    margin: 1px ;
+    font-size: 25px;
+    font-weight: 400;
+    /* font-weight: bold; */
+    line-height: 2;
+    font-family: 'Roboto', sans-serif;
+    color: #2bebe1;
+    text-align: center;
+
+}
+.auto-style1 #TextBox1,#TextBox2,#TextBox3,#TextBox4,#TextBox5,#TextBox6,#TextBox7,#DropDownList1,#DropDownList2,#DropDownList4{
+    width: 60%;
+    height: 23px;
+    font-size:18px;
+    letter-spacing: 2px;
+    font-family: arial;
+}
+
+.auto-style1 #Label1,#Label2,#Label3{
+    margin: 1px ;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: #2bebe1;
+    text-align: center;
+}
+
+.auto-style1 #Button1{
+    width: 50%;
+    border: none;
+    outline: none;
+    height: 30px;
+    background: #096b66;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.auto-style1 #Button1:hover{
+    background: #073836;
+    color: #fff;
+}
+

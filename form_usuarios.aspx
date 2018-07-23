@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
+        /* .auto-style1 {
             width: 102%;
             height: 314px;
         }
@@ -16,93 +16,97 @@
         }
         .auto-style3 {
             width: 760px;
+        } */
+        /* .auto-style1 {
+            height: 42px;
         }
+        .auto-style2 {
+            height: 44px;
+            width: 216px;
+        }
+        .auto-style3 {
+            height: 45px;
+        }
+        .auto-style4 {
+            height: 53px;
+        }
+        .auto-style5 {
+            width: 216px;
+        }
+        .auto-style6 {
+            height: 53px;
+            width: 216px;
+        } */
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
-
-    <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
+    <link rel="stylesheet" href="file_css/style_form_usuarios.css"/>
+    <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
-<body style="width: 513px; height: 236px">
+<body >
 
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label1" runat="server" Text="Documento Usuario" ></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return numbersonly(event);" ></asp:TextBox>
+                        <h2> REGISTRO DE USUARIOS</h2>
+                        </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return numbersonly(event);" placeholder="Documento Usuario"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label2" runat="server" Text="Nombre Usuario"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);" placeholder="Nombre Usuario"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="Apellidos Usuario"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" placeholder="Apellidos Usuario"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label4" runat="server" Text="Rol del Usuario"></asp:Label>
-                    </td>
-                    <td class="auto-style3">
+                    <td class="auto-style4">
+                        <asp:Label ID="Label1" runat="server" Text="Rol del Usuario" ></asp:Label>
+                        <br />
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label5" runat="server" Text="Estado"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="DropDownList1" runat="server" Height="16px" Width="139px">
+                        <asp:Label ID="Label2" runat="server" Text="Estado"></asp:Label>
+                        <br />
+                        <asp:DropDownList ID="DropDownList1" runat="server" >
                             <asp:ListItem>Activo</asp:ListItem>
                             <asp:ListItem>Innativo</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label6" runat="server" Text="Contraseña"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" placeholder="Contraseña"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label10" runat="server" Text="Repetir Contraseña"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox9" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Email"></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label8" runat="server" Text="Genero"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="DropDownList2" runat="server" Width="136px">
+                        <asp:Label ID="Label3" runat="server" Text="Genero"></asp:Label>
+                        <br />
+                        <asp:DropDownList ID="DropDownList2" runat="server" >
                             <asp:ListItem>Hombre</asp:ListItem>
                             <asp:ListItem>Mujer</asp:ListItem>
                             <asp:ListItem> Prefiero no decirlo</asp:ListItem>
@@ -110,19 +114,18 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label9" runat="server" Text="Telefono"></asp:Label>
-                    </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
-                    </td>
                     <td class="auto-style3">
                         <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
                     </td>
                 </tr>
             </table>

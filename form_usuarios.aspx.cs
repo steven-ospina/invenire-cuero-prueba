@@ -53,11 +53,11 @@ public partial class ingreso_usuarios : System.Web.UI.Page
         apeUsuario = TextBox3.Text;
         codRol = Convert.ToInt32( DropDownList4.SelectedValue.ToString());
         estado = DropDownList1.SelectedValue.ToString();
-        contrasena = TextBox5.Text;
+        contrasena = TextBox4.Text;
+        repecontrasena = TextBox5.Text;
         email = TextBox6.Text;
         genero = DropDownList2.SelectedValue.ToString();
         telefono = TextBox7.Text;
-        repecontrasena = TextBox9.Text;
 
         //SE VALIAM LOS CAMPOS
         if (docUsuario == "")

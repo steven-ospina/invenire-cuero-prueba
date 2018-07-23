@@ -1,4 +1,4 @@
-/*========================================================================================*/
+﻿/*========================================================================================*/
 /*==Globales==*/
 /*========================================================================================*/
 *{
@@ -61,22 +61,21 @@ body{
     border: none;
     outline: none;
     height: 40px;
-    background: #b80f22;
+    background: #09827c;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
 }
 .auto-style1 #Button1:hover{
-    background: #50060e;
+    background: #073836;
     color: #fff;
 }
 
 .auto-style1 #LinkButton1{
     text-decoration: none;
-    /* line-height: 20px; */
+    line-height: 50px;
     color: darkgray;
     font-size: 20px;
-    margin-top: 300px;
     margin-left: 40px;
 }
 .auto-style1 #LinkButton1:hover{
@@ -86,10 +85,10 @@ body{
 .auto-style1 #TextBox1:hover,
 .auto-style1 #TextBox2:hover{
     border: none;
-    border-bottom: 1px solid rgb(218, 25, 25);
+    border-bottom: 1px solid #056963;
     background: transparent;
     outline: none;
-    color: rgb(226, 12, 12);
+    color: #056963;
     font-size: 22px;
 }
 
