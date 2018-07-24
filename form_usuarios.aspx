@@ -10,7 +10,7 @@
 
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/solo_numeros.js"></script>
+    <script src="js/validaciones.js"></script>
     <link rel="stylesheet" href="file_css/style_form_usuarios.css"/>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
@@ -26,17 +26,17 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return numbersonly(event);" placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return blocklet(event);" placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);" placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return blocknum(event);" placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return blocknum(event);" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono" onpaste="return false" oncut="return false" oncopy="return false" onkeypress="return blocklet(event);"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -106,29 +106,27 @@
         <asp:Button ID="Button2" runat="server" Text="Buscar" />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1199px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1199px" AllowPaging="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
-                <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" ReadOnly="True" SortExpression="doc_usu" />
-                <asp:BoundField DataField="nom_usu" HeaderText="Nombre" SortExpression="nom_usu" />
-                <asp:BoundField DataField="ape_usu" HeaderText="Apellidos" SortExpression="ape_usu" />
-                <asp:TemplateField HeaderText="Rol Usuario" SortExpression="cod_rol">
+                <asp:BoundField DataField="doc_usu" HeaderText="doc_usu" ReadOnly="True" SortExpression="doc_usu" />
+                <asp:BoundField DataField="nom_usu" HeaderText="nom_usu" SortExpression="nom_usu" />
+                <asp:BoundField DataField="ape_usu" HeaderText="ape_usu" SortExpression="ape_usu" />
+                <asp:TemplateField HeaderText="cod_rol" SortExpression="cod_rol">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource1" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
+                        <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource1" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
+                        <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
-                <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
-                <asp:BoundField DataField="genero" HeaderText="Genero" SortExpression="genero" />
-                <asp:BoundField DataField="telefono" HeaderText="Telefono" SortExpression="telefono" />
+                <asp:BoundField DataField="estado" HeaderText="estado" SortExpression="estado" />
+                <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
+                <asp:BoundField DataField="telefono" HeaderText="telefono" SortExpression="telefono" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -141,7 +139,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_usuario] WHERE [doc_usu] = @doc_usu" InsertCommand="INSERT INTO [tbl_usuario] ([doc_usu], [nom_usu], [ape_usu], [cod_rol], [estado], [contrasena], [email], [genero], [telefono]) VALUES (@doc_usu, @nom_usu, @ape_usu, @cod_rol, @estado, @contrasena, @email, @genero, @telefono)" SelectCommand="SELECT * FROM [tbl_usuario] WHERE ([doc_usu] = @doc_usu)" UpdateCommand="UPDATE [tbl_usuario] SET [nom_usu] = @nom_usu, [ape_usu] = @ape_usu, [cod_rol] = @cod_rol, [estado] = @estado, [contrasena] = @contrasena, [email] = @email, [genero] = @genero, [telefono] = @telefono WHERE [doc_usu] = @doc_usu">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_usuario] WHERE [doc_usu] = @doc_usu" InsertCommand="INSERT INTO [tbl_usuario] ([doc_usu], [nom_usu], [ape_usu], [cod_rol], [estado], [email], [genero], [telefono]) VALUES (@doc_usu, @nom_usu, @ape_usu, @cod_rol, @estado, @email, @genero, @telefono)" SelectCommand="SELECT [doc_usu], [nom_usu], [ape_usu], [cod_rol], [estado], [email], [genero], [telefono] FROM [tbl_usuario] WHERE ([doc_usu] = @doc_usu)" UpdateCommand="UPDATE [tbl_usuario] SET [nom_usu] = @nom_usu, [ape_usu] = @ape_usu, [cod_rol] = @cod_rol, [estado] = @estado, [email] = @email, [genero] = @genero, [telefono] = @telefono WHERE [doc_usu] = @doc_usu">
             <DeleteParameters>
                 <asp:Parameter Name="doc_usu" Type="String" />
             </DeleteParameters>
@@ -151,7 +149,6 @@
                 <asp:Parameter Name="ape_usu" Type="String" />
                 <asp:Parameter Name="cod_rol" Type="Int32" />
                 <asp:Parameter Name="estado" Type="String" />
-                <asp:Parameter Name="contrasena" Type="String" />
                 <asp:Parameter Name="email" Type="String" />
                 <asp:Parameter Name="genero" Type="String" />
                 <asp:Parameter Name="telefono" Type="String" />
@@ -164,7 +161,6 @@
                 <asp:Parameter Name="ape_usu" Type="String" />
                 <asp:Parameter Name="cod_rol" Type="Int32" />
                 <asp:Parameter Name="estado" Type="String" />
-                <asp:Parameter Name="contrasena" Type="String" />
                 <asp:Parameter Name="email" Type="String" />
                 <asp:Parameter Name="genero" Type="String" />
                 <asp:Parameter Name="telefono" Type="String" />

@@ -1,6 +1,6 @@
      //solo numeross
 
-    function numbersonly(e) {
+    function blocklet(e) {
         var unicode = e.charCode ? e.charCode : e.keyCode
         if (unicode != 8 && unicode != 44) {
             if (unicode < 48 || unicode > 57) //if not a number
@@ -9,10 +9,10 @@
     }
 
 //solo letras
-function soloLetras(e){
+function blocknum(e){
        key = e.keyCode || e.which;
        tecla = String.fromCharCode(key).toLowerCase();
-       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       letras = " ï¿½ï¿½ï¿½ï¿½ï¿½abcdefghijklmnï¿½opqrstuvwxyz";
        especiales = "8-37-39-46";
 
        tecla_especial = false

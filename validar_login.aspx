@@ -17,7 +17,7 @@
     </style>
     <link rel="stylesheet" href="file_css/style_validar_login.css"/>
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/solo_numeros.js"></script>
+    <script src="js/validaciones.js"></script>
     <script src="js/"></script>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server" onkeypress="return numbersonly(event);" placeholder="Documento" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" onkeypress="return blocklet(event);" placeholder="Documento" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

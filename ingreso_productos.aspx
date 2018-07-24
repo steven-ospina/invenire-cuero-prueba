@@ -13,6 +13,7 @@
             margin-top: 19px;
         }
     </style>
+        <script src="js/validaciones.js"></script>
         <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
@@ -25,7 +26,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Codigo Del producto"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +42,7 @@
                         <asp:Label ID="Label3" runat="server" Text="Cantidad Del Producto"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onpaste="return false" oncut="return false" oncopy="return false" onkeypress="return blocklet(event);"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
