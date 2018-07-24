@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="file_css/style_validar_login.css"/>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
+    <script src="js/block_copi_pake.js"></script>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
 <body>

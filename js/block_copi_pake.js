@@ -1,5 +1,5 @@
 window.onload = function(e) {
-    var myInput = document.getElementById('TextBox1');
+	var myInput = document.getElementById('TextBox1');
 	myInput.onpaste = function(e) { //prohibe pegar
 		e.preventDefault();
 		alert("esta acción está prohibida");
