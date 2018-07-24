@@ -7,36 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        /* .auto-style1 {
-            width: 102%;
-            height: 314px;
-        }
-        .auto-style2 {
-            width: 385px;
-        }
-        .auto-style3 {
-            width: 760px;
-        } */
-        /* .auto-style1 {
-            height: 42px;
-        }
-        .auto-style2 {
-            height: 44px;
-            width: 216px;
-        }
-        .auto-style3 {
-            height: 45px;
-        }
-        .auto-style4 {
-            height: 53px;
-        }
-        .auto-style5 {
-            width: 216px;
-        }
-        .auto-style6 {
-            height: 53px;
-            width: 216px;
-        } */
+
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/solo_numeros.js"></script>
