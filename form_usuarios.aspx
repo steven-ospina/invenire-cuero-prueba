@@ -26,17 +26,17 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return numbersonly(event);" placeholder="Documento Usuario"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return numbersonly(event);" placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);" placeholder="Nombre Usuario"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return soloLetras(event);" placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" placeholder="Apellidos Usuario"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onkeypress="return soloLetras(event);" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -60,17 +60,17 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" placeholder="Contraseña"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" placeholder="Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">
-                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono"  ></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
