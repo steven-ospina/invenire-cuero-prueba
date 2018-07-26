@@ -19,9 +19,9 @@ body{
 /*========================================================================================*/
 
 .auto-style1 {
-    max-width: 500px;
+    max-width: 550px;
     width: 100%;
-    height: 540px;
+    height: 510px;
     background-color: #606266b4;
     margin: auto 400px;
     position: relative;
@@ -32,23 +32,26 @@ body{
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.auto-style1 h2{
+.auto-style3 h2{
     margin: 1px ;
     font-size: 25px;
     font-weight: 400;
     /* font-weight: bold; */
-    line-height: 2;
+    line-height: 1;
     font-family: 'Roboto', sans-serif;
     color: #2bebe1;
     text-align: center;
 
 }
 .auto-style1 #TextBox1,#TextBox2,#TextBox3,#TextBox4,#TextBox5,#TextBox6,#TextBox7,#DropDownList1,#DropDownList2,#DropDownList4{
-    width: 60%;
-    height: 23px;
+    width: 85%;
+    height: 35px;
     font-size:18px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     font-family: arial;
+    border:none;
+    border-radius:3px;
+    box-sizing:border-box;
 }
 
 .auto-style1 #Label1,#Label2,#Label3{
@@ -72,5 +75,45 @@ body{
 .auto-style1 #Button1:hover{
     background: #073836;
     color: #fff;
+}
+
+.auto-style2 {
+    height: 50px;
+    width: 431px;
+}
+
+.rol{
+    padding-bottom:13px;
+}
+.Estado {
+    padding-bottom: 13px;
+}
+.Genero {
+    padding-bottom: 30px;
+}
+
+
+/*.auto-style2 {
+    height: 51px;
+}
+
+.auto-style3 {
+    width: 431px;
+    position:relative;
+    bottom:13px;
+}
+
+.auto-style4 {
+    height: 81px;
+    width: 431px;
+}
+
+.auto-style5 {
+    width: 440px;
+}
+
+.auto-style6 {
+    height: 81px;
+    width: 440px;
 }
 

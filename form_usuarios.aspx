@@ -20,61 +20,55 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style3" colspan="2">
                         <h2> REGISTRO DE USUARIOS</h2>
                         </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" onkeypress="return blocklet(event);" placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
                         <asp:TextBox ID="TextBox2" runat="server" onkeypress="return blocknum(event);" placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
+                        <br />
                         <asp:TextBox ID="TextBox3" runat="server" onkeypress="return blocknum(event);" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style2 rol">
                         <asp:Label ID="Label1" runat="server" Text="Rol del Usuario" ></asp:Label>
-                        <br />
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2 Estado">
                         <asp:Label ID="Label2" runat="server" Text="Estado"></asp:Label>
                         <br />
                         <asp:DropDownList ID="DropDownList1" runat="server" >
                             <asp:ListItem>Activo</asp:ListItem>
-                            <asp:ListItem>Innativo</asp:ListItem>
+                            <asp:ListItem>Inactivo</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" placeholder="Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
+                        <br />
                         <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <br />
+                    </td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" placeholder="Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2 Genero">
                         <asp:Label ID="Label3" runat="server" Text="Genero"></asp:Label>
                         <br />
                         <asp:DropDownList ID="DropDownList2" runat="server" >
@@ -82,24 +76,23 @@
                             <asp:ListItem>Mujer</asp:ListItem>
                             <asp:ListItem> Prefiero no decirlo</asp:ListItem>
                         </asp:DropDownList>
+                        <br />
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2">
                         <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono" onpaste="return false" oncut="return false" oncopy="return false" onkeypress="return blocklet(event);"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2" colspan="2">
                         <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="auto-style2" colspan="2">
                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
                     </td>
                 </tr>
-            </table>
+                </table>
         </div>
         <br />
         <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
@@ -123,7 +116,20 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="estado" HeaderText="estado" SortExpression="estado" />
+                <asp:TemplateField HeaderText="estado" SortExpression="estado">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind("estado") %>'>
+                            <asp:ListItem>Activo</asp:ListItem>
+                            <asp:ListItem>Inactivo</asp:ListItem>
+                        </asp:DropDownList>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind("estado") %>'>
+                            <asp:ListItem>Activo</asp:ListItem>
+                            <asp:ListItem>Inactivo</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
                 <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
                 <asp:BoundField DataField="telefono" HeaderText="telefono" SortExpression="telefono" />
