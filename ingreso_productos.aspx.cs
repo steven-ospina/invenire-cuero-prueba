@@ -61,7 +61,7 @@ public partial class ingreso_productos : System.Web.UI.Page
         }
         else if (descProducto == "")
         {
-            Response.Write("<script>alert('Ingrese  el descuento del producto')</script>");
+            Response.Write("<script>alert('Ingrese  la descripcion del producto del producto')</script>");
         }
         else if (fechIngreso == "")
         {

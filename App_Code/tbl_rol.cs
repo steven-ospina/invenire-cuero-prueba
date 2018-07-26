@@ -24,7 +24,7 @@ public class tbl_rol
     //27_05_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int guardar_tbl_rol(int cod_rol, string nombre_rol)
+    public int Guardar_tbl_rol(int cod_rol, string nombre_rol)
     {
         int REsultado = 1;
         try
@@ -42,6 +42,7 @@ public class tbl_rol
         }
         catch (Exception e)
         {
+	  //REsultado = e.Message;
         }
         return REsultado;
     }

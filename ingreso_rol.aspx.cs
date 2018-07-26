@@ -49,7 +49,7 @@ public partial class ingreso_rol : System.Web.UI.Page
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_rol)
-            int resultado = roles.guardar_tbl_rol(cod_rol, nombre_rol);
+            int resultado = roles.Guardar_tbl_rol(cod_rol, nombre_rol);
 
             if (resultado == 1)
             {
