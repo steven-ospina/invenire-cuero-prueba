@@ -1,0 +1,87 @@
+/*========================================================================================*/
+/*==Globales==*/
+/*========================================================================================*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+/*========================================================================================*/
+/*==menu==*/
+/*========================================================================================*/
+#sidebar{
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #363333;
+    left: -250px;
+    transition: all 400ms linear;
+    /* background-color: white; */
+}
+/* .closebtn{
+    font-size: 30px;
+    position: absolute;
+    left: 280px;
+    top: 20px;
+    cursor: pointer;
+
+} */
+#sidebar.active{
+    left: 0;
+}
+body.active{
+    left: 0;
+    background-color: rgb(0,0,0,0.56);
+}
+
+#sidebar ul li {
+    text-decoration: none;
+    color: white;
+    list-style: none;
+    text-align: center;
+    padding: 13px 10px;
+    border-bottom: 1px solid #ffffff77;
+}
+
+.logo-caja{
+    /* background: white; */
+    display: block;
+    margin: 0 auto;
+}
+
+#sidebar .icon-menu{
+    position: absolute;
+    left: 280px;
+    top: 20px;
+    cursor: pointer;
+}
+
+/* .icon-menu{
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    border: 1px solid black;
+} */
+
+.icon-menu{
+    font-size: 40px;
+}
+.icon-menu:hover{
+    color: rgb(226, 12, 12);
+}
+a:hover{
+    color: rgb(226, 12, 12);
+}
+#sidebar::after{
+    content: '';
+    background-color: rgb(0,0,0,0.56);
+}
+/*========================================================================================*/
+/*==GAME OVER- EL SOCIO :)- YA CORONAMOS==*/
+/*========================================================================================*/

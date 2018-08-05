@@ -67,10 +67,10 @@ public partial class ingreso_productos : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese la fecha de ingreso')</script>");
         }
-        else if (fechCaducidad == "")
-        {
-            Response.Write("<script>alert('Ingrese la fecha de caducidad')</script>");
-        }
+        //else if (fechCaducidad == "")
+        //{
+        //    Response.Write("<script>alert('Ingrese la fecha de caducidad')</script>");
+        //}
         else if (ubicacion == "")
         {
             Response.Write("<script>alert('Ingrese  el descuento del producto')</script>");

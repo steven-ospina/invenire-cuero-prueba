@@ -11,7 +11,7 @@
     </style>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/validaciones.js"></script>
-    <link rel="stylesheet" href="file_css/style_form_usuarios.css"/>
+    <link rel="stylesheet" type="text/css"  href="file_css/style_form_usuarios.css"/>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
 <body >

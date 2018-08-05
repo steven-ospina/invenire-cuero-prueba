@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
  <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
- <script src="js/solo_numeros.js"></script>
+ <script src="js/validaciones.js"></script>
     <style type="text/css">
         .auto-style1 {
             width: 39%;
@@ -15,6 +15,9 @@
         }
         .auto-style2 {
             width: 184px;
+        }
+        .auto-style3 {
+            text-align: center;
         }
     </style>
 </head>
@@ -35,7 +38,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Documento Usuario"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" onkeypress="return numbersonly(event);"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -62,13 +65,17 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_prod" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="464px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="464px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="id_prod" HeaderText="id_prod" InsertVisible="False" ReadOnly="True" SortExpression="id_prod" />
-                <asp:BoundField DataField="fecha" HeaderText="fecha" SortExpression="fecha" />
-                <asp:BoundField DataField="doc_usu" HeaderText="doc_usu" SortExpression="doc_usu" />
-                <asp:BoundField DataField="nom_prod" HeaderText="nom_prod" SortExpression="nom_prod" />
+                <asp:BoundField DataField="fecha" HeaderText="Fecha" />
+                <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" />
+                <asp:BoundField DataField="nom_prod" HeaderText="Nombre Producto" />
+                <asp:TemplateField HeaderText="Imagen">
+                    <ItemTemplate>
+                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("id_prod", "Manejador.ashx?id_prod={0}") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

@@ -21,9 +21,47 @@ public partial class form_productos_terminados : System.Web.UI.Page
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_productos_terminados productos = new tbl_productos_terminados();
 
+    private Boolean ValidarExtension(string sExtension)
+    {
+        Boolean verif = false;
+        switch (sExtension)
+        {
+            case ".jpg":
+            case ".jpeg":
+            case ".png":
+            case ".gif":
+            case ".bmp":
+                verif = true;
+                break;
+            default:
+                verif = false;
+                break;
+        }
+        return verif;
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        TextBox1.Attributes["onkeypress"] = " blocklet(e);";
+    }
+    private void ListarRegistro()
+    {
+        try
+        {
+            using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ToString()))
+            using (SqlDataAdapter da = new SqlDataAdapter("usp_Listar_Registro", conexi))
+            {
+                DataTable tbRegistro = new DataTable();
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.Fill(tbRegistro);
+                GridView1.DataSource = tbRegistro;
+                GridView1.DataBind();
+                Session["Registro"] = tbRegistro;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -57,16 +95,56 @@ public partial class form_productos_terminados : System.Web.UI.Page
         }
         else
         {
-            string resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario, nom_producto, imagenbyte);
-            if (resultado == "1")
+            try
             {
-                Response.Write("<script>alert('PRODUCTO TERMINADO se registrado correctamente')</script>");
-                Response.Redirect("form_productos_terminados.aspx");
+                string Extension = string.Empty;
+                string Nombre = string.Empty;
+
+                if (FileUpload1.HasFile)
+                {
+                    Nombre = FileUpload1.FileName;
+                    Extension = Path.GetExtension(Nombre);
+
+                    if (ValidarExtension(Extension))
+                    {
+                        using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ToString()))
+                        using (SqlCommand cmd = new SqlCommand("ingreso_imagen", conexi))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("fecha", fecha);
+                            cmd.Parameters.AddWithValue("documento", doc_usuario);
+                            cmd.Parameters.AddWithValue("nom_producto", nom_producto);
+                            cmd.Parameters.AddWithValue("imagen", FileUpload1.FileBytes);
+                            cmd.Connection.Open();
+                            cmd.ExecuteNonQuery();
+                            cmd.Connection.Close();
+                        }
+                        //Mostrar el panel de Registros
+                 
+                        ListarRegistro();
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Por favor verifique la extencion de la imagen')</script>");
+                    }
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                Response.Write("<script>alert('Error al registrar el  PRODUCTO TERMINADO')</script>");
+                string mesnaje = ex.Message;
             }
+
+            //string resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario, nom_producto, imagenbyte);
+            //if (resultado == "1")
+            //{
+            //    Response.Write("<script>alert('PRODUCTO TERMINADO se registrado correctamente')</script>");
+            //    Response.Redirect("form_productos_terminados.aspx");
+            //}
+            //else
+            //{
+            //    Response.Write("<script>alert('Error al registrar el  PRODUCTO TERMINADO')</script>");
+            //}
         }
         //else
         //{
