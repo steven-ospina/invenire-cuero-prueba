@@ -36,7 +36,7 @@ public partial class ingreso_pedidos : System.Web.UI.Page
         int  docUsuario;
         string fecha, estado,codProducto;
 
-        codProducto = TextBox1.Text;//se convierte el "valor" en numerico
+        codProducto = DropDownList2.SelectedValue.ToString();//se convierte el "valor" en numerico
         fecha = TextBox2.Text;
         docUsuario = Convert.ToInt32(TextBox3.Text);//se debe convertir en numero entero
         estado = DropDownList1.SelectedValue.ToString();

@@ -47,6 +47,9 @@
         .auto-style12 {
             height: 12px;
         }
+        .auto-style13 {
+            margin-right: 2px;
+        }
     </style>
         <link rel="icon" type="image/png" href="imagenes/caja-invenire-cuero-ico.ico" />
 </head>
@@ -59,7 +62,9 @@
                         <asp:Label ID="Label1" runat="server" Text="Codigo Del Producto"></asp:Label>
                     </td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TextBox1" runat="server" Width="128px"></asp:TextBox>
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [nom_prod], [cod_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -99,11 +104,21 @@
             </table>
            <br />
         </div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_ped" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_ped" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="auto-style13">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="cod_ped" HeaderText="Codigo Pedido" InsertVisible="False" ReadOnly="True" SortExpression="cod_ped" />
-                <asp:BoundField DataField="cod_prod" HeaderText="Codigo Producto" SortExpression="cod_prod" />
+                <asp:TemplateField HeaderText="Codigo Producto" SortExpression="cod_prod">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
+                        </asp:DropDownList>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="fecha" HeaderText="Fecha" SortExpression="fecha" />
                 <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" SortExpression="doc_usu" />
                 <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
@@ -124,15 +139,15 @@
                 <asp:Parameter Name="cod_ped" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="cod_prod" Type="Int32" />
+                <asp:Parameter Name="cod_prod" Type="String" />
                 <asp:Parameter Name="fecha" Type="String" />
-                <asp:Parameter Name="doc_usu" Type="Int32" />
+                <asp:Parameter Name="doc_usu" Type="String" />
                 <asp:Parameter Name="estado" Type="String" />
             </InsertParameters>
             <UpdateParameters>
-                <asp:Parameter Name="cod_prod" Type="Int32" />
+                <asp:Parameter Name="cod_prod" Type="String" />
                 <asp:Parameter Name="fecha" Type="String" />
-                <asp:Parameter Name="doc_usu" Type="Int32" />
+                <asp:Parameter Name="doc_usu" Type="String" />
                 <asp:Parameter Name="estado" Type="String" />
                 <asp:Parameter Name="cod_ped" Type="Int32" />
             </UpdateParameters>

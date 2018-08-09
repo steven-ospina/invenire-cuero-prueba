@@ -60,7 +60,7 @@
                     <td class="auto-style2">
                         <asp:DropDownList ID="DropDownList3" runat="server">
                             <asp:ListItem>Activo</asp:ListItem>
-                            <asp:ListItem>Innativo</asp:ListItem>
+                            <asp:ListItem Value="Inactivo">Inactivo</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>
