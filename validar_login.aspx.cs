@@ -15,9 +15,43 @@ public partial class validar_login : System.Web.UI.Page
 {
      tbl_usuario usu = new tbl_usuario();
 
+     tbl_productos prod = new tbl_productos();//se intancia la clase productos
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        DateTime fec_act;
 
+        //Se captura la fecha del sistema
+        string fecha_actual = Convert.ToString(DateTime.Now);
+
+        //se suman unos dias a la fechaactual, para compararcon la fecha de la tabla
+        fec_act = Convert.ToDateTime(fecha_actual);
+
+        // se le suman los dias
+        fec_act = DateTime.Now.AddDays(20);
+
+        string day = fec_act.Day.ToString();
+        string month = fec_act.Month.ToString();
+        int mes = Convert.ToInt32(month);
+        if (mes < 10)
+        {
+            month = "0" + month;
+        }
+        string year = fec_act.Year.ToString();
+        string fecha_final = year + "-" + month + "-" + day;
+
+        string fechaactual = Convert.ToString(fecha_final);
+
+        //Se compara la fecha de caducidad en la bd
+        string mensaje = prod.consultar_caducidad(fechaactual);
+
+
+
+        //se comparan las fechas
+        if (mensaje == "Exito")
+        {
+            Response.Write("<script>alert('Existen productos próximos a caducar')</script>");
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)

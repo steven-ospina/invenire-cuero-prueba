@@ -43,6 +43,40 @@ public class tbl_productos
         {
         }
         return REsultado;
-    }
+    }//finalisa el gurdado en tbl_productos
+
+    public string consultar_caducidad(string fechaactual)
+    {
+        string mensaje;
+        try
+        {
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var consulta = "select fecha_caducidad from tbl_productos where fecha_caducidad = '" + fechaactual + "'";
+            var cmd = new SqlCommand(consulta, conex);
+            conex.Open();
+            SqlDataReader leerbd = cmd.ExecuteReader();
+            if (leerbd.Read() == true)
+            {
+                //captura un dato tipo int
+                //mensaje = Convert.ToString(leerbd.GetValue(posicion en la tabla de la bd));
+
+                //se deseas concatenar datos lo haces asi:
+                //mensaje = leerbd.GetString(posicion en la tabla de la bd)+" _"+leerbd.GetString(posicion en la tabla de la bd)
+
+                //captura la fecha de caducidad
+                mensaje = "Exito";
+            }
+            else
+            {
+                mensaje = "";
+            }
+            conex.Close();
+        }//fin del try
+        catch (Exception e)
+        {
+            mensaje = e.Message;
+        }
+        return mensaje;
+    }//fin del metodo consultar_caduicidad()
 }
 
