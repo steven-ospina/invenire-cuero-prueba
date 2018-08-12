@@ -118,7 +118,20 @@
                         </asp:SqlDataSource>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
+                <asp:TemplateField HeaderText="Estado" SortExpression="estado">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList5" runat="server" SelectedValue='<%# Bind("estado") %>'>
+                            <asp:ListItem>Activo</asp:ListItem>
+                            <asp:ListItem>Inactivo</asp:ListItem>
+                        </asp:DropDownList>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownList4" runat="server" SelectedValue='<%# Bind("estado") %>'>
+                            <asp:ListItem>Activo</asp:ListItem>
+                            <asp:ListItem>Inactivo</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
