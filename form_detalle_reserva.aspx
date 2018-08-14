@@ -62,7 +62,16 @@
             <Columns>
                 <asp:BoundField DataField="cod_det_res" HeaderText="cod_det_res" InsertVisible="False" ReadOnly="True" SortExpression="cod_det_res" />
                 <asp:BoundField DataField="cant_res" HeaderText="cant_res" SortExpression="cant_res" />
-                <asp:BoundField DataField="cod_prod" HeaderText="cod_prod" SortExpression="cod_prod" />
+                <asp:TemplateField HeaderText="cod_prod" SortExpression="cod_prod">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
+                        </asp:DropDownList>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="cod_res" HeaderText="cod_res" SortExpression="cod_res" />
             </Columns>
             <EditRowStyle BackColor="#999999" />

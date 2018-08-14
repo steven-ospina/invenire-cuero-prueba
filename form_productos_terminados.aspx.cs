@@ -41,7 +41,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        TextBox1.Attributes["onkeypress"] = " blocklet(e);";
+        TextBox2.Attributes["onkeypress"] = " return blocklet(event);";
     }
     private void ListarRegistro()
     {
