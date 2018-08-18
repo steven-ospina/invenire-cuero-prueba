@@ -72,9 +72,10 @@ public partial class form_productos_terminados : System.Web.UI.Page
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
 
         string fecha, doc_usuario, nom_producto;
+        int id_prod;
         byte[] imagenbyte;
-        
 
+        id_prod = Convert.ToInt32(TextBox4.Text);
         fecha = TextBox1.Text;
         doc_usuario = TextBox2.Text;
         nom_producto = TextBox3.Text;
@@ -107,21 +108,31 @@ public partial class form_productos_terminados : System.Web.UI.Page
 
                     if (ValidarExtension(Extension))
                     {
-                        using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ToString()))
-                        using (SqlCommand cmd = new SqlCommand("ingreso_imagen", conexi))
+                        int intDocFileLength = FileUpload1.PostedFile.ContentLength;
+                        if(intDocFileLength > 4096000)
                         {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("fecha", fecha);
-                            cmd.Parameters.AddWithValue("documento", doc_usuario);
-                            cmd.Parameters.AddWithValue("nom_producto", nom_producto);
-                            cmd.Parameters.AddWithValue("imagen", FileUpload1.FileBytes);
-                            cmd.Connection.Open();
-                            cmd.ExecuteNonQuery();
-                            cmd.Connection.Close();
+                            Response.Write("<script>alert('verifica, la imagen excede los 4MB')</script>");
                         }
-                        //Mostrar el panel de Registros
-                 
-                        ListarRegistro();
+                        else
+                        {
+                            using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ToString()))
+                            using (SqlCommand cmd = new SqlCommand("ingreso_imagen", conexi))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.AddWithValue("id_prod", id_prod);
+                                cmd.Parameters.AddWithValue("fecha", fecha);
+                                cmd.Parameters.AddWithValue("documento", doc_usuario);
+                                cmd.Parameters.AddWithValue("nom_producto", nom_producto);
+                                cmd.Parameters.AddWithValue("imagen", FileUpload1.FileBytes);
+                                cmd.Connection.Open();
+                                cmd.ExecuteNonQuery();
+                                cmd.Connection.Close();
+                            }
+                            //Mostrar el panel de Registros
+
+                            ListarRegistro();
+                        }
+
                     }
                     else
                     {

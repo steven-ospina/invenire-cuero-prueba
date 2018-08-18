@@ -16,15 +16,19 @@
         .auto-style2 {
             width: 184px;
         }
-        .auto-style3 {
-            text-align: center;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
+                <tr>
+                    <td class="auto-style2">
+                        id_prod</td>
+                    <td>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
                 <tr>
                     <td class="auto-style2">
                         <asp:Label ID="Label1" runat="server" Text="Fecha"></asp:Label>
@@ -73,7 +77,7 @@
                 <asp:BoundField DataField="nom_prod" HeaderText="Nombre Producto" />
                 <asp:TemplateField HeaderText="Imagen">
                     <ItemTemplate>
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("id_prod", "Manejador.ashx?id_prod={0}") %>' />
+                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("id_prod", "manejador_tbl_prod_term.ashx?id_prod={0}") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
