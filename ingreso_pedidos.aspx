@@ -115,13 +115,23 @@
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
-                        </asp:DropDownList>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("cod_prod") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="fecha" HeaderText="Fecha" SortExpression="fecha" />
                 <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" SortExpression="doc_usu" />
-                <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
+                <asp:TemplateField HeaderText="Estado" SortExpression="estado">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList1" runat="server" Height="16px" SelectedValue='<%# Bind("estado") %>' Width="136px">
+                            <asp:ListItem>Cancelado</asp:ListItem>
+                            <asp:ListItem>Pendiente</asp:ListItem>
+                            <asp:ListItem>Entregado</asp:ListItem>
+                        </asp:DropDownList>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("estado") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

@@ -57,22 +57,32 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_det_res" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="453px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_det_res" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="453px" AllowPaging="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="cod_det_res" HeaderText="cod_det_res" InsertVisible="False" ReadOnly="True" SortExpression="cod_det_res" />
                 <asp:BoundField DataField="cant_res" HeaderText="cant_res" SortExpression="cant_res" />
                 <asp:TemplateField HeaderText="cod_prod" SortExpression="cod_prod">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
-                        </asp:DropDownList>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("cod_prod") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="cod_res" HeaderText="cod_res" SortExpression="cod_res" />
+                <asp:TemplateField HeaderText="cod_res" SortExpression="cod_res">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="cod_res" DataValueField="cod_res" SelectedValue='<%# Bind("cod_res") %>'>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_res] FROM [tbl_reserva]"></asp:SqlDataSource>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("cod_res") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -91,12 +101,12 @@
             </DeleteParameters>
             <InsertParameters>
                 <asp:Parameter Name="cant_res" Type="Int32" />
-                <asp:Parameter Name="cod_prod" Type="Int32" />
+                <asp:Parameter Name="cod_prod" Type="String" />
                 <asp:Parameter Name="cod_res" Type="Int32" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="cant_res" Type="Int32" />
-                <asp:Parameter Name="cod_prod" Type="Int32" />
+                <asp:Parameter Name="cod_prod" Type="String" />
                 <asp:Parameter Name="cod_res" Type="Int32" />
                 <asp:Parameter Name="cod_det_res" Type="Int32" />
             </UpdateParameters>
