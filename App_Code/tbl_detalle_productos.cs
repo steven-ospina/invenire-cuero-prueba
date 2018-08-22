@@ -20,13 +20,13 @@ public class tbl_detalle_productos
         //
     }
 
-    public string Guardar_tbl_detalle_productos(int id_producto,string descripcion,string nom_producto)
+    public string Guardar_tbl_detalle_productos(string id_producto,string descripcion,string nom_producto)
     {
         string REsultado = "1";
         try
         {
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_detalle_productos values(" + id_producto +",'" + descripcion + "','" + nom_producto + "')";
+            var insertar = "insert into tbl_detalle_productos values('" + id_producto +"','" + descripcion + "','" + nom_producto + "')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();
             int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta

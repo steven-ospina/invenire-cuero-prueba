@@ -16,6 +16,9 @@
         .auto-style2 {
             width: 184px;
         }
+        .auto-style3 {
+            text-align: center;
+        }
         </style>
 </head>
 <body>
@@ -64,7 +67,7 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" />
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" style="height: 26px" />
                     </td>
                 </tr>
             </table>
@@ -72,12 +75,13 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="464px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:BoundField DataField="id_prod" HeaderText="ID Producto" />
                 <asp:BoundField DataField="fecha" HeaderText="Fecha" />
                 <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" />
                 <asp:BoundField DataField="nom_prod" HeaderText="Nombre Producto" />
                 <asp:TemplateField HeaderText="Imagen">
                     <ItemTemplate>
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("id_prod", "manejador_tbl_prod_term.ashx?id_prod={0}") %>' />
+                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("id_prod", "manejador_tbl_prod_term.ashx?id_prod={0}") %>' width="100px" height="100px" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

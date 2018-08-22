@@ -21,14 +21,13 @@ public partial class form_detalle_productos : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        int id_producto;
-        string descripcion, nom_producto;
+        string id_producto,descripcion, nom_producto;
 
-        id_producto = Convert.ToInt32(DropDownList1.SelectedValue.ToString());
+        id_producto = DropDownList1.SelectedValue.ToString();
         descripcion = TextBox1.Text;
         nom_producto = DropDownList2.SelectedValue.ToString();
 
-        if (id_producto == 0){
+        if (id_producto == ""){
 
             Response.Write("<script>alert('ingrese el ID del producto')</script>");
 

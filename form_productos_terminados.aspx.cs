@@ -71,20 +71,23 @@ public partial class form_productos_terminados : System.Web.UI.Page
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
 
-        string fecha, doc_usuario, nom_producto;
-        int id_prod;
+        string id_prod,fecha, doc_usuario, nom_producto;
         byte[] imagenbyte;
 
-        id_prod = Convert.ToInt32(TextBox4.Text);
+        id_prod = TextBox4.Text;
         fecha = TextBox1.Text;
         doc_usuario = TextBox2.Text;
         nom_producto = TextBox3.Text;
         imagenbyte = FileUpload1.FileBytes;
 
         //SE VALIAM LOS CAMPOS
-        if (fecha == "")
+        if (id_prod == "")
         {
-            Response.Write("<script>alert('Ingrese la FECHA')</script>");
+            Response.Write("<script>alert('Ingrese la CODIGO DEL PRODUCTO')</script>");
+        }
+        else if (fecha == "")
+        {
+            Response.Write("<script>alert('Ingrese el DOCUMENTO del USUARIO')</script>");
         }
         else if (doc_usuario == "")
         {

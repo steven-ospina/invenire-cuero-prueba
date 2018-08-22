@@ -62,9 +62,27 @@
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="id_det_pro" HeaderText="id_det_pro" InsertVisible="False" ReadOnly="True" SortExpression="id_det_pro" />
-                <asp:BoundField DataField="id_prod" HeaderText="id_prod" SortExpression="id_prod" />
+                <asp:TemplateField HeaderText="id_prod" SortExpression="id_prod">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource4" DataTextField="id_prod" DataValueField="id_prod" SelectedValue='<%# Bind("id_prod") %>'>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("id_prod") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
-                <asp:BoundField DataField="nom_prod" HeaderText="nom_prod" SortExpression="nom_prod" />
+                <asp:TemplateField HeaderText="nom_prod" SortExpression="nom_prod">
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource5" DataTextField="nom_prod" DataValueField="nom_prod" SelectedValue='<%# Bind("nom_prod") %>'>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [nom_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("nom_prod") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_productos] WHERE [id_det_pro] = @id_det_pro" InsertCommand="INSERT INTO [tbl_detalle_productos] ([id_prod], [descripcion], [nom_prod]) VALUES (@id_prod, @descripcion, @nom_prod)" SelectCommand="SELECT * FROM [tbl_detalle_productos]" UpdateCommand="UPDATE [tbl_detalle_productos] SET [id_prod] = @id_prod, [descripcion] = @descripcion, [nom_prod] = @nom_prod WHERE [id_det_pro] = @id_det_pro">
@@ -72,12 +90,12 @@
                 <asp:Parameter Name="id_det_pro" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="id_prod" Type="Int32" />
+                <asp:Parameter Name="id_prod" Type="String" />
                 <asp:Parameter Name="descripcion" Type="String" />
                 <asp:Parameter Name="nom_prod" Type="String" />
             </InsertParameters>
             <UpdateParameters>
-                <asp:Parameter Name="id_prod" Type="Int32" />
+                <asp:Parameter Name="id_prod" Type="String" />
                 <asp:Parameter Name="descripcion" Type="String" />
                 <asp:Parameter Name="nom_prod" Type="String" />
                 <asp:Parameter Name="id_det_pro" Type="Int32" />
