@@ -63,7 +63,6 @@ public partial class form_productos_terminados : System.Web.UI.Page
             throw;
         }
     }
-
     protected void Button1_Click(object sender, EventArgs e)
     {
         //EL_SOCIO_24_06_2018
@@ -149,6 +148,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
                 string mesnaje = ex.Message;
             }
 
+
             //string resultado = productos.guardar_tbl_productos_terminados(fecha, doc_usuario, nom_producto, imagenbyte);
             //if (resultado == "1")
             //{
@@ -160,6 +160,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
             //    Response.Write("<script>alert('Error al registrar el  PRODUCTO TERMINADO')</script>");
             //}
         }
+
         //else
         //{
         //    //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_productos_terminados.cs)
@@ -177,4 +178,5 @@ public partial class form_productos_terminados : System.Web.UI.Page
         //}
 
     }
+
 }
