@@ -29,13 +29,13 @@ public partial class form_detalle_devolucion : System.Web.UI.Page
         //Aqui se postea el codigo del boton
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
-        int id_devolucion, id_det_pedido, cant_ped;
+        int id_devolucion, id_det_pedido, cant_producto;
         string cod_producto;
 
         id_devolucion = Convert.ToInt32(DropDownList1.SelectedValue.ToString());
         id_det_pedido = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
         cod_producto = DropDownList3.SelectedValue.ToString();
-        cant_ped = Convert.ToInt32(TextBox1.Text);
+        cant_producto = Convert.ToInt32(TextBox1.Text);
 
         //SE VALIAM LOS CAMPOS
         if (id_devolucion == 0)
@@ -50,14 +50,14 @@ public partial class form_detalle_devolucion : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese  EL CODIGO DEL PRODUCTO')</script>");
         }
-        else if (cant_ped == 0)
+        else if (cant_producto == 0)
         {
             Response.Write("<script>alert('Ingrese LA CASTIDAD DE PRODUCTO SOBRANTE')</script>");
         }
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_detalle_devolucion)
-            int resultado = devolucion.Guardar_tbl_detalle_devolucion(id_devolucion,id_det_pedido,cod_producto,cant_ped);
+            int resultado = devolucion.Guardar_tbl_detalle_devolucion(id_devolucion,id_det_pedido,cod_producto, cant_producto);
 
             if (resultado == 1)
             {

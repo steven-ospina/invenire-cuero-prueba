@@ -71,10 +71,10 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_devol,id_det_ped" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="619px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="id_devol" HeaderText="ID Devolucion" ReadOnly="True" SortExpression="id_devol" />
-                <asp:BoundField DataField="id_det_ped" HeaderText="ID Detalle Pedido" ReadOnly="True" SortExpression="id_det_ped" />
-                <asp:BoundField DataField="cod_prod" HeaderText="Codigo del Producto" SortExpression="cod_prod" />
-                <asp:BoundField DataField="cant_ped" HeaderText="Cantidad Devuelta" SortExpression="cant_ped" />
+                <asp:BoundField DataField="id_devol" HeaderText="id_devol" ReadOnly="True" SortExpression="id_devol" />
+                <asp:BoundField DataField="id_det_ped" HeaderText="id_det_ped" ReadOnly="True" SortExpression="id_det_ped" />
+                <asp:BoundField DataField="cod_prod" HeaderText="cod_prod" SortExpression="cod_prod" />
+                <asp:BoundField DataField="cant_prod" HeaderText="cant_prod" SortExpression="cant_prod" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -87,7 +87,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_devolucion] WHERE [id_devol] = @id_devol AND [id_det_ped] = @id_det_ped" InsertCommand="INSERT INTO [tbl_detalle_devolucion] ([id_devol], [id_det_ped], [cod_prod], [cant_ped]) VALUES (@id_devol, @id_det_ped, @cod_prod, @cant_ped)" SelectCommand="SELECT * FROM [tbl_detalle_devolucion]" UpdateCommand="UPDATE [tbl_detalle_devolucion] SET [cod_prod] = @cod_prod, [cant_ped] = @cant_ped WHERE [id_devol] = @id_devol AND [id_det_ped] = @id_det_ped">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_devolucion] WHERE [id_devol] = @id_devol AND [id_det_ped] = @id_det_ped" InsertCommand="INSERT INTO [tbl_detalle_devolucion] ([id_devol], [id_det_ped], [cod_prod], [cant_prod]) VALUES (@id_devol, @id_det_ped, @cod_prod, @cant_prod)" SelectCommand="SELECT * FROM [tbl_detalle_devolucion]" UpdateCommand="UPDATE [tbl_detalle_devolucion] SET [cod_prod] = @cod_prod, [cant_prod] = @cant_prod WHERE [id_devol] = @id_devol AND [id_det_ped] = @id_det_ped">
             <DeleteParameters>
                 <asp:Parameter Name="id_devol" Type="Int32" />
                 <asp:Parameter Name="id_det_ped" Type="Int32" />
@@ -96,11 +96,11 @@
                 <asp:Parameter Name="id_devol" Type="Int32" />
                 <asp:Parameter Name="id_det_ped" Type="Int32" />
                 <asp:Parameter Name="cod_prod" Type="String" />
-                <asp:Parameter Name="cant_ped" Type="Int32" />
+                <asp:Parameter Name="cant_prod" Type="Int32" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="cod_prod" Type="String" />
-                <asp:Parameter Name="cant_ped" Type="Int32" />
+                <asp:Parameter Name="cant_prod" Type="Int32" />
                 <asp:Parameter Name="id_devol" Type="Int32" />
                 <asp:Parameter Name="id_det_ped" Type="Int32" />
             </UpdateParameters>

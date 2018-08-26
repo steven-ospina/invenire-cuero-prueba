@@ -22,13 +22,13 @@ public class tbl_detalle_devolucion
     //26_06_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int Guardar_tbl_detalle_devolucion(int id_devolucion,int id_det_pedido,string cod_producto, int cant_ped)
+    public int Guardar_tbl_detalle_devolucion(int id_devolucion,int id_det_pedido,string cod_producto, int cant_producto)
     {
         int REsultado = 1;
         try
         {
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_detalle_devolucion values(" + id_devolucion + "," + id_det_pedido + ",'" + cod_producto + "'," + cant_ped + ")";
+            var insertar = "insert into tbl_detalle_devolucion values(" + id_devolucion + "," + id_det_pedido + ",'" + cod_producto + "'," + cant_producto + ")";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();
             int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta

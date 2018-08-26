@@ -17,6 +17,9 @@ public partial class validar_login : System.Web.UI.Page
 
      tbl_productos prod = new tbl_productos();//se intancia la clase productos
 
+    //Se captura la fecha del sistema
+    string fecha_actual = DateTime.Now.ToString("yyyy-MM-dd");
+
     protected void Page_Load(object sender, EventArgs e)
     {
         DateTime fec_act;
@@ -88,16 +91,30 @@ public partial class validar_login : System.Web.UI.Page
             if (mensaje != "Exito")
             {
 
-                //SE CAPTURA LA VARIABLE DE SECCION CODIGO DEL USUARIO
-                string usuario = usu.consultar_usuario(documento);
-                Session["usuario"] = usuario;
-
                 Response.Write("<script>alert('Error al ingresar')</script>");
             }
             if (mensaje == "Exito")
             {
+
+                //SE CAPTURA LA VARIABLE DE SECCION CODIGO DEL USUARIO
+                string usuario = usu.consultar_usuario(documento);
+                Session["usuario"] = usuario;
+
+                //Se compara la fecha de caducidad en la bd
+                string rdo = prod.consultar_caducidad(fecha_actual);
+
+                //se reconece la fechas actua
+                //se comparan las fechas
+                if (rdo == "Exito")
+                {
+                    Session["fecha_actual"] = fecha_actual;
+                    Response.Redirect("form_prod_caducar.aspx");
+                }
+                else
+                {
+                    Response.Redirect("inicio.aspx.aspx");
+                }
                 //Response.Write("<script>alert('Urra...! login exitoso')</script>");
-                Response.Redirect("form_usuarios.aspx");
             }//PALABRAS PROHIBIDAS
             //CLOK$, COM1 a COM8, CON, CONFIG$, LPT1 a LPT8 , NUL y PRN
             //AND 1=1, OR 1=1
