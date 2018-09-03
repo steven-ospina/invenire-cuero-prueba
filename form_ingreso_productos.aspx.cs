@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 //EL_SOCIO_28_05_2018
 //librerias para trabajar con bases de datos
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-public partial class ingreso_productos : System.Web.UI.Page
+public partial class form_ingreso_productos : System.Web.UI.Page
 {
     //EL_SOCIO_28_05_2018
     //ELSOCIO:AQUI SE INSTANCIA LA CLASE: tbl_productos.cs
@@ -20,11 +19,9 @@ public partial class ingreso_productos : System.Web.UI.Page
     tbl_productos producto = new tbl_productos();
     protected void Page_Load(object sender, EventArgs e)
     {
-
         //SE EJECUTA AL CARGAR LA PAGINA
+        TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
 
-        //Calendar1.Visible = false;
-        //Calendar2.Visible = false;
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -33,14 +30,21 @@ public partial class ingreso_productos : System.Web.UI.Page
         //Aquí se postea el código del Botón
 
         //PRIMERO: SE CAPTURAN LOS DATOS DEL FORMULARIO
-        string nomProducto, descProducto, fechIngreso, fechCaducidad,ubicacion, codProducto;
-        int  cantProducto;
+        string nomProducto, descProducto, fechIngreso, fechCaducidad, ubicacion, codProducto;
+        int cantProducto;
 
         //se convierte el "valor" en numerico
         codProducto = TextBox1.Text;
         nomProducto = TextBox2.Text;
         //se convierte el "valor" en numerico
-        cantProducto = Convert.ToInt32(TextBox3.Text);
+        if(TextBox3.Text == "")
+        {
+            cantProducto = 0;
+        }
+        else
+        {
+            cantProducto = Convert.ToInt32(TextBox3.Text);
+        }
         descProducto = TextBox4.Text;
         fechIngreso = TextBox5.Text;
         fechCaducidad = TextBox6.Text;
@@ -83,7 +87,7 @@ public partial class ingreso_productos : System.Web.UI.Page
             if (rdo == 1)
             {
                 Response.Write("<script>alert(' producto guardo correctamente')</script>");
-                Response.Redirect("ingreso_productos.aspx");
+                Response.Redirect("form_ingreso_productos.aspx");
             }
             else if (rdo == 0)
             {
@@ -96,26 +100,4 @@ public partial class ingreso_productos : System.Web.UI.Page
 
         }
     }
-
-    //protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
-    //{
-    //    Calendar1.Visible = true;
-    //}
-
-    //protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
-    //{
-    //    Calendar2.Visible = true;
-    //}
-
-    //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-    //{
-    //    TextBox5.Text = Calendar1.SelectedDate.ToShortDateString();
-    //    Calendar1.Visible = false;
-    //}
-
-    //protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-    //{
-    //    TextBox6.Text = Calendar1.SelectedDate.ToShortDateString();
-    //    Calendar2.Visible = false;
-    //}
 }

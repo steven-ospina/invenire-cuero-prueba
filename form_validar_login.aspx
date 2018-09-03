@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="validar_login.aspx.cs" Inherits="validar_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="form_validar_login.aspx.cs" Inherits="form_validar_login" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Ingreso al Sistema</title>
     <style type="text/css">
         /*.auto-style1 {
             width: 28%;
@@ -16,13 +16,12 @@
         }*/
     </style>
     <link rel="stylesheet" href="file_css/style_validar_login.css"/>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/validaciones.js"></script>
-    <script src="js/"></script>
+    <script src="file_js/jquery-3.1.1.min.js"></script>
+    <script src="file_js/validaciones.js"></script>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
 </head>
 <body>
-    <form id="form1" runat="server">
+      <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
@@ -32,7 +31,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server" onkeypress="return blocklet(event);" placeholder="Documento" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" placeholder="Documento" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

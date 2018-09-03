@@ -1,0 +1,624 @@
+ /*========================================================================================*/
+ /*==Globales==*/
+ /*========================================================================================*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    font-family: verdana;
+    /*box-sizing: border-box;*//* esto asegura el relleno y el borde estan incluidos en el ancho de  y alto total de los elementos */
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../file_css/fonts/roboto/roboto-regular-webfont.woff2') format('woff2'),
+         url('../file_css/fonts/roboto/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lobster_1.3regular';
+    src: url('../file_css/fonts/lobster/lobster_1.3-webfont.woff2') format('woff2'),
+         url('../file_css/fonts/lobster/lobster_1.3-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}   
+/*========================================================================================*/
+/*==inicio de la pagina: es esta parte odemos editar el header de la pagina==*/
+/*========================================================================================*/
+
+/*--inicio de la pagina con el logo--*/
+.inicio{
+    width: 100%;
+    height: 230px;
+    background-image: url("../file_img/logo-invenire-cuero-new-prototipo.png");
+    background-repeat: no-repeat;
+    background-size: 320px auto;
+    background-position: center ;
+    /*background-color: #775757a8;*/
+}
+/*========================================================================================*/
+/*==editor del titulo==*/
+/*========================================================================================*/
+.formulario h2{
+    margin: 1px ;
+    font-size: 25px;
+    font-weight: 400;
+    /* font-weight: bold; */
+    line-height: 4;
+    font-family: 'robotoregular';
+    /* font-family: 'Roboto', sans-serif; */
+    color: #2bebe1;
+
+}
+
+/*========================================================================================*/
+/*==donde esta ubicado el formulario==*/
+/*========================================================================================*/
+.formulario{
+    max-width: 500px;
+    width: 100%;
+    height: 605px;
+    background-color: #606266b4;
+    margin: 48px auto;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    margin-top: 1px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    /* border: 2px solid black; */
+}
+
+
+.formulario input{
+    width: 60%;
+    height: 30px;
+    font-size:18px;
+    letter-spacing: 2px;
+    font-family: 'robotoregular';
+}
+
+/*--editor de medidas de cajones de los campos--*/
+.formulario input[type="text"],
+.formulario input[type="password"],
+.formulario input[type="email"],
+.formulario input[list="browsers"],
+.formulario input[list="browsers2"]{
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    border-radius: 2px;
+    border: none;
+    color: #056963;
+}
+.formulario input[type="submit"]{
+    background-color: #09827c;
+    border: none;
+    width: 50%;
+    color: white;
+    border-radius: 10px;
+
+}
+
+.formulario input[type="submit"]:hover{
+    background-color: #073836;
+    /* color: #2bebe1; */
+}
+.browsers, .browsers2{
+    font-weight: bolder;
+}
+
+/*========================================================================================*/
+/*==footer en esta parte podemos editar el footer==*/
+/*========================================================================================*/
+.footer{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: 400px 50px;
+    background: #044352c2;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+    font-family: 'robotoregular';
+}
+.footer1{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.columna1{
+    grid-column: 1;
+    text-align: center;
+    padding: 40px;
+    /* border: 1px solid black; */
+}
+.columna2{
+    grid-column: 2;
+    text-align: center;
+    padding: 40px;
+    /* border: 1px solid black; */
+}
+.columna3{
+    grid-column: 3;
+    /* text-align: center; */
+    padding: 40px;
+    /* border: 2px solid black; */
+}
+
+.footer2{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.copyright{
+    grid-column: 1 ;
+    background: #031d3ff1;
+    padding: 20px;
+}
+.information{
+    grid-column: 2 ;
+    padding: 20px;
+    background: #031d3ff1;
+    /* background: #420452f1; */
+    text-align: center;
+}
+.redes{
+    width: 15%;
+    height: 10%;
+}
+.contacto{
+    width: 10%;
+    height: 10%;
+}
+.icon-facebook{
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+    animation: facebook 5s infinite;
+}
+/* @keyframes facebook{
+    50% {color: #3B5999;} 
+
+} */
+.icon-facebook:hover{
+    color: #3b5999;
+}
+.facebook:hover{
+    color: #3b5999;
+}
+.icon-instagram{
+    text-decoration: none;
+    font-size: 50px;
+    color: white;
+    animation: instagram 5s infinite;
+}
+@keyframes instagram {
+    /* 50% {color: #833ab4;} */ 
+    /* 0%   {color: #833ab4;}
+    25%  {color: #4c68d7;}
+    50%  {color: #cd486b;}
+    60%  {color: #cd486b;}
+    80%  {color: #fccc63;}
+    90%  {color: #bc2a8d;}
+    100% {color: #e95950;} */
+}
+.icon-instagram:hover{
+    color: #833ab4;
+    /* color:#8a3ab9 #4c68d7; */
+    /* background: linear-gradient(to bottom right, #8a3ab9, #4c68d7,#cd486b, #fbad50,#fccc63,#bc2a8d,#e95950); */
+}
+.instagram:hover{
+    color: #833ab4;
+}
+.icon-twitter{
+    text-decoration: none;
+    font-size: 50px;
+    color: white;
+    animation: twitter 5s infinite;
+   
+}
+/* @keyframes twitter{
+    50% {color:  #55ACEE;} 
+
+} */
+.icon-twitter:hover{
+    color: #55acee;
+}
+.twitter:hover{
+    color: #55acee;
+}
+
+.icon-blogger{
+    text-decoration: none;
+    font-size: 50px;
+    color: white;
+    animation: blogger 5s infinite;
+   
+}
+/* @keyframes blogger{
+    50% {color:  #ff5722;} 
+
+} */
+.icon-blogger:hover{
+    color: #ff5722;
+}
+.blogger:hover{
+    color: #ff5722;
+}
+.icon-location,.icon-phone,.icon-mail2,.icon-clock,.icon-printer{
+    font-size: 30px;
+    color: white;
+}
+.horario{
+    font-size: 15px;
+    margin-left: 10px;
+}
+.icon-location:hover{
+    color: #5a422b;
+}
+.home:hover{
+    /* font-size: 30px; */
+    color: #5a422b;
+    text-decoration: underline ;
+}
+.titulo-footer{
+    font-size: 35px;
+    font-family: 'lobster_1.3regular';
+}
+.titulo-footer3{
+    font-family: 'lobster_1.3regular';
+}
+.row{
+    padding: 5px;
+}
+.row2{
+    padding: 10px;
+}
+/*========================================================================================*/
+/*==imagen fondo==*/
+/*========================================================================================*/
+.imagen_fondo{
+    background-image: url("../file_img/imagenes_fondo/fondo_lading.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*========================================================================================*/
+/*==4k  = 2560px==*/
+/*========================================================================================*/
+/* @media(min-width:1400px) and (max-width:2560px) {
+
+
+} */
+ /*========================================================================================*/
+ /*==Laltop L = 1440px==*/
+ /*========================================================================================*/
+ /* @media (max-width:1440px) {
+
+}  */
+ /*========================================================================================*/
+ /*==Laptop = 1024px==*/
+ /*========================================================================================*/
+@media (max-width:1024px) {
+
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 510px 70px;
+        background: #044352c2;
+        overflow: hidden;
+        font-family: 'Galada', cursive;
+        color: white;
+        text-decoration: none;
+    }
+    .footer2{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        font-size: 13px;
+    }
+
+}
+ /*========================================================================================*/
+ /*==Tablet = 768px==*/
+ /*========================================================================================*/
+ @media (max-width:768px) {
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1090px 50px;
+        background: #044352c2;
+        overflow: hidden;
+        font-family: 'Galada', cursive;
+        color: white;
+        text-decoration: none;
+    }
+    .footer1{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .columna1{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        /* border: 1px solid black; */
+    }
+    .columna2{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;  
+        /* border: 1px solid black; */
+    }
+    .columna3{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        font-family: 'Roboto', sans-serif;
+        /* border: 2px solid black; */
+    }
+    .footer2{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        font-size: 12px;
+    }
+}
+ /*========================================================================================*/
+ /*==Movil L = 425px==*/
+ /*========================================================================================*/
+ @media (max-width:425px) {
+    .formulario{
+        width: 90%;
+    }
+    /* .pies-letras{
+        font-size: 21px;
+        overflow: hidden;
+        text-shadow: 1px 2px black;
+        position: relative;
+        left: -15px;
+    } */
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1200px 150px;
+        background: #044352c2;
+        overflow: hidden;
+        font-family: 'Galada', cursive;
+        color: white;
+        text-decoration: none;
+    }
+    .footer1{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .columna1{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        /* border: 1px solid black; */
+    }
+    .columna2{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;  
+        /* border: 1px solid black; */
+    }
+    .columna3{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        font-family: 'Roboto', sans-serif;
+        /* border: 2px solid black; */
+    }
+    .footer2{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 80px 80px;
+        font-size: 15px;
+
+    }
+    .copyright{
+        grid-column: 1;
+        text-align: center;
+    }
+    .information{
+        grid-column: 1;
+        grid-row: 2;
+        text-align: center;
+    }
+}
+ /*========================================================================================*/
+ /*==Movil M = 375px==*/
+ /*========================================================================================*/
+ @media (max-width:375px) {
+    .formulario{
+        width: 90%;
+        height: 500px;
+        font-family: Verdana, sans-serif;
+    }
+    /* .pies-letras{
+        font-size: 20px;
+        overflow: hidden;
+        text-shadow: 1px 2px black;
+        position: relative;
+        left: -15px;
+        font-family: Verdana, sans-serif;
+    } */
+    .formulario h2{
+        margin: 1px ;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 2;
+        letter-spacing: 2px;
+        font-family: Verdana, sans-serif;
+    }
+    .formulario input{
+        width: 70%;
+        height: 30px;
+        font-size:15px;
+        letter-spacing: 2px;
+    }
+    .formulario input[type="text"],
+    .formulario input[type="password"],
+    .formulario input[type="email"],
+    .formulario input[list="browsers"],
+    .formulario input[list="browsers2"]{
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    border-radius: 5px;
+    }
+
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1300px 150px;
+        background: #044352c2;
+        overflow: hidden;
+        font-family: 'Galada', cursive;
+        color: white;
+        text-decoration: none;
+    }
+    .footer1{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .columna1{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        /* border: 1px solid black; */
+    }
+    .columna2{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;  
+        /* border: 1px solid black; */
+    }
+    .columna3{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        font-family: 'Roboto', sans-serif;
+        /* border: 2px solid black; */
+    }
+    .footer2{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 80px 80px;
+        font-size: 15px;
+
+    }
+    .copyright{
+        grid-column: 1;
+        text-align: center;
+    }
+    .information{
+        grid-column: 1;
+        grid-row: 2;
+        text-align: center;
+    }
+
+}
+
+ /*========================================================================================*/
+ /*==Movil S = 320px==*/
+ /*========================================================================================*/
+ @media (max-width:320px) {
+    .formulario{
+        width: 90%;
+        height: 500px;
+        font-family: Verdana, sans-serif;
+    }
+    /* .pies-letras{
+        font-size: 17px;
+        overflow: hidden;
+        text-shadow: 1px 2px black;
+        position: relative;
+        left: 1px;
+    } */
+    .formulario h2{
+        margin: 1px ;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 2;
+        letter-spacing: 1px;
+        font-family: Verdana, sans-serif;
+    }
+    .formulario input{
+        width: 75%;
+        height: 30px;
+        font-size:15px;
+        letter-spacing: 2px;
+    }
+    .formulario input[type="text"],
+    .formulario input[type="password"],
+    .formulario input[type="email"],
+    .formulario input[list="browsers"],
+    .formulario input[list="browsers2"]{
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    border-radius: 5px;
+    }
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1350px 150px;
+        background: #044352c2;
+        overflow: hidden;
+        font-family: 'Galada', cursive;
+        color: white;
+        text-decoration: none;
+    }
+    .footer1{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .columna1{
+        grid-column: 1;
+        text-align: center;
+        padding: 40px;
+        /* border: 1px solid black; */
+    }
+    .columna2{
+        grid-column: 1;
+        text-align: left;
+        padding: 20px;  
+        /* border: 1px solid black; */
+    }
+    .columna3{
+        grid-column: 1;
+        text-align: left;
+        padding: 30px;
+        font-family: 'Roboto', sans-serif;
+        /* border: 2px solid black; */
+    }
+    .footer2{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: 80px 80px;
+        font-size: 15px;
+
+    }
+    .copyright{
+        grid-column: 1;
+        text-align: center;
+    }
+    .information{
+        grid-column: 1;
+        grid-row: 2;
+        text-align: center;
+    }
+}
+
+/*========================================================================================*/
+/*==GAME OVER *_* EL SOCIO ==*/
+/*========================================================================================*/

@@ -1,0 +1,163 @@
+recordar MARTES:
+recordar el minimo de contrase 8 caracteres
+
+martes configurar modulos y perfiles
+
+controlar las flechas de atras y adelante del navegador
+
+urls amigas
+
+
+
+
+//cambios
+crear un tabla evidencia
+
+cod_evidencia
+doc_usu
+fecha del sistema
+imagen_paz
+
+
+registra los usuario manual mente el administrador
+
+colores corporativos del sena
+
+form_ingreso_rol.aspx = poner codigo_rol identity
+
+form_permisos.aspx = el codigo permiso auto incrementar
+
+form_ingreso_pedidos.aspx = poner un drowlist en el campo documento
+
+modificar la tbl_productos terminados quitamos nom_prod y imagen y la pasamos para tbl_detalle_productos
+
+tbl_detalle_productos agregar un campo llamado codigo_QR
+
+
+el campo QR no lo ponemos todavia por que no sabemos como se guarda en la BD si como varchar o como img como binarios,despues lo configuramos
+
+
+
+create table tbl_evidencia(
+cod_evidencia int not null identity(1,1) primary key,
+doc_usu varchar(20) not null,
+fecha_sistema varchar(10) not null,
+img_pasisalvo varbinary(max) not null
+);
+
+
+modificar los gribviews de las tablas que cuando le de editar muestre si tiene un campo droplist ponerlo tambien
+
+para solucionar ele erro solo cerre el editor de BD y lo volvi abrir
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+//EL_SOCIO_28_05_2018
+//librerias para trabajar con bases de datos
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+
+public partial class form_ingreso_pedidos : System.Web.UI.Page
+{
+    //25_05_2018
+    //EL_SOCIO:AQUI SE INSTANCIA LA CLASE: tbl_pedidos.cs
+    //que es intancia? consiste en crear un apodo (pedido) para la clase
+    //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
+    tbl_pedidos pedido = new tbl_pedidos();//estoy creando una instancia ala tbl_pedidos:para leer datos de la clase
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //VALIDACIONES JS
+        TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        //EL_SOCIO_28_05_2018
+        //Aqui se postea el codigo del boton
+
+        //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
+        int docUsuario;
+        string fecha, estado, codProducto;
+
+        codProducto = DropDownList2.SelectedValue.ToString();//se convierte el "valor" en numerico
+        fecha = TextBox2.Text;
+        if(TextBox3.Text == "")
+        {
+            docUsuario = 0;
+        }
+        else
+        {
+            docUsuario = Convert.ToInt32(TextBox3.Text);//se debe convertir en numero entero
+        }
+        estado = DropDownList1.SelectedValue.ToString();
+
+
+        //SE VALIAM LOS CAMPOS
+        if (codProducto == "")
+        {
+            Response.Write("<script>alert('Ingrese el Código del producto')</script>");
+        }
+        else if (fecha == "")
+        {
+            Response.Write("<script>alert('Ingrese la fecha')</script>");
+        }
+        else if (docUsuario == 0)
+        {
+            Response.Write("<script>alert('Ingrese el Documento del usuario')</script>");
+        }
+        else if (estado == "")
+        {
+            Response.Write("<script>alert('Ingrese el estado del producto')</script>");
+        }
+        else
+        {
+            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_pedidos)
+            int resultado = pedido.guardar_tbl_pedidos(codProducto, fecha, docUsuario, estado);
+
+            if (resultado == 1)
+            {
+                Response.Write("<script>alert('pedido registrado correctamente')</script>");
+                Response.Redirect("form_ingreso_pedidos.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Error al registrar el pedido')</script>");
+            }
+        }
+    }
+}
+
+
+
+modificaciones en visual studio
+
+
+editar todas las vistas quitandoles el form="form1"
+
+por que se quitan, por que ya exite en la paginaMaestra
+
+
+para evitar que me mande al login por el momento que estoy ensayando
+
+para evitar error con campos int primero vamos al BD y miramos cuales son int y CUIDADO MIRAMOS BIEN QUE NO SEAN IDENTITY
+
+
+esta form no lo editamos por que tiene drodlist por defecto y no genera error
+
+no va a descontar por que le hace falta el trigger de descuento
+
+
+editamos este formulario
+
+el form_detalle_productos.aspx lo editamos de ultimo por que este lleva mas trabajo
+
+truncamos la tabla tbl_productos_termimandos

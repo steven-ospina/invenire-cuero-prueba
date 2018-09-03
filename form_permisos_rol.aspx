@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="form_permisos_rol.aspx.cs" Inherits="form_permisos_rol" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_permisos_rol.aspx.cs" Inherits="form_permisos_rol" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-<link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
-<script src="js/solo_numeros.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+        <title>Permiso Rol</title>
     <style type="text/css">
         .auto-style1 {
             width: 39%;
@@ -28,9 +22,10 @@
             height: 24px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+    <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
+    <script src="file_js/validaciones.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div>
             <table class="auto-style1">
                 <tr>
@@ -40,7 +35,7 @@
                     <td class="auto-style2">
                         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="nom_per" DataValueField="cod_per">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_permisos]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT * FROM [tbl_permisos]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -48,9 +43,9 @@
                         <asp:Label ID="Label2" runat="server" Text="Rol del Usuario"></asp:Label>
                     </td>
                     <td class="auto-style5">
-                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol">
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" Width="86px">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -72,15 +67,16 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_per,cod_rol" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Width="467px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_per,cod_rol" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Width="467px" AllowPaging="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="cod_per" HeaderText="Codigo del Permiso" ReadOnly="True" SortExpression="cod_per" />
                 <asp:TemplateField HeaderText="Rol del Usuario" SortExpression="cod_rol">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
                             <DeleteParameters>
                                 <asp:Parameter Name="cod_per" Type="Int32" />
                                 <asp:Parameter Name="cod_rol" Type="Int32" />
@@ -100,7 +96,7 @@
                     <ItemTemplate>
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
                             <DeleteParameters>
                                 <asp:Parameter Name="cod_per" Type="Int32" />
                                 <asp:Parameter Name="cod_rol" Type="Int32" />
@@ -144,7 +140,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_per_rol] WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol" InsertCommand="INSERT INTO [tbl_per_rol] ([cod_per], [cod_rol], [estado]) VALUES (@cod_per, @cod_rol, @estado)" SelectCommand="SELECT * FROM [tbl_per_rol]" UpdateCommand="UPDATE [tbl_per_rol] SET [estado] = @estado WHERE [cod_per] = @cod_per AND [cod_rol] = @cod_rol">
             <DeleteParameters>
                 <asp:Parameter Name="cod_per" Type="Int32" />
                 <asp:Parameter Name="cod_rol" Type="Int32" />
@@ -160,6 +156,5 @@
                 <asp:Parameter Name="cod_rol" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-    </form>
-</body>
-</html>
+</asp:Content>
+

@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="form_detalle_productos.aspx.cs" Inherits="form_detalle_productos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_detalle_productos.aspx.cs" Inherits="form_detalle_productos" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-  <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
- <script src="js/solo_numeros.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+  <title>Detalle Productos</title>
     <style type="text/css">
         .auto-style1 {
             width: 51%;
@@ -17,9 +11,10 @@
             width: 244px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
+    <script src="file_js/validaciones.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div>
             <table class="auto-style1">
                 <tr>
@@ -29,7 +24,7 @@
                     <td>
                         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="id_prod" DataValueField="id_prod">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +42,7 @@
                     <td>
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="nom_prod">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [nom_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [nom_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -66,7 +61,7 @@
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource4" DataTextField="id_prod" DataValueField="id_prod" SelectedValue='<%# Bind("id_prod") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [id_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("id_prod") %>'></asp:Label>
@@ -77,7 +72,7 @@
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource5" DataTextField="nom_prod" DataValueField="nom_prod" SelectedValue='<%# Bind("nom_prod") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [nom_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [nom_prod] FROM [tbl_productos_terminados]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("nom_prod") %>'></asp:Label>
@@ -85,7 +80,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_productos] WHERE [id_det_pro] = @id_det_pro" InsertCommand="INSERT INTO [tbl_detalle_productos] ([id_prod], [descripcion], [nom_prod]) VALUES (@id_prod, @descripcion, @nom_prod)" SelectCommand="SELECT * FROM [tbl_detalle_productos]" UpdateCommand="UPDATE [tbl_detalle_productos] SET [id_prod] = @id_prod, [descripcion] = @descripcion, [nom_prod] = @nom_prod WHERE [id_det_pro] = @id_det_pro">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_productos] WHERE [id_det_pro] = @id_det_pro" InsertCommand="INSERT INTO [tbl_detalle_productos] ([id_prod], [descripcion], [nom_prod]) VALUES (@id_prod, @descripcion, @nom_prod)" SelectCommand="SELECT * FROM [tbl_detalle_productos]" UpdateCommand="UPDATE [tbl_detalle_productos] SET [id_prod] = @id_prod, [descripcion] = @descripcion, [nom_prod] = @nom_prod WHERE [id_det_pro] = @id_det_pro">
             <DeleteParameters>
                 <asp:Parameter Name="id_det_pro" Type="Int32" />
             </DeleteParameters>
@@ -101,6 +96,5 @@
                 <asp:Parameter Name="id_det_pro" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-    </form>
-</body>
-</html>
+</asp:Content>
+

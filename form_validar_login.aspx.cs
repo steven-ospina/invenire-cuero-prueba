@@ -4,26 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 //EL_SOCIO_28_05_2018
 //librerias para trabajar con bases de datos
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-public partial class validar_login : System.Web.UI.Page
+public partial class form_validar_login : System.Web.UI.Page
 {
-     tbl_usuario usu = new tbl_usuario();
-
-     tbl_productos prod = new tbl_productos();//se intancia la clase productos
-
-   
+    //se intacia la clase tbl_usuario y se le pone un apodo
+    tbl_usuario usu = new tbl_usuario();
+    //se intacia la clase tbl_produtos y se le pone un apodo
+    tbl_productos prod = new tbl_productos();
 
     //Se captura la fecha del sistema
     string fecha_actual = DateTime.Now.ToString("yyyy-MM-dd");
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
+        //validacion autocompletar el Texbox
+        TextBox1.Attributes.Add("autocomplete", "off");
+
         //DateTime fec_act;
 
         //////Se captura la fecha del sistema
@@ -46,13 +48,12 @@ public partial class validar_login : System.Web.UI.Page
         //string fecha_final = year + "-" + month + "-" + day;
 
         //string fechaactual = Convert.ToString(fecha_final);
-
-       
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        bool re,rel;
+        //se crea una variable tipo booleano para no permirtir el = en los Textbox
+        bool re, rel;
         string documento, clave;
 
         documento = TextBox1.Text;
@@ -83,7 +84,7 @@ public partial class validar_login : System.Web.UI.Page
             string mensaje = usu.validar_login_inyeccion_Sp(documento, clave);
             if (mensaje != "Exito")
             {
-            
+
                 Response.Write("<script>alert('Error al ingresar')</script>");
             }
             if (mensaje == "Exito")
@@ -105,7 +106,7 @@ public partial class validar_login : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("inicio.aspx.aspx");
+                    Response.Redirect("form_inicio.aspx");
                 }
                 //Response.Write("<script>alert('Urra...! login exitoso')</script>");
             }//PALABRAS PROHIBIDAS

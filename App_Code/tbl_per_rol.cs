@@ -27,7 +27,7 @@ public class tbl_per_rol
         int REsultado = 1;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_per_rol values(" + cod_permiso + "," + cod_rol + ",'" + estado + "')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();

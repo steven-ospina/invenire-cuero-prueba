@@ -32,7 +32,7 @@ public class tbl_usuario
             byte[] encryted = System.Text.Encoding.Unicode.GetBytes(contrasena);
             result = Convert.ToBase64String(encryted);
 
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_usuario values('" + docUsuario + "','" + NombreUsuario + "','" + apeUsuario + "'," + codRol + ",'" + estado + "','" + result + "','" + email + "','" + genero + "','" + telefono + "')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();
@@ -56,7 +56,7 @@ public class tbl_usuario
         string estado = "Activo";
 
         //se define la cadena de conexion con la red
-        SqlConnection conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+        SqlConnection conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
         //se mapea(lee) el procedimieto alamcenado
         SqlCommand testCMD = new SqlCommand("validar_login", conex);
         //
@@ -129,7 +129,7 @@ public class tbl_usuario
         string mensaje;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var consulta = "select doc_usu from tbl_usuario where doc_usu = '" + documento + "'";
             var cmd = new SqlCommand(consulta, conex);
             conex.Open();
@@ -164,7 +164,7 @@ public class tbl_usuario
         string mensaje;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var consulta = "select doc_usu from tbl_usuario where doc_usu = '" + usuario + "'";
             var cmd = new SqlCommand(consulta, conex);
             conex.Open();

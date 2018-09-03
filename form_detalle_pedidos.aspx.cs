@@ -19,7 +19,8 @@ public partial class form_detalle_pedidos : System.Web.UI.Page
     tbl_detalle_pedidos pedido = new tbl_detalle_pedidos();//estoy creando una instancia ala tbl_detalle_pedidos:para leer datos de la clase
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //VALIDACIONES JS
+        TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -33,8 +34,14 @@ public partial class form_detalle_pedidos : System.Web.UI.Page
 
         cod_pedido = Convert.ToInt32(DropDownList1.SelectedValue.ToString());
         cod_producto = DropDownList2.SelectedValue.ToString();
-        cant_pedido = Convert.ToInt32(TextBox1.Text);
-
+        if(TextBox1.Text == "")
+        {
+            cant_pedido = 0;
+        }
+        else
+        {
+            cant_pedido = Convert.ToInt32(TextBox1.Text);
+        }
 
         //SE VALIAM LOS CAMPOS
         if (cod_pedido == 0)
@@ -52,12 +59,13 @@ public partial class form_detalle_pedidos : System.Web.UI.Page
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_detalle_pedidos)
-            int resultado = pedido.Guardar_tbl_detalle_pedidos(cod_pedido,cod_producto,cant_pedido);
+            int resultado = pedido.Guardar_tbl_detalle_pedidos(cod_pedido, cod_producto, cant_pedido);
 
             if (resultado == 1)
             {
                 Response.Write("<script>alert('Se registrado correctamente el deatalle del pedido')</script>");
-                Response.Redirect("form_detalle_pedidos.aspx");
+                TextBox1.Text = "";
+                //Response.Redirect("form_detalle_pedidos.aspx");
             }
             else
             {

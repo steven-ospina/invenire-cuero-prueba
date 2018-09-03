@@ -12,8 +12,9 @@ using System.Configuration;
 
 public partial class form_detalle_productos : System.Web.UI.Page
 {
-    //alias
+    //se intancia la clase tbl_detalle_productos y el alias
     tbl_detalle_productos productos = new tbl_detalle_productos();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -21,21 +22,25 @@ public partial class form_detalle_productos : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string id_producto,descripcion, nom_producto;
+        string id_producto, descripcion, nom_producto;
 
         id_producto = DropDownList1.SelectedValue.ToString();
         descripcion = TextBox1.Text;
         nom_producto = DropDownList2.SelectedValue.ToString();
 
-        if (id_producto == ""){
+        if (id_producto == "")
+        {
 
             Response.Write("<script>alert('ingrese el ID del producto')</script>");
 
-        }else if (descripcion == ""){
+        }
+        else if (descripcion == "")
+        {
 
             Response.Write("<script>alert('ingrese la DESCRIPCION del producto')</script>");
         }
-        else if (nom_producto == ""){
+        else if (nom_producto == "")
+        {
 
             Response.Write("<script>alert('ingrese el NOMBRE del producto')</script>");
         }
@@ -43,7 +48,7 @@ public partial class form_detalle_productos : System.Web.UI.Page
         {
             string resultado = productos.Guardar_tbl_detalle_productos(id_producto, descripcion, nom_producto);
 
-            if(resultado == "1")
+            if (resultado == "1")
             {
                 Response.Write("<script>alert('El detalle del producto se registro correctamente')</script>");
                 Response.Redirect("form_detalle_productos.aspx");
@@ -53,6 +58,5 @@ public partial class form_detalle_productos : System.Web.UI.Page
                 Response.Write("<script>alert('ERROR al registrar el detalle del producto')</script>");
             }
         }
-
     }
 }

@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 //EL_SOCIO_28_05_2018
 //librerias para trabajar con bases de datos
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-public partial class ingreso_pedidos : System.Web.UI.Page
+public partial class form_ingreso_pedidos : System.Web.UI.Page
 {
     //25_05_2018
     //EL_SOCIO:AQUI SE INSTANCIA LA CLASE: tbl_pedidos.cs
@@ -20,9 +19,8 @@ public partial class ingreso_pedidos : System.Web.UI.Page
     tbl_pedidos pedido = new tbl_pedidos();//estoy creando una instancia ala tbl_pedidos:para leer datos de la clase
     protected void Page_Load(object sender, EventArgs e)
     {
-        //SE EJECUTA AL CARGAR LA PAGINA
-        //Calendar1.Visible = false;
- 
+        //VALIDACIONES JS
+        //TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
 
     }
 
@@ -33,13 +31,16 @@ public partial class ingreso_pedidos : System.Web.UI.Page
         //Aqui se postea el codigo del boton
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
-        int  docUsuario;
-        string fecha, estado,codProducto;
+        string fecha, estado, codProducto, docUsuario;
 
         codProducto = DropDownList2.SelectedValue.ToString();//se convierte el "valor" en numerico
+
         fecha = TextBox2.Text;
-        docUsuario = Convert.ToInt32(TextBox3.Text);//se debe convertir en numero entero
+
+        docUsuario = DropDownList3.SelectedValue.ToString();
+
         estado = DropDownList1.SelectedValue.ToString();
+
 
         //SE VALIAM LOS CAMPOS
         if (codProducto == "")
@@ -50,7 +51,7 @@ public partial class ingreso_pedidos : System.Web.UI.Page
         {
             Response.Write("<script>alert('Ingrese la fecha')</script>");
         }
-        else if (docUsuario == 0)
+        else if (docUsuario == "")
         {
             Response.Write("<script>alert('Ingrese el Documento del usuario')</script>");
         }
@@ -66,7 +67,7 @@ public partial class ingreso_pedidos : System.Web.UI.Page
             if (resultado == 1)
             {
                 Response.Write("<script>alert('pedido registrado correctamente')</script>");
-                Response.Redirect("ingreso_pedidos.aspx");
+                Response.Redirect("form_ingreso_pedidos.aspx");
             }
             else
             {
@@ -75,14 +76,4 @@ public partial class ingreso_pedidos : System.Web.UI.Page
         }
     }
 
-    //protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
-    //{
-    //    Calendar1.Visible = true;
-    //}
-
-    //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-    //{
-    //    TextBox2.Text = Calendar1.SelectedDate.ToShortDateString();
-    //    Calendar1.Visible = false;
-    //}
 }

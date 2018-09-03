@@ -7,7 +7,7 @@
 }
 
 body{
-    background: url(../file_img/inventario-bajotamaño.jpg) no-repeat center;
+    background: url(../imagenes/inventario-bajotamaño.jpg) no-repeat center;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
     height: 100vh ;
@@ -74,14 +74,14 @@ body{
 .auto-style1 #LinkButton1{
     text-decoration: none;
     line-height: 50px;
-    color: darkgray;
+    color: black;
     font-size: 20px;
     margin-left: 40px;
 }
-.auto-style1 #LinkButton1:hover{
+/*.auto-style1 #LinkButton1:hover{
     color: #fff;
     border-bottom: 1px solid #fff;
-}
+}*/
 .auto-style1 #TextBox1:hover,
 .auto-style1 #TextBox2:hover{
     border: none;

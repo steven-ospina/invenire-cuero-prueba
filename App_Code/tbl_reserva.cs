@@ -27,7 +27,7 @@ public class tbl_reserva
         int REsultado = 1;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_reserva values('" + fecha_reserva + "','" + doc_usuario + "')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();

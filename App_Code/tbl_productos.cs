@@ -28,7 +28,7 @@ public class tbl_productos
         int REsultado = 1; //por defecto
         try//intentar
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_productos values('" + codProducto + "','" + nomProducto + "'," + cantProducto + ",'" + descProducto + "','" + fechIngreso + "','" + fechCaducidad + "','" + ubicacion + "')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();
@@ -50,7 +50,7 @@ public class tbl_productos
         string mensaje;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var consulta = "select fecha_caducidad from tbl_productos where fecha_caducidad = '" + fechaactual + "'";
             var cmd = new SqlCommand(consulta, conex);
             conex.Open();

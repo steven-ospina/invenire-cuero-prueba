@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "invenire-cuero-prueba", ".", "{2BC7D420-C8C2-4297-A498-BBDD08F0C902}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "invenire-cuero", ".", "{31F019D9-C512-4607-A9B2-23A836A0AE77}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_53651"
-		Debug.AspNetCompiler.PhysicalPath = "..\invenire-cuero-prueba\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53651\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54825"
+		Debug.AspNetCompiler.PhysicalPath = "..\invenire-cuero\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54825\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_53651"
-		Release.AspNetCompiler.PhysicalPath = "..\invenire-cuero-prueba\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53651\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54825"
+		Release.AspNetCompiler.PhysicalPath = "..\invenire-cuero\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54825\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "53651"
-		SlnRelativePath = "..\invenire-cuero-prueba\"
+		VWDPort = "54825"
+		SlnRelativePath = "..\invenire-cuero\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
@@ -30,13 +30,13 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2BC7D420-C8C2-4297-A498-BBDD08F0C902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BC7D420-C8C2-4297-A498-BBDD08F0C902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F019D9-C512-4607-A9B2-23A836A0AE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F019D9-C512-4607-A9B2-23A836A0AE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {00BF806F-DA12-4ACA-B2EC-99CCC15F7D4A}
+		SolutionGuid = {EC85A0C7-A20B-47DB-8900-758F0FF2019F}
 	EndGlobalSection
 EndGlobal

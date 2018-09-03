@@ -43,8 +43,8 @@ body.active{
     text-decoration: none;
     color: white;
     list-style: none;
-    text-align: center;
-    padding: 13px 10px;
+    text-align: left;
+    padding: 5px 10px;
     border-bottom: 1px solid #ffffff77;
 }
 
@@ -81,6 +81,14 @@ a:hover{
 #sidebar::after{
     content: '';
     background-color: rgb(0,0,0,0.56);
+}
+
+/*section*/
+.section{
+    width:80vw;
+    height:100vh;
+    margin:auto 250px;
+    border: 1px solid black;
 }
 /*========================================================================================*/
 /*==GAME OVER- EL SOCIO :)- YA CORONAMOS==*/

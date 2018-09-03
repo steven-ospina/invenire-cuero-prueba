@@ -20,7 +20,8 @@ public partial class form_detalle_devolucion : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //VALIDACIONES JS
+        TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ public partial class form_detalle_devolucion : System.Web.UI.Page
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_detalle_devolucion)
-            int resultado = devolucion.Guardar_tbl_detalle_devolucion(id_devolucion,id_det_pedido,cod_producto, cant_producto);
+            int resultado = devolucion.Guardar_tbl_detalle_devolucion(id_devolucion, id_det_pedido, cod_producto, cant_producto);
 
             if (resultado == 1)
             {

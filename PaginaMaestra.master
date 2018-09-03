@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="PaginaMaestra.master.cs" Inherits="PaginaMaestra" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>menu testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="file_css/style_menu_laterla_testing.css"/>
+    <link rel="stylesheet" href="file_css/style.css"/>
+    <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="file_js/validaciones.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+ <div id="sidebar" class="sidebar" >
+        <div id="icon-menu" class="icon-menu">
+            <!-- <span>&#9776;</span> -->
+        </div>
+        <nav>
+            <ul>
+                <li><img src="../file_img/caja-invenire-cuero.png" alt="logo invenire-cuero" width="90" class="logo-caja"/></li>
+                <li><a href="form_ingreso_usuarios.aspx">Ingreso Nuevos Usuarios</a></li>
+                <li><a href="form_ingreso_rol.aspx">Ingreso Nuevos roles</a></li>
+                <li><a href="form_permisos.aspx">Ingreso Permiso</a></li>
+                <li><a href="form_permisos_rol.aspx">Ingreso Permiso Por Rol</a></li>
+                <li><a href="form_ingreso_pedidos.aspx">Ingreso Pedidos</a></li>
+                <li><a href="form_detalle_pedidos.aspx">Ingreso Detalle Pedidos</a></li>
+                <li><a href="form_ingreso_productos.aspx">Ingreso Productos</a></li>
+                <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos</a></li>
+                <li><a href="form_productos_terminados.aspx">Ingreso Prodcutos Terminados</a></li>
+                <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos Terminados</a></li>
+                <li><a href="form_reservas.aspx">Ingreso Reserva</a></li>
+                <li><a href="form_detalle_reserva.aspx">Ingreso Detalle Reserva</a></li>
+                <li><a href="form_devolucion.aspx">Ingreso Devolucion</a></li>
+                <li><a href="form_detalle_devolucion.aspx">Ingreso Detalle Devolucion</a></li>
+                <li><a href="form_prod_caducar.aspx">Alertas Productos a Caducar</a></li>
+<%--                <li><a href="#">Visualizar Inventario</a></li>--%>
+        </ul>
+    </nav>
+    </div>
+     <script src="file_js/menu_testing.js"></script>
+    <section class="section">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+        <div><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+        </div>
+    </section>
+    </form>
+</body>
+</html>

@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
+
 public partial class form_detalle_reserva : System.Web.UI.Page
 {
     //24_06_2018
@@ -20,7 +21,8 @@ public partial class form_detalle_reserva : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //VALIDACIONES JS
+        TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -32,7 +34,14 @@ public partial class form_detalle_reserva : System.Web.UI.Page
         int cant_reserva, cod_reserva;
         string cod_producto;
 
-        cant_reserva = Convert.ToInt32(TextBox1.Text);
+        if(TextBox1.Text == "")
+        {
+            cant_reserva = 0;
+        }
+        else
+        {
+            cant_reserva = Convert.ToInt32(TextBox1.Text);
+        }
         cod_producto = DropDownList1.SelectedValue.ToString();
         cod_reserva = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
 

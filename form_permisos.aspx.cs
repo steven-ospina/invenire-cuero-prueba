@@ -20,7 +20,8 @@ public partial class form_permisos : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //VALIDACIONES
+        //TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -29,34 +30,41 @@ public partial class form_permisos : System.Web.UI.Page
         //Aqui se postea el codigo del boton
 
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
-        int cod_permiso;
+        //int cod_permiso;
         string nom_permiso;
 
-        cod_permiso = Convert.ToInt32(TextBox1.Text);
+        //cod_permiso = Convert.ToInt32(TextBox1.Text);
         nom_permiso = TextBox2.Text;
 
         //SE VALIAM LOS CAMPOS
-        if (cod_permiso == 0)
+        //if (cod_permiso == 0)
+        //{
+        //    Response.Write("<script>alert('Ingrese el CODIGO del permiso')</script>");
+        //}
+        if (nom_permiso == "")
         {
-            Response.Write("<script>alert('Ingrese el CODIGO del permiso')</script>");
-        }
-        else if (nom_permiso == "")
-        {
-            Response.Write("<script>alert('Ingrese el NOMBRE del PERMISO')</script>");
+            //Response.Write("<script>alert('Ingrese el NOMBRE del PERMISO')</script>");
+            Label3.Visible = true;
+            Label3.Text = "Ingrese el usuario";
         }
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_usuario)
-            int resultado = permiso.guardar_tbl_permisos(cod_permiso,nom_permiso);
+            int resultado = permiso.guardar_tbl_permisos(nom_permiso);
 
             if (resultado == 1)
             {
                 Response.Write("<script>alert('PERMISO registrado correctamente')</script>");
-                Response.Redirect("form_permisos.aspx");
+                TextBox2.Text = "";
+                Label3.Text = "PERMISO registrado correctamente'";
+                Label3.Visible = false;
+                //Response.Redirect("form_permisos.aspx");
             }
             else
             {
                 Response.Write("<script>alert('Error al registrar el PERMISO')</script>");
+                Label3.Visible = true;
+                Label3.Text = "ERROR al Guardar el permiso";
             }
         }
     }

@@ -27,7 +27,7 @@ public class tbl_detalle_devolucion
         int REsultado = 1;
         try
         {
-            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_pruebaConnectionString"].ConnectionString);
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_detalle_devolucion values(" + id_devolucion + "," + id_det_pedido + ",'" + cod_producto + "'," + cant_producto + ")";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();

@@ -31,7 +31,7 @@ public partial class form_permisos_rol : System.Web.UI.Page
         //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
         int cod_permiso, cod_rol;
         string estado;
-        
+
         cod_permiso = Convert.ToInt32(DropDownList1.SelectedValue.ToString());
         cod_rol = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
         estado = DropDownList3.SelectedValue.ToString();
@@ -52,7 +52,7 @@ public partial class form_permisos_rol : System.Web.UI.Page
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_per_rol)
-            int resultado = permiso.Guardar_tbl_per_rol(cod_permiso,cod_rol,estado);
+            int resultado = permiso.Guardar_tbl_per_rol(cod_permiso, cod_rol, estado);
 
             if (resultado == 1)
             {
@@ -64,6 +64,5 @@ public partial class form_permisos_rol : System.Web.UI.Page
                 Response.Write("<script>alert('ERROR al registrar EL PERMISO')</script>");
             }
         }
-    
     }
 }

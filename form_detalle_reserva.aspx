@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="form_detalle_reserva.aspx.cs" Inherits="form_detalle_reserva" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_detalle_reserva.aspx.cs" Inherits="form_detalle_reserva" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Detalle Reserva</title>
     <style type="text/css">
 
         .auto-style1 {
@@ -16,9 +12,8 @@
             width: 225px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div>
             <table class="auto-style1">
                 <tr>
@@ -36,7 +31,7 @@
                     <td>
                         <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +41,7 @@
                     <td>
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="cod_res" DataValueField="cod_res">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_res] FROM [tbl_reserva]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_res] FROM [tbl_reserva]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +62,7 @@
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# Bind("cod_prod") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Eval("cod_prod") %>'></asp:Label>
@@ -77,7 +72,7 @@
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="cod_res" DataValueField="cod_res" SelectedValue='<%# Bind("cod_res") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT [cod_res] FROM [tbl_reserva]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_res] FROM [tbl_reserva]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("cod_res") %>'></asp:Label>
@@ -95,7 +90,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_reserva] WHERE [cod_det_res] = @cod_det_res" InsertCommand="INSERT INTO [tbl_detalle_reserva] ([cant_res], [cod_prod], [cod_res]) VALUES (@cant_res, @cod_prod, @cod_res)" SelectCommand="SELECT * FROM [tbl_detalle_reserva]" UpdateCommand="UPDATE [tbl_detalle_reserva] SET [cant_res] = @cant_res, [cod_prod] = @cod_prod, [cod_res] = @cod_res WHERE [cod_det_res] = @cod_det_res">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_detalle_reserva] WHERE [cod_det_res] = @cod_det_res" InsertCommand="INSERT INTO [tbl_detalle_reserva] ([cant_res], [cod_prod], [cod_res]) VALUES (@cant_res, @cod_prod, @cod_res)" SelectCommand="SELECT * FROM [tbl_detalle_reserva]" UpdateCommand="UPDATE [tbl_detalle_reserva] SET [cant_res] = @cant_res, [cod_prod] = @cod_prod, [cod_res] = @cod_res WHERE [cod_det_res] = @cod_det_res">
             <DeleteParameters>
                 <asp:Parameter Name="cod_det_res" Type="Int32" />
             </DeleteParameters>
@@ -111,6 +106,5 @@
                 <asp:Parameter Name="cod_det_res" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-    </form>
-</body>
-</html>
+</asp:Content>
+

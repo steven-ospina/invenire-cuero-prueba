@@ -1,21 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_devolucion.aspx.cs" Inherits="form_devolucion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_reservas.aspx.cs" Inherits="form_reservas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>Ingreso Devolucion Insumos</title>
+    <title>Ingreso Reserva</title>
     <style type="text/css">
         .auto-style1 {
-            width: 52%;
-            height: 98px;
+            width: 43%;
+            height: 101px;
         }
         .auto-style2 {
-            width: 242px;
+            width: 188px;
         }
         .auto-style3 {
-            width: 242px;
-            height: 26px;
-        }
-        .auto-style4 {
-            height: 26px;
+            width: 288px;
         }
     </style>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
@@ -25,10 +21,10 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style3">
-                        <asp:Label ID="Label2" runat="server" Text="Fecha de Devolucion"></asp:Label>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label2" runat="server" Text="Fecha de la Reserva"></asp:Label>
                     </td>
-                    <td class="auto-style4">
+                    <td class="auto-style3">
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="Date"></asp:TextBox>
                     </td>
                 </tr>
@@ -36,23 +32,23 @@
                     <td class="auto-style2">
                         <asp:Label ID="Label3" runat="server" Text="Documento Usuario"></asp:Label>
                     </td>
-                    <td>
-                        <asp:TextBox ID="TextBox2" runat="server"  onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox2" runat="server" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
-                    <td>
-                        <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
+                    <td class="auto-style3">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" />
                     </td>
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id_devol" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="432px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_res" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="456px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="id_devol" HeaderText="ID Devolucion" InsertVisible="False" ReadOnly="True" SortExpression="id_devol" />
-                <asp:BoundField DataField="fec_devol" HeaderText="Fecha de Devolucion" SortExpression="fec_devol" />
+                <asp:BoundField DataField="cod_res" HeaderText="Codigo de Reserva" InsertVisible="False" ReadOnly="True" SortExpression="cod_res" />
+                <asp:BoundField DataField="fecha_res" HeaderText="Fecha de la Reserva" SortExpression="fecha_res" />
                 <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" SortExpression="doc_usu" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
@@ -66,18 +62,18 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_devolucion] WHERE [id_devol] = @id_devol" InsertCommand="INSERT INTO [tbl_devolucion] ([fec_devol], [doc_usu]) VALUES (@fec_devol, @doc_usu)" SelectCommand="SELECT * FROM [tbl_devolucion]" UpdateCommand="UPDATE [tbl_devolucion] SET [fec_devol] = @fec_devol, [doc_usu] = @doc_usu WHERE [id_devol] = @id_devol">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_reserva] WHERE [cod_res] = @cod_res" InsertCommand="INSERT INTO [tbl_reserva] ([fecha_res], [doc_usu]) VALUES (@fecha_res, @doc_usu)" SelectCommand="SELECT * FROM [tbl_reserva]" UpdateCommand="UPDATE [tbl_reserva] SET [fecha_res] = @fecha_res, [doc_usu] = @doc_usu WHERE [cod_res] = @cod_res">
             <DeleteParameters>
-                <asp:Parameter Name="id_devol" Type="Int32" />
+                <asp:Parameter Name="cod_res" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="fec_devol" Type="String" />
+                <asp:Parameter Name="fecha_res" Type="String" />
                 <asp:Parameter Name="doc_usu" Type="String" />
             </InsertParameters>
             <UpdateParameters>
-                <asp:Parameter Name="fec_devol" Type="String" />
+                <asp:Parameter Name="fecha_res" Type="String" />
                 <asp:Parameter Name="doc_usu" Type="String" />
-                <asp:Parameter Name="id_devol" Type="Int32" />
+                <asp:Parameter Name="cod_res" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
 </asp:Content>

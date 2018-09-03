@@ -1,14 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="form_prod_caducar.aspx.cs" Inherits="form_prod_caducar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_prod_caducar.aspx.cs" Inherits="_Default" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Productos a Caducar</title>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h2>PRODCUTOS A CADUCAR<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
         </h2>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1">
@@ -22,13 +17,11 @@
                 <asp:BoundField DataField="ubicacion" HeaderText="ubicacion" SortExpression="ubicacion" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_pruebaConnectionString %>" SelectCommand="SELECT * FROM [tbl_productos] WHERE ([fecha_caducidad] = @fecha_caducidad)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT * FROM [tbl_productos] WHERE ([fecha_caducidad] = @fecha_caducidad)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="Label1" Name="fecha_caducidad" PropertyName="Text" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
     <br />
+</asp:Content>
 
-    </form>
-</body>
-</html>
