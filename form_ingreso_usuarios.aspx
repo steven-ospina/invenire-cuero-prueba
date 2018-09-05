@@ -82,12 +82,16 @@
                 <tr>
                     <td class="auto-style2" colspan="2">
                         <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
-                        <asp:Label ID="Label4" runat="server" ForeColor="#009933"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="2">
                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" colspan="2">
+                        <asp:Label ID="Label4" runat="server" ForeColor="#009933"></asp:Label>
                     </td>
                 </tr>
                 </table>

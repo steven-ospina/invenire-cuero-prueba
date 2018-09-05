@@ -8,6 +8,12 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+//
+//using System;
+//using System.Collections.Generic;
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
 
 /// <summary>
 /// Descripción breve de tbl_usuario
@@ -23,14 +29,40 @@ public class tbl_usuario
     //28_05_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int guardar_tbl_usuario(string docUsuario, string NombreUsuario, string apeUsuario, int codRol, string estado,string contrasena, string email, string genero,string telefono)
+
+    //public static string SHA512(string str)
+    //{
+    //    SHA512 sha512 = SHA512Managed.Create();
+    //    ASCIIEncoding encoding = new ASCIIEncoding();
+    //    byte[] stream = null;
+    //    StringBuilder sb = new StringBuilder();
+    //    stream = sha512.ComputeHash(encoding.GetBytes(str));
+    //    for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+    //    return sb.ToString();
+    //}
+
+    public int guardar_tbl_usuario(string docUsuario, string NombreUsuario, string apeUsuario, int codRol, string estado, string contrasena, string email, string genero,string telefono)
     {
         int REsultado = 1;
+
+
         try
         {
-            string result = string.Empty;
-            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(contrasena);
-            result = Convert.ToBase64String(encryted);
+            //string result = string.Empty;
+            //byte[] encryted = System.Text.Encoding.Unicode.GetBytes(contrasena);
+            //result = Convert.ToBase64String(encryted);
+
+            SHA512 sha512 = SHA512Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha512.ComputeHash(encoding.GetBytes(contrasena));
+            for (int i = 0; i < stream.Length; i++)
+            {
+                sb.AppendFormat("{0:x2}", stream[i]);
+            }
+
+            string result = sb.ToString();
 
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             var insertar = "insert into tbl_usuario values('" + docUsuario + "','" + NombreUsuario + "','" + apeUsuario + "'," + codRol + ",'" + estado + "','" + result + "','" + email + "','" + genero + "','" + telefono + "')";
@@ -86,13 +118,24 @@ public class tbl_usuario
         // byte[] decryted = System.Text.Encoding.Unicode.GetBytes(clave_encriptada);
         // result = Convert.ToBase64String(decryted);
 
-        string result = string.Empty;
-        byte[] encryted = System.Text.Encoding.Unicode.GetBytes(clave);
-        result = Convert.ToBase64String(encryted);
+        //string result = string.Empty;
+        //byte[] encryted = System.Text.Encoding.Unicode.GetBytes(clave);
+        //result = Convert.ToBase64String(encryted);
+
+        SHA512 sha512 = SHA512Managed.Create();
+        ASCIIEncoding encoding = new ASCIIEncoding();
+        byte[] stream = null;
+        StringBuilder sb = new StringBuilder();
+        stream = sha512.ComputeHash(encoding.GetBytes(clave));
+        for (int i = 0; i < stream.Length; i++)
+        {
+            sb.AppendFormat("{0:x2}", stream[i]);
+        }
+
+        string result = sb.ToString();
 
 
-
-        SqlParameter IdIn1 = testCMD.Parameters.Add("@clave", SqlDbType.VarChar, 20);
+        SqlParameter IdIn1 = testCMD.Parameters.Add("@clave", SqlDbType.VarChar, 600);
         IdIn1.Direction = ParameterDirection.Input;
         IdIn1.Value = result;
 

@@ -9,6 +9,13 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+//
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
+
 
 public partial class form_ingreso_usuarios : System.Web.UI.Page
 {

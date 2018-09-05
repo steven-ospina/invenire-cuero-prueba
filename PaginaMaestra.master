@@ -14,8 +14,15 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <script src="file_js/validaciones.js"></script>
+    <script>
+        function nobackbutton() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-no-Back-Button";//google chorme
+            window.onhashchange = function () { window.location.has = "no-back-button"; }
+        }
+    </script>
 </head>
-<body>
+<body onload="nobackbutton();">
     <form id="form1" runat="server">
  <div id="sidebar" class="sidebar" >
         <div id="icon-menu" class="icon-menu">
@@ -49,7 +56,7 @@
 
         </asp:ContentPlaceHolder>
         <div><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
         </div>
     </section>
     </form>

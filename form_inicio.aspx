@@ -4,8 +4,11 @@
     <title>Inicio</title>
 
     <script>
-        //javascript: window.history.forward(1);//Esto es para cuando le pulse al boton de Atras
-        //javascript: window.history.back(1);//Esto es para cuando le pulse al boton de Adelante
+        function nobackbutton() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-no-Back-Button";//google chorme
+            window.onhashchange = function () { window.location.has = "no-back-button"; }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

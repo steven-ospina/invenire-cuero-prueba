@@ -15,11 +15,15 @@ luego tbl_devolucion con su detalle
 por ultimo crear la tbl_reserva con su detalle y un a alerta para el administrador cuando tenga un reserva y aprobarla
 
 create table tbl_img_pro_ter(
-id_det_prod int not null,
-imagen varbinay(max)
+id_det_prod int not null primary key,
+imagen varbinary(max)not null
 );
 
 create table tbl_img_productos(
-cod_prod int not null,
-imagen varbinay(max)
+cod_prod int not null primary key,
+imagen varbinary(max)not null
 );
+
+select * from tbl_per_Rol
+
+agregar eb la tbl_detalle_producto un campo llamado ubicacion varchar(30) not null
