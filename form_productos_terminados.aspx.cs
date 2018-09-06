@@ -71,7 +71,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
         {
             dr = dt.NewRow();
             dr[0] = 1;
-            dr[1] = 0;
+            dr[1] = 1;
             dr[2] = 0;
             dr[3] = 0;
             dt.Rows.Add(dr);
@@ -96,7 +96,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
                 //extraer el dato de la ubicacion
                 string cantubica = canti.Text;
                 //
-                int valor = productos.recoger_id_producto_terminados(codprod);
+                //int valor = productos.recoger_id_producto_terminados();
                 dr = dt.NewRow();
                 dr[0] = n;
                 dr[1] = codprod;
@@ -110,7 +110,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
                 ViewState["DataTemp"] = dt;
                 dr = dt.NewRow();
                 dr[0] = 1;
-                dr[1] = 0;
+                dr[1] = 1;
                 dr[2] = 0;
                 dr[3] = 0;
                 dt.Rows.Add(dr);
@@ -125,7 +125,6 @@ public partial class form_productos_terminados : System.Web.UI.Page
     {
         //se definen las variables a utilizar
         string fec_actual,instructor, nom_articulo, estado;
-        int codproducto;
         //int consecutivo;
 
         //se captura el consecutivo de ventas
@@ -147,33 +146,40 @@ public partial class form_productos_terminados : System.Web.UI.Page
         string rdo = productos.grabar_encabezado_productos_terminados(fec_actual, instructor, nom_articulo, estado);
         if (rdo == "OK")
         {
-            //se envian los datos a la tabla tbl_productos_terminados en la bd
-            //Se recorre la grilla del detalle  se inserta fila por fila en la tabla: tbl_detalle_productos
-            DataSet dataset = new DataSet();//localizar la bd  
-
-            //SE RECORREN LAS FILAS DE LA GRILLA
-            foreach (GridViewRow GVRow in this.GridView1.Rows)
-            {
-                DropDownList combo = (DropDownList)GVRow.FindControl("ddlproducto");
-                string codpro = combo.SelectedValue;
-                codproducto = Convert.ToInt32(codpro);
-
-                TextBox descrip = (TextBox)GVRow.FindControl("descripcion");
-                string cantdescrip = descrip.Text;
-
-                TextBox ubica = (TextBox)GVRow.FindControl("ubicacion");
-                string cantubica = ubica.Text;
-
-                //se van grabando los registros en la tabla: tbl_detalle_productos
-                Label4.Text = productos.grabar_detalle_productos_terminados(codproducto, cantdescrip, cantubica);
-            }
-            Response.Redirect("form_productos_terminados.aspx");
-            Label4.Text = "Detalle Del Articulo Guadar Correctamente";
+            Label5.Text = "Articulo Nuevo Gurdado Correcta Mente";
+        }
+        else
+        {
+            Label5.Text = "ERROR Al Guardar el Articulo Nuevo";
         }
     }
 
     protected void Button3_Click(object sender, EventArgs e)
     {
+        int codproducto;
+        //se envian los datos a la tabla tbl_productos_terminados en la bd
+        //Se recorre la grilla del detalle  se inserta fila por fila en la tabla: tbl_detalle_productos
+        DataSet dataset = new DataSet();//localizar la bd  
 
+        //SE RECORREN LAS FILAS DE LA GRILLA
+        foreach (GridViewRow GVRow in this.GridView1.Rows)
+        {
+
+            //int valor = productos.recoger_id_producto_terminados();
+
+            DropDownList combo = (DropDownList)GVRow.FindControl("ddlproducto");
+            string codpro = combo.SelectedValue;
+            codproducto = Convert.ToInt32(codpro);
+
+            TextBox descrip = (TextBox)GVRow.FindControl("descripcion");
+            string cantdescrip = descrip.Text;
+
+            TextBox ubica = (TextBox)GVRow.FindControl("ubicacion");
+            string cantubica = ubica.Text;
+
+            //se van grabando los registros en la tabla: tbl_detalle_productos
+            Label4.Text = productos.grabar_detalle_productos_terminados(codproducto, cantdescrip, cantubica);
+        }
+        Label4.Text = "Detalle Del Articulo Guadar Correctamente";
     }
 }

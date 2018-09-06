@@ -43,7 +43,7 @@
                         <asp:Label ID="Label3" runat="server" Text="Nombre Producto"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Width="164px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -91,7 +91,7 @@
                 </Columns>
             </asp:GridView>
             <br />
-            <asp:Button ID="Button3" runat="server" Text="Confirmar Detalle" OnClick="Button2_Click" />
+            <asp:Button ID="Button3" runat="server" Text="Confirmar Detalle" OnClick="Button3_Click" />
             <asp:Label ID="Label4" runat="server" ForeColor="#CC0000"></asp:Label>
         </div>
         

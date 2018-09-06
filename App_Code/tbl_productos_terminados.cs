@@ -48,26 +48,21 @@ public class tbl_productos_terminados
     //    return REsultado;
     //}//final del gurdar permiso
 
-    public int recoger_id_producto_terminados(string codprod)
+    public int recoger_id_producto_terminados()
     {
 
         try
         {
             var Sqlconn = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
-            var consulta = "select nom_producto from tbl_productos_terminados where id_prod = '" + codprod + "'";
+            var consulta = "select count(id_prod) from tbl_productos_terminados";
             var cmd = new SqlCommand(consulta, Sqlconn);
             Sqlconn.Open();
-            SqlDataReader leerbd = cmd.ExecuteReader();
-            if (leerbd.Read() == true)
+            //ExecuteScalar():se usa para consultas con clausulas de agregación(sum, min, max, avg, count)
+            nro = Convert.ToInt32(cmd.ExecuteScalar());
+            string num = Convert.ToString(nro);
+            if (num == null)
             {
-                //mensaje = Convert.ToString(leerbd.GetValue(5));//captura el rol del cliente
-                //se puede concatenar mas datos asi:
-                //mensaje = leerbd.GetString(5)+"-"+leerbd.GetString(2)
-                valor_prod = leerbd.GetInt32(0);//captura la clave del cliente
-            }
-            else
-            {
-                valor_prod = 0;
+                nro = 1; //si es la primera factura de venta
             }
             Sqlconn.Close();
         }//fin del try
@@ -76,7 +71,7 @@ public class tbl_productos_terminados
             string mensaje = e.Message;
         }
 
-        return valor_prod;
+        return nro;
     }//fin del metodo recoger_id_producto_terminados
 
     public int buscar_consecutivo() //inicio del metodo: buscar_consecutivo
