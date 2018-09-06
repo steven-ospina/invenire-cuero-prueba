@@ -61,4 +61,33 @@ public class tbl_modulo
         }
         return mensaje;
     }//fin del metodo guardar modulos
+
+
+    public string Eliminar_modulos_x_rol(int cod_rol,int  modulo_id)
+    {
+        string mensaje = "Los Modulos X Rol han sido Eliminados";
+        try
+        {
+            //para conectarse al bd
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
+            //se prepara la sentecia sql para Eliminar
+            var eliminar = "delete from tbl_per_rol where cod_rol = " + cod_rol + " and modulo_id = " + modulo_id;
+            //se empaqueta la sentencia sql y la conexion ala bd
+            var comando = new SqlCommand(eliminar, conex);
+            //abrir la conexion
+            conex.Open();
+            //se ejecuta la sentencia sql
+            int resultado = comando.ExecuteNonQuery();
+            if (resultado == 0)
+            {
+                mensaje = "Error al Eiminar";
+            }
+            conex.Close();
+        }//fin try
+        catch (Exception ex)
+        {
+            mensaje = ex.Message;//presenta el erro que genera la bd
+        }
+        return mensaje;
+    }//fin del metodo Eliminar modulos
 }

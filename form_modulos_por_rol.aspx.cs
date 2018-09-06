@@ -50,7 +50,5 @@ public partial class form_modulos_por_rol : System.Web.UI.Page
             Label2.Visible = true;
         }
         Response.Redirect("form_modulos_por_rol.aspx");
-
-
     }
 }
