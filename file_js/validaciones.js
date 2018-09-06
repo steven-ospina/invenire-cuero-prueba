@@ -1,10 +1,20 @@
      //solo numeross
 
-    function blocklet(e) {
+function blocklet(e) {
+    key = e.keyCode || e.which;
+    especiales = "8-37-39-46";
         var unicode = e.charCode ? e.charCode : e.keyCode
         if (unicode != 8 && unicode != 44) {
             if (unicode < 48 || unicode > 57) //if not a number
             { return false } //disable key press    
+        }
+
+        tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
         }
     }
 

@@ -25,7 +25,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Nombre Rol"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +41,14 @@
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="cod_rol" HeaderText="cod_rol" ReadOnly="True" SortExpression="cod_rol" />
-                <asp:BoundField DataField="nom_rol" HeaderText="nom_rol" SortExpression="nom_rol" />
+                <asp:TemplateField HeaderText="nom_rol" SortExpression="nom_rol">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("nom_rol") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("nom_rol") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

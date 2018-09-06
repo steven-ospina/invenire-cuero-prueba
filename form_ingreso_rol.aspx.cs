@@ -22,7 +22,8 @@ public partial class form_ingreso_rol : System.Web.UI.Page
     {
         //VALIDACIONES JS
         //TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
-        TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox1.Attributes["onkeypress"] = " return blocknum(event);";
+        //TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ public partial class form_ingreso_rol : System.Web.UI.Page
 
         //se convierte el "valor" en numerico
         //cod_rol = Convert.ToInt32(TextBox1.Text);
-        nombre_rol = TextBox2.Text;
+        nombre_rol = TextBox1.Text;
 
         //se valina los campos
         //if (cod_rol == 0)
