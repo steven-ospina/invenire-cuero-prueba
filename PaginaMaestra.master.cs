@@ -9,10 +9,10 @@ public partial class PaginaMaestra : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["usuario"] == null)
-        {
-            Response.Redirect("form_validar_login.aspx");
-        }
+        //if (Session["usuario"] == null)
+        //{
+        //    Response.Redirect("form_validar_login.aspx");
+        //}
 
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetExpires(DateTime.UtcNow.AddYears(-1));

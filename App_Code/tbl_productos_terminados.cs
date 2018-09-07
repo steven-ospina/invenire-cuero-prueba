@@ -106,13 +106,13 @@ public class tbl_productos_terminados
     }//fin del metodo: buscar_consecutivo
 
 
-    public string grabar_encabezado_productos_terminados(string fec_actual, string instructor, string nom_articulo, string estado)
+    public string grabar_encabezado_productos_terminados(string fec_actual, string instructor, string nom_articulo,int cant_producto, string estado)
     {
         try
         {   //Para conectarse a la BD
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             //se prepara la sentencia sql para insertar
-            var insertar = "insert into tbl_productos_terminados values('" + fec_actual + "','" + instructor + "','" + nom_articulo + "','"+ estado +"')";
+            var insertar = "insert into tbl_productos_terminados values('" + fec_actual + "','" + instructor + "','" + nom_articulo + "',"+ cant_producto +",'"+ estado +"')";
             //se empaqueta la sentencia sql y la conexion a la bd
             var comando = new SqlCommand(insertar, conex);
             //abrir la conexion

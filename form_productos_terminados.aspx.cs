@@ -24,7 +24,9 @@ public partial class form_productos_terminados : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //TextBox2.Attributes["onkeypress"] = " return blocklet(event);";
+        //validaciones
+        TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
 
         //capturo la fecha del sistemas
         fecha_sistema = TextBox1.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -125,7 +127,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
     {
         //se definen las variables a utilizar
         string fec_actual,instructor, nom_articulo, estado;
-        //int consecutivo;
+        int cant_producto;
 
         //se captura el consecutivo de ventas
         //consecutivo = productos.buscar_consecutivo();
@@ -139,11 +141,13 @@ public partial class form_productos_terminados : System.Web.UI.Page
         //se captura el nombre del articulo
         nom_articulo = TextBox2.Text;
 
+        //se captura la cantidad del producto
+        cant_producto = Convert.ToInt32(TextBox3.Text);
         //estado de la articulo
         estado = "Activa";
 
         //se envian los datos a la tabla tbl_venta en la bd
-        string rdo = productos.grabar_encabezado_productos_terminados(fec_actual, instructor, nom_articulo, estado);
+        string rdo = productos.grabar_encabezado_productos_terminados(fec_actual, instructor, nom_articulo,cant_producto, estado);
         if (rdo == "OK")
         {
             Label5.Text = "Articulo Nuevo Gurdado Correcta Mente";

@@ -20,10 +20,11 @@ function blocklet(e) {
 
 //solo letras
 function blocknum(e){
-       key = e.keyCode || e.which;
+    key = e.keyCode || e.which;
+    especiales = "8-37-39-46";
        tecla = String.fromCharCode(key).toLowerCase();
        letras = " �����abcdefghijklmn�opqrstuvwxyz";
-       especiales = "8-37-39-46";
+
 
        tecla_especial = false
        for(var i in especiales){
