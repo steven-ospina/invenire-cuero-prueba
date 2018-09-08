@@ -25,8 +25,8 @@
         <script type="text/javascript">
         function deshabilitacionRetroceso() {
             window.location.hash = "no-back-button";
-            window.location.hash = "Again-no-Back-Button";//google chorme
-            window.onhashchange = function () { window.location.has = "no-back-button"; }
+            window.location.hash = "Again-No-back-button";//google chorme
+            window.onhashchange = function () { window.location.hash = "no-back-button"; }
         }
     </script>
 </head>

@@ -27,3 +27,12 @@ imagen varbinary(max)not null
 select * from tbl_per_Rol
 
 agregar eb la tbl_detalle_producto un campo llamado ubicacion varchar(30) not null
+
+*unir las tbl_pedidos con su detalle
+*unir la tbl_devolucion con su detalle
+*unir la tbl_reserva con su detalle
+
+==despues de unidas crear como ejemplo como si fuera una factura que tenga un boton y despues despliegue un gridviw y despues un boton confirmar
+
+despues mirar como configuramos el estado del pedido y tambien la reserva
+
