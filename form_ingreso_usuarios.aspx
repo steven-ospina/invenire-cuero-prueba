@@ -4,6 +4,10 @@
         <title>Ingreso Usuarios</title>
     <style type="text/css">
 
+        .auto-style3 {
+            margin-right: 0;
+        }
+
     </style>
     <script src="file_js/jquery-3.1.1.min.js"></script>
     <script src="file_js/validaciones.js"></script>
@@ -21,18 +25,28 @@
                 <tr>
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="Number"  placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label5" runat="server"></asp:Label>
                     </td>
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox2" runat="server"  placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
+                                                <br />
+                        <br />
+                        <asp:Label ID="Label7" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
                         <br />
                         <asp:TextBox ID="TextBox3" runat="server" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label8" runat="server"></asp:Label>
                     </td>
                     <td class="auto-style2 rol">
                         <asp:Label ID="Label1" runat="server" Text="Rol del Usuario" ></asp:Label>
+                        <br />
                         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT * FROM [tbl_rol]"></asp:SqlDataSource>
@@ -50,6 +64,9 @@
                     <td class="auto-style2">
                         <br />
                         <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label9" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -62,6 +79,8 @@
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox5" runat="server" TextMode="Password" placeholder="Repetir Contraseña" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                         <br />
+                        <br />
+                        <asp:Label ID="Label10" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -77,16 +96,14 @@
                     </td>
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox7" runat="server" TextMode="Number" placeholder="Telefono" onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label11" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="2">
                         <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2" colspan="2">
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cerrar Sesion</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
@@ -101,7 +118,7 @@
         <asp:Button ID="Button2" runat="server" Text="Buscar" />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1199px" AllowPaging="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1076px" AllowPaging="True" CssClass="auto-style3">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />

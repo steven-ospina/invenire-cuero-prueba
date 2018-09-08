@@ -22,13 +22,20 @@
         }
      onload="nobackbutton();"
     </script>--%>
+        <script type="text/javascript">
+        function deshabilitacionRetroceso() {
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-no-Back-Button";//google chorme
+            window.onhashchange = function () { window.location.has = "no-back-button"; }
+        }
+    </script>
 </head>
-<body>
+<body onload="deshabilitacionRetroceso();">
     <form id="form1" runat="server">
         <header>
-            <div>
+            <div class="closeSeccion">
                 <asp:Label ID="Label1" runat="server" Text="Cerrar Seccion"></asp:Label>
-                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton1_Click">Salir</asp:LinkButton>
             </div>
         </header>
  <div id="sidebar" class="sidebar" >
@@ -47,7 +54,7 @@
                 <li><a href="form_ingreso_productos.aspx">Ingreso Productos</a></li>
                 <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos</a></li>
                 <li><a href="form_productos_terminados.aspx">Ingreso Prodcutos Terminados</a></li>
-                <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos Terminados</a></li>
+               <%-- <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos Terminados</a></li>--%>
                 <li><a href="form_reservas.aspx">Ingreso Reserva</a></li>
                 <li><a href="form_detalle_reserva.aspx">Ingreso Detalle Reserva</a></li>
                 <li><a href="form_devolucion.aspx">Ingreso Devolucion</a></li>

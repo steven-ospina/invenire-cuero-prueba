@@ -1,16 +1,16 @@
-﻿<%@ WebHandler Language="C#" Class="manejador_tbl_prod_term" %>
+﻿<%@ WebHandler Language="C#" Class="manejador_img_insumos" %>
 
 using System;
 using System.Web;
-using System.Data;
+    using System.Data;
 
-public class manejador_tbl_prod_term : IHttpHandler,System.Web.SessionState.IRequiresSessionState {
-    
+public class manejador_img_insumos : IHttpHandler,System.Web.SessionState.IRequiresSessionState {
+
     public void ProcessRequest (HttpContext context) {
         if (context.Session["Registro"] != null)
             {
                 DataTable tbRegistro = (DataTable)context.Session["Registro"];
-                DataRow drRegistro = tbRegistro.Select(string.Format("id_det_prod={0}", context.Request.QueryString["id_det_prod"]))[0];
+                DataRow drRegistro = tbRegistro.Select(string.Format("cod_prod={0}", context.Request.QueryString["cod_prod"]))[0];
                 byte[] imagen = (byte[])drRegistro["imagen"];
                 context.Response.ContentType = "image/jpg";
                 context.Response.ContentType = "image/jpeg";
@@ -20,7 +20,7 @@ public class manejador_tbl_prod_term : IHttpHandler,System.Web.SessionState.IReq
                 context.Response.OutputStream.Write(imagen, 0, imagen.Length);
             }   
     }
- 
+
     public bool IsReusable {
         get {
             return false;

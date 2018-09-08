@@ -17,10 +17,14 @@ public partial class form_ingreso_productos : System.Web.UI.Page
     //que es instanciar? consiste en crear un apodo(productos) para la clase
     //OJO: LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_productos producto = new tbl_productos();
+    string fecha_sistema;
     protected void Page_Load(object sender, EventArgs e)
     {
         //SE EJECUTA AL CARGAR LA PAGINA
         TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
+
+        //capturo la fecha del sistemas
+        fecha_sistema = TextBox5.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
     }
 
@@ -46,7 +50,7 @@ public partial class form_ingreso_productos : System.Web.UI.Page
             cantProducto = Convert.ToInt32(TextBox3.Text);
         }
         descProducto = TextBox4.Text;
-        fechIngreso = TextBox5.Text;
+        fechIngreso = fecha_sistema;
         fechCaducidad = TextBox6.Text;
         ubicacion = TextBox7.Text;
 

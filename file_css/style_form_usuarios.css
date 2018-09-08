@@ -19,11 +19,11 @@ body{
 /*========================================================================================*/
 
 .auto-style1 {
-    max-width: 550px;
+    max-width: 650px;
     width: 100%;
     height: 510px;
     background-color: #606266b4;
-    margin: auto 400px;
+    margin: auto 200px;
     position: relative;
     border-radius: 5px;
     margin-bottom: 30px;

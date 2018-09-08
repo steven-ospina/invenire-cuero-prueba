@@ -90,6 +90,16 @@ a:hover{
     margin:auto 250px;
     border: 1px solid black;
 }
+#LinkButton2 {
+    color: red;
+    border-bottom: 1px solid #fff;
+}
+.closeSeccion {
+    width:120px;
+    height:90px;
+    border:2px solid black;
+    float:right;
+}
 /*========================================================================================*/
 /*==GAME OVER- EL SOCIO :)- YA CORONAMOS==*/
 /*========================================================================================*/

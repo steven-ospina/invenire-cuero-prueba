@@ -49,7 +49,7 @@
                         <asp:Label ID="Label5" runat="server" Text="Fecha De Ingreso"></asp:Label>
                     </td>
                     <td class="auto-style12">
-                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Date" placeholder="Fecha De Ingreso"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Date" placeholder="Fecha De Ingreso" Enabled="False"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

@@ -10,8 +10,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 //
-using System;
-using System.Collections.Generic;
+//using System;
+//using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
@@ -70,15 +70,18 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         //SE VALIAM LOS CAMPOS
         if (docUsuario == "")
         {
-            Response.Write("<script>alert('Ingrese el documento del Usuario')</script>");
+            //Response.Write("<script>alert('Ingrese el documento del Usuario')</script>");
+            Label5.Text = "Ingrese el documento del Usuario";
         }
         else if (NombreUsuario == "")
         {
-            Response.Write("<script>alert('Ingrese el Nombre del Usuario')</script>");
+            //Response.Write("<script>alert('Ingrese el Nombre del Usuario')</script>");
+            Label7.Text = "Ingrese el Nombre del Usuario";
         }
         else if (apeUsuario == "")
         {
-            Response.Write("<script>alert('Ingrese Los Apellidos del Usuario')</script>");
+            //Response.Write("<script>alert('Ingrese Los Apellidos del Usuario')</script>");
+            Label8.Text = "Ingrese Los Apellidos del Usuario";
         }
         else if (codRol == 0)
         {
@@ -90,17 +93,19 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         }
         else if (contrasena == "")
         {
-            Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
+            //Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
             //Label6.Visible = true;
             Label6.Text = "Ingrese la Contraseña del usuario";
         }
         else if (repecontrasena != contrasena)
         {
-            Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
+            //Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
+            Label10.Text = "la contrase no concide";
         }
         else if (email == "")
         {
-            Response.Write("<script>alert('Ingrese el Estado del usuario')</script>");
+            //Response.Write("<script>alert('Ingrese el correo del usuario')</script>");
+            Label9.Text = "Ingrese el correo del usuario";
         }
         else if (genero == "")
         {
@@ -108,14 +113,15 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         }
         else if (telefono == "")
         {
-            Response.Write("<script>alert('Ingrese el Telefono del usuario')</script>");
+            //Response.Write("<script>alert('Ingrese el Telefono del usuario')</script>");
+            Label11.Text = "Ingrese el Telefono del usuario";
         }
         else
         {
             if (TextBox5.Text.Length<8)
             {
 
-                Response.Write("<script>alert('la contraseña debe tener minimo 8 caracteres')</script>");
+                //Response.Write("<script>alert('la contraseña debe tener minimo 8 caracteres')</script>");
                 //Label6.Visible = true;
                 Label6.Text = "la contraseña debe tener minimo 8 caracteres";
 
@@ -135,11 +141,17 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
                     TextBox4.Text = "";
                     TextBox6.Text = "";
                     TextBox7.Text = "";
-                    //Label4.Visible = true;
+                    Label5.Text = "";
                     Label6.Text = "";
+                    Label7.Text = "";
+                    Label8.Text = "";
+                    Label9.Text = "";
+                    Label10.Text = "";
+                    Label11.Text = "";
                     Label4.Text = "Usuario registrado correctamente";
                     //Label4.Text = "Usuario registrado correctamente";
                     //Response.Redirect("form_ingreso_usuarios.aspx");
+                    //Label4.Visible = true;
                 }
                 else
                 {

@@ -23,7 +23,7 @@ function blocknum(e){
     key = e.keyCode || e.which;
     especiales = "8-37-39-46";
        tecla = String.fromCharCode(key).toLowerCase();
-       letras = " �����abcdefghijklmn�opqrstuvwxyz";
+       letras = " �����abcdefghijklmn�opqrstuvwxyz,";
 
 
        tecla_especial = false

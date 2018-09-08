@@ -78,10 +78,10 @@ body{
     font-size: 20px;
     margin-left: 40px;
 }
-/*.auto-style1 #LinkButton1:hover{
+.auto-style1 #LinkButton1:hover{
     color: #fff;
     border-bottom: 1px solid #fff;
-}*/
+}
 .auto-style1 #TextBox1:hover,
 .auto-style1 #TextBox2:hover{
     border: none;
