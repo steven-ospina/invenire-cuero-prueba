@@ -36,3 +36,5 @@ agregar eb la tbl_detalle_producto un campo llamado ubicacion varchar(30) not nu
 
 despues mirar como configuramos el estado del pedido y tambien la reserva
 
+*cambiar en la tbl_producto la llave primaria por un int para poder leer las imagenes
+
