@@ -17,12 +17,6 @@ public partial class PaginaMaestra : System.Web.UI.MasterPage
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetExpires(DateTime.UtcNow.AddYears(-1));
 
-        //if (IsPostBack)
-        //{
-        //    Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
-        //    Response.Cache.SetAllowResponseInBrowserHistory(false);
-        //    Response.Cache.SetNoStore();
-        //}
     }
 
 

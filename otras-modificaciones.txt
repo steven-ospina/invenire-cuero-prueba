@@ -38,3 +38,17 @@ despues mirar como configuramos el estado del pedido y tambien la reserva
 
 *cambiar en la tbl_producto la llave primaria por un int para poder leer las imagenes
 
+
+      <httpModules>
+        <add name="UrlRewriter" type="Intelligencia.UrlRewriter.RewriterHttpModule, Intelligencia.UrlRewriter"/>
+      </httpModules>
+
+      <urlMappings enabled="true">
+        <add url="~/hola" mappedUrl="~/form_inicio.aspx"/>
+      </urlMappings>
+
+  <configSections>
+    <section name="rewriter" requirePermission="false"
+             type="Intelligencia.UrlRewriter.Configuration.RewriterConfigurationSectionHandler, Intelligencia.UrlRewriter"/>
+  </configSections>
+

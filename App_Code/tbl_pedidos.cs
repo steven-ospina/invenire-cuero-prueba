@@ -14,6 +14,8 @@ using System.Configuration;
 /// </summary>
 public class tbl_pedidos
 {
+    string mensaje;
+
     public tbl_pedidos()
     {
         //
@@ -23,25 +25,33 @@ public class tbl_pedidos
     //28_05_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int guardar_tbl_pedidos(string codProduto,string fecha,string docUsuario,string estado)
+    public string Grabar_pedidos(string fecha,int usuario,string estado,int  insumos,int cantidad)
     {
-        int REsultado = 1;
         try
-        {
+        {   //Para conectarse a la BD
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_pedidos values('" + codProduto + "','" + fecha + "','" + docUsuario + "','" + estado +"')";
+            //se prepara la sentencia sql para insertar
+            var insertar = "insert into tbl_pedidos values('" + fecha + "'," + usuario + ",'" + estado + "'," + insumos + "," +cantidad + ")";
+            //se empaqueta la sentencia sql y la conexion a la bd
             var comando = new SqlCommand(insertar, conex);
+            //abrir la conexion
             conex.Open();
-            int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta
+            //se ejecuta la sentencia sql
+            int resultado = comando.ExecuteNonQuery();
             if (resultado == 0)
             {
-                REsultado = 0;
-                conex.Close();
+                mensaje = "Error al insertar";
             }
-        }
-        catch(Exception e)
+            else
+            {
+                mensaje = "OK";
+            }
+            conex.Close();
+        }//fin del try    
+        catch (Exception e)
         {
+            mensaje = e.Message;//presenta el error que genera la bd
         }
-        return REsultado;
-    }
+        return mensaje;
+    }//fin del metodo: grabar_encabezado_productos_terminados()
 }

@@ -64,4 +64,12 @@ public partial class form_ingreso_rol : System.Web.UI.Page
             }
         }
     }
+
+
+
+    //protected void GridView1_DataBound(object sender, EventArgs e)
+    //{
+    //    TextBox TextBox2 = GridView1.Rows[e.NewEditIndex].FindControl("TextBox2") as TextBox;
+    //    TextBox2.Attributes.Add("onblur", " return blocknum(event);");
+    //}
 }

@@ -76,11 +76,13 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         else if (NombreUsuario == "")
         {
             //Response.Write("<script>alert('Ingrese el Nombre del Usuario')</script>");
+ 	        Label5.Text = "";
             Label7.Text = "Ingrese el Nombre del Usuario";
         }
         else if (apeUsuario == "")
         {
             //Response.Write("<script>alert('Ingrese Los Apellidos del Usuario')</script>");
+	        Label7.Text = "";
             Label8.Text = "Ingrese Los Apellidos del Usuario";
         }
         else if (codRol == 0)
