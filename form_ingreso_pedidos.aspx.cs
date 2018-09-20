@@ -18,14 +18,27 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_pedidos pedido = new tbl_pedidos();//estoy creando una instancia ala tbl_pedidos:para leer datos de la clase
 
-    string fecha_sistema;
+    string fecha_sistema, hora_sistema;
     protected void Page_Load(object sender, EventArgs e)
     {
         //VALIDACIONES JS
         //TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
         fecha_sistema = DateTime.Now.ToString("yyyy-MM-dd");
+        hora_sistema = DateTime.Now.ToString("HH:mm:ss");
 
         Label2.Text = "4";
+
+        try
+        {
+            if (!Page.IsPostBack)
+            {
+                FilaVacia("A");
+            }
+        }
+        catch (Exception ex)
+        {
+            //Response.Redirect("Error.aspx"); 
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -149,15 +162,17 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
             TextBox cant = (TextBox)GVRow.FindControl("tbCantidad");
             string can = cant.Text;
             int cantidad = Convert.ToInt32(can);
+            //se caputura la hora dels sistema
+            string hora = hora_sistema;
             if (cantidad > 0)
             {
                 //se prepara para mandar los datos a la clase
-                Label1.Text = pedido.Grabar_pedidos(fecha, usuario, estado, insumos, cantidad);
+                Label1.Text = pedido.Grabar_pedidos(fecha, usuario, estado, insumos, cantidad,hora);
                 Label1.Text = "pedidos Gudados Correctamente";
             }
             else
             {
-                Label1.Text = "Pofavor ingrese la cantidad";
+                Label3.Text = "Pofavor ingrese la cantidad";
             }
 
 

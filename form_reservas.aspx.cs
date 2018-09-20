@@ -17,44 +17,159 @@ public partial class form_reservas : System.Web.UI.Page
     //que es intancia? consiste en crear un apodo (reservas) para la clase
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_reserva reservas = new tbl_reserva();//estoy creando una instancia ala tbl_reserva:para leer datos de la clase
+
+    string fecha_sistema, hora_sistema;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        TextBox2.Attributes["onkeypress"] = " return blocklet(event);";
+        //TextBox2.Attributes["onkeypress"] = " return blocklet(event);";
+
+        //se captura la fecha del sistema
+        //fecha_sistema = DateTime.Now.ToString("yyyy-MM-dd");
+        //se captura la hora del sistema
+        hora_sistema = DateTime.Now.ToString("HH:mm:ss");
+        try
+        {
+            if (!Page.IsPostBack)
+            {
+                FilaVacia("A");
+            }
+        }
+        catch (Exception ex)
+        {
+            //Response.Redirect("Error.aspx"); 
+        }
+
+        Label1.Text = "4";
     }
+
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //EL_SOCIO_24_06_2018
+        //EL_SOCIO_19_09_2018
         //Aqui se postea el codigo del boton
+        FilaVacia("A");
+    }
 
-        //PRIMERO: SE CAPTURA LOS DATOS DEL FORMULARIO
-        string fecha_reserva, doc_usuario;
+    private DataTable EsctructuraMedidas()
+    {
+        DataTable medidatabla = new DataTable();
+        medidatabla.Columns.Add("cod_res", typeof(Int32));
+        medidatabla.Columns.Add("fecha_res", typeof(string));
+        medidatabla.Columns.Add("doc_usu", typeof(string));
+        medidatabla.Columns.Add("cod_prod", typeof(Int32));
+        medidatabla.Columns.Add("cant_prod", typeof(Int32));
+        return medidatabla;
+    }
 
-        fecha_reserva = TextBox1.Text;
-        doc_usuario = TextBox2.Text;
+    void FilaVacia(string tipo)
+    {
+        DataTable dt = null;
 
-        //SE VALIAM LOS CAMPOS
-        if (fecha_reserva == "")
+        dt = EsctructuraMedidas();//EsctructuraMedidas()= es el objeto que va a conectar los registros
+        DataRow dr;//objeto que controla la insercion de cada registro
+
+        if (ViewState["DateTemp"] == null)
         {
-            Response.Write("<script>alert('Ingrese la FECHA del PERMISO')</script>");
-        }
-        else if (doc_usuario == "")
-        {
-            Response.Write("<script>alert('Ingrese el DOCUMENTO DEL USUARIO')</script>");
+            dr = dt.NewRow();
+            dr[0] = 1;
+            dr[1] = 0;
+            dr[2] = 123;
+            dr[3] = 1;
+            dr[4] = 1;
+            dt.Rows.Add(dr);
+            ViewState["DateTemp"] = dt;
         }
         else
         {
-            //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO (tbl_reserva)
-            int resultado = reservas.guardar_tbl_reserva(fecha_reserva, doc_usuario);
+            int n = 1;
 
-            if (resultado == 1)
+            foreach (GridViewRow row in this.GridView1.Rows)
             {
-                Response.Write("<script>alert('la RESERVA registrada correctamente')</script>");
-                Response.Redirect("form_reservas.aspx");
+                //se mapea el dato la fecha
+                TextBox fech = (TextBox)row.FindControl("tbFechaReserva");
+                //extraer el dato de la fecha
+                string fecha = fech.Text;
+                //se usa para mapear la lista desplegable que esta en la grilla en el campos usuario
+                DropDownList usu = (DropDownList)row.FindControl("tbUsuario");
+                //extraer el dato de la lista desplegable del usuario
+                string usuario = usu.SelectedValue;
+                //se usa para mapear la lista desplegable que esta en la grilla en el campo insumo
+                DropDownList insum = (DropDownList)row.FindControl("ddlInsumo");
+                //extraer el dato de la lista desplegable del insumo
+                string insumos = insum.SelectedValue;
+                //se mapea el dato la cantidad
+                TextBox cant = (TextBox)row.FindControl("tbCantidadReserva");
+                //extraer el dato de la cantidad
+                string cantidad = cant.Text;
+
+                //
+                dr = dt.NewRow();
+                dr[0] = n;
+                dr[1] = fecha;
+                dr[2] = usuario;
+                dr[3] = insumos;
+                dr[4] = cantidad;
+                dt.Rows.Add(dr);
+                n += 1;
+            }
+            if (tipo == "A")
+            {
+                ViewState["DataTemp"] = dt;
+                dr = dt.NewRow();
+                dr[0] = 1;
+                dr[1] = 0;
+                dr[2] = 123;
+                dr[3] = 1;
+                dr[5] = 0;
+                dt.Rows.Add(dr);
+            }
+            ViewState["DateTemp"] = dt;
+        }
+        this.GridView1.DataSource = ViewState["DataTemp"];
+        this.GridView1.DataBind();
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Button3.Visible = true;
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        //se envian los datos a la tabla tbl_productos_terminados en la bd
+        //Se recorre la grilla del detalle  se inserta fila por fila en la tabla: tbl_detalle_productos
+        DataSet dataset = new DataSet();//localizar la bd  
+
+        foreach (GridViewRow GVRow in this.GridView1.Rows)
+        {
+            //se captura la fecha del sistema
+            string fecha = fecha_sistema;
+            //se captura el usuario
+            DropDownList usu = (DropDownList)GVRow.FindControl("ddlUsuario");
+            string usua = usu.SelectedValue;
+            int usuario = Convert.ToInt32(usua);
+            //se captura el insumo
+            DropDownList ins = (DropDownList)GVRow.FindControl("ddlInsumo");
+            string insu = ins.SelectedValue;
+            int insumos = Convert.ToInt32(insu);
+            //se captura la cantida
+            TextBox cant = (TextBox)GVRow.FindControl("tbCantidaDevolver");
+            string can = cant.Text;
+            int cantidad = Convert.ToInt32(can);
+            //se captura la hora del sistema
+            string hora = hora_sistema;
+
+            //se valida si el campo cantida esta vacio
+            if (cantidad > 0)
+            {
+                //se prepara para mandar los datos a la clase
+                Label2.Text = reservas.Guardar_tbl_devolucion(fecha, usuario, insumos, cantidad, hora);
+                Label2.Text = "pedidos Gudados Correctamente";
             }
             else
             {
-                Response.Write("<script>alert('Error al registrar el RESERVA')</script>");
+                Label3.Text = "Pofavor ingrese la cantidad";
             }
         }
     }

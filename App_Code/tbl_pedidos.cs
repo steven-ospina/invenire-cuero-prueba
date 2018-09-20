@@ -25,13 +25,13 @@ public class tbl_pedidos
     //28_05_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public string Grabar_pedidos(string fecha,int usuario,string estado,int  insumos,int cantidad)
+    public string Grabar_pedidos(string fecha,int usuario,string estado,int  insumos,int cantidad,string hora)
     {
         try
         {   //Para conectarse a la BD
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             //se prepara la sentencia sql para insertar
-            var insertar = "insert into tbl_pedidos values('" + fecha + "'," + usuario + ",'" + estado + "'," + insumos + "," +cantidad + ")";
+            var insertar = "insert into tbl_pedidos values('" + fecha + "'," + usuario + ",'" + estado + "'," + insumos + "," + cantidad + ",'" + hora +"')";
             //se empaqueta la sentencia sql y la conexion a la bd
             var comando = new SqlCommand(insertar, conex);
             //abrir la conexion

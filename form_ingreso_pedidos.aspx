@@ -6,20 +6,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Agregar Pedido" Width="114px" style="height: 26px" />
+    <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
-    <br />
-    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Confirmar" />
-    <br />
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="cod_ped,cod_prod" DataSourceID="SqlDataSource3">
-        <Columns>
-            <asp:BoundField DataField="cod_ped" HeaderText="cod_ped" InsertVisible="False" ReadOnly="True" SortExpression="cod_ped" />
-            <asp:BoundField DataField="doc_usu" HeaderText="doc_usu" SortExpression="doc_usu" />
-            <asp:BoundField DataField="cod_prod" HeaderText="cod_prod" InsertVisible="False" ReadOnly="True" SortExpression="cod_prod" />
-            <asp:BoundField DataField="nom_prod" HeaderText="nom_prod" SortExpression="nom_prod" />
-            <asp:BoundField DataField="desc_prod" HeaderText="desc_prod" SortExpression="desc_prod" />
-        </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT tbl_pedidos.cod_ped, tbl_pedidos.doc_usu, tbl_productos.cod_prod, tbl_productos.nom_prod, tbl_productos.desc_prod FROM tbl_pedidos INNER JOIN tbl_productos ON tbl_pedidos.cod_prod = tbl_productos.cod_prod"></asp:SqlDataSource>
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
         <Columns>
@@ -64,10 +52,11 @@
         </Columns>
     </asp:GridView>
     <br />
+                        <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
     <br />
+    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Confirmar" />
     <asp:Button ID="Button2" runat="server" Text="Guardar Pedidos" OnClick="Button2_Click" Visible="False" />
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <asp:Label ID="Label1" runat="server" ForeColor="#006600"></asp:Label>
 </asp:Content>

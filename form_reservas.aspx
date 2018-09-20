@@ -2,79 +2,50 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>Ingreso Reserva</title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 43%;
-            height: 101px;
-        }
-        .auto-style2 {
-            width: 188px;
-        }
-        .auto-style3 {
-            width: 288px;
-        }
-    </style>
     <link rel="icon" type="image/png" href="file_img/caja-invenire-cuero-ico.ico" />
     <script src="file_js/validaciones.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <div>
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label2" runat="server" Text="Fecha de la Reserva"></asp:Label>
-                    </td>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="TextBox1" runat="server" TextMode="Date"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="Documento Usuario"></asp:Label>
-                    </td>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="TextBox2" runat="server" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style3">
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_res" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="456px">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:BoundField DataField="cod_res" HeaderText="Codigo de Reserva" InsertVisible="False" ReadOnly="True" SortExpression="cod_res" />
-                <asp:BoundField DataField="fecha_res" HeaderText="Fecha de la Reserva" SortExpression="fecha_res" />
-                <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" SortExpression="doc_usu" />
-            </Columns>
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_reserva] WHERE [cod_res] = @cod_res" InsertCommand="INSERT INTO [tbl_reserva] ([fecha_res], [doc_usu]) VALUES (@fecha_res, @doc_usu)" SelectCommand="SELECT * FROM [tbl_reserva]" UpdateCommand="UPDATE [tbl_reserva] SET [fecha_res] = @fecha_res, [doc_usu] = @doc_usu WHERE [cod_res] = @cod_res">
-            <DeleteParameters>
-                <asp:Parameter Name="cod_res" Type="Int32" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="fecha_res" Type="String" />
-                <asp:Parameter Name="doc_usu" Type="String" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="fecha_res" Type="String" />
-                <asp:Parameter Name="doc_usu" Type="String" />
-                <asp:Parameter Name="cod_res" Type="Int32" />
-            </UpdateParameters>
-        </asp:SqlDataSource>
+
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Agregar Reserva" />
+    <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
+    <br />
+    <br />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="cod_res" HeaderText="Nro." />
+            <asp:TemplateField HeaderText="Fecha de la Reserva">
+                <ItemTemplate>
+                    <asp:TextBox ID="tbFechaReserva" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.fecha_res") %>' TextMode="Date"></asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Documento">
+                <ItemTemplate>
+                    <asp:TextBox ID="tbUsuario" runat="server" Enabled="False" Text='<%# DataBinder.Eval(Container, "DataItem.doc_usu") %>'></asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Insumo">
+                <ItemTemplate>
+                    <asp:DropDownList ID="ddlInsumo" runat="server" DataSourceID="SqlDataSource1" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# DataBinder.Eval(Container, "DataItem.cod_prod") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Cantidad">
+                <ItemTemplate>
+                    <asp:TextBox ID="tbCantidadReserva" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+    <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
+    <br />
+    <br />
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Confirmar Reservas" />
+    <asp:Button ID="Button3" runat="server" Text="Enviar Reservas" Visible="False" OnClick="Button3_Click" />
+
+    <br />
+    <asp:Label ID="Label2" runat="server" ForeColor="#009933"></asp:Label>
+
 </asp:Content>
 

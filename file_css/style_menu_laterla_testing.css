@@ -88,7 +88,7 @@ a:hover{
     width:80vw;
     height:100vh;
     margin:auto 250px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 #LinkButton2 {
     color: red;

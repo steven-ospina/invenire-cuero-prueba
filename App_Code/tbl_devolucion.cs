@@ -13,6 +13,9 @@ using System.Configuration;
 /// </summary>
 public class tbl_devolucion
 {
+
+    string mensaje;
+
     public tbl_devolucion()
     {
         //
@@ -22,25 +25,31 @@ public class tbl_devolucion
     //26_06_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de equipos en la BD
-    public int Guardar_tbl_devolucion(string fech_devolucion, int doc_usuario)
+    public string Guardar_tbl_devolucion(string fecha,int usuario,int codigoPedido,int insumos,int cantidad,string hora)
     {
-        int REsultado = 1;
         try
         {
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_devolucion values('" + fech_devolucion + "'," + doc_usuario + ")";
+            var insertar = "insert into tbl_devolucion values('" + fecha + "','" + usuario + "',"+ codigoPedido +"," + insumos + "," + cantidad+ ",'" + hora +"')";
             var comando = new SqlCommand(insertar, conex);
+            //abrir la conexion
             conex.Open();
-            int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta
+            //se ejecuta la sentencia sql
+            int resultado = comando.ExecuteNonQuery();
             if (resultado == 0)
             {
-                REsultado = 0;
-                conex.Close();
+                mensaje = "Error al insertar";
             }
-        }
+            else
+            {
+                mensaje = "OK";
+            }
+            conex.Close();
+        }//fin del try    
         catch (Exception e)
         {
+            mensaje = e.Message;//presenta el error que genera la bd
         }
-        return REsultado;
+        return mensaje;
     }//final del gurdar devolucion
 }
