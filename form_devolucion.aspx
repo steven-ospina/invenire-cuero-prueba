@@ -11,7 +11,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
             <br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting">
                 <Columns>
                     <asp:BoundField DataField="id_devol" HeaderText="Nro." />
                     <asp:TemplateField HeaderText="Fecha Devolucion">
@@ -41,7 +41,7 @@
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlInsumo" runat="server" DataSourceID="SqlDataSource3" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# DataBinder.Eval(Container, "DataItem.cod_prod") %>'>
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT tbl_pedidos.cod_prod, tbl_productos.nom_prod FROM tbl_pedidos INNER JOIN tbl_productos ON tbl_pedidos.cod_prod = tbl_productos.cod_prod"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Cantida a Devolver">
@@ -49,6 +49,7 @@
                             <asp:TextBox ID="tbCantidaDevolver" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
                 </Columns>
             </asp:GridView>
                         <br />

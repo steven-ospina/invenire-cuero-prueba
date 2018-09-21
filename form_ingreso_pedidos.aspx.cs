@@ -158,6 +158,7 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
             DropDownList ins = (DropDownList)GVRow.FindControl("ddlIsumos");
             string insu = ins.SelectedValue;
             int insumos = Convert.ToInt32(insu);
+            string insuText = ins.SelectedItem.ToString();
             //se captura la cantida
             TextBox cant = (TextBox)GVRow.FindControl("tbCantidad");
             string can = cant.Text;
@@ -166,9 +167,21 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
             string hora = hora_sistema;
             if (cantidad > 0)
             {
-                //se prepara para mandar los datos a la clase
-                Label1.Text = pedido.Grabar_pedidos(fecha, usuario, estado, insumos, cantidad,hora);
-                Label1.Text = "pedidos Gudados Correctamente";
+                int existencias = pedido.validarexistencias(insumos);
+
+                if (existencias >= cantidad)
+                {
+                    //se prepara para mandar los datos a la clase
+                    Label1.Text = pedido.Grabar_pedidos(fecha, usuario, estado, insumos, cantidad, hora);
+                    Label1.Text = "pedidos Gudados Correctamente";
+                    GridView1.DataBind();
+                    Button2.Visible = false;
+                }
+                else
+                {
+                    Label1.Text = "la cantidad en excede las existencias en bodega del producto: "+ insuText;
+                }
+
             }
             else
             {
@@ -183,5 +196,44 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)
     {
         Button2.Visible = true;
+    }
+
+    //protected void Button4_Click(object sender, EventArgs e)
+    //{
+
+    //    FilaVaciaa("B");
+
+    //}
+
+    //void FilaVaciaa(string tipo)
+    //{
+    //    DataTable dt = null;
+
+    //    dt = EsctructuraMedidas();//EsctructuraMedidas()= es el objeto que va a conectar los registros
+    //    DataRow dr;//objeto que controla la insercion de cada registro
+
+    //    if (tipo == "B")
+    //    {
+    //        //dr = dt.New();
+    //        //dr[0] = 1;
+    //        //dr[1] = fecha_sistema;
+    //        //dr[2] = 123;
+    //        //dr[3] = "Cancelado";
+    //        //dr[4] = 1;
+    //        //dr[5] = 0;
+    //        dt.Rows.Remove(dr);
+    //        ViewState["DateTemp"] = dt;
+    //        GridView1.DataBind();
+    //    }
+    //}
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int index = Convert.ToInt32(e.RowIndex);
+        DataTable dt = ViewState["DateTemp"] as DataTable;
+        dt.Rows[index].Delete();
+        ViewState["DateTemp"] = dt;
+        GridView1.DataSource = ViewState["DateTemp"] as DataTable;
+        GridView1.DataBind();
     }
 }

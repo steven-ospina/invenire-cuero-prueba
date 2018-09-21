@@ -18,7 +18,8 @@ public partial class form_reservas : System.Web.UI.Page
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_reserva reservas = new tbl_reserva();//estoy creando una instancia ala tbl_reserva:para leer datos de la clase
 
-    string fecha_sistema, hora_sistema;
+    string fecha_sistema, hora_sistema,cod_usu;
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -41,6 +42,8 @@ public partial class form_reservas : System.Web.UI.Page
         }
 
         Label1.Text = "4";
+
+        cod_usu = (string)Session["usuario"];
     }
 
 
@@ -49,6 +52,7 @@ public partial class form_reservas : System.Web.UI.Page
         //EL_SOCIO_19_09_2018
         //Aqui se postea el codigo del boton
         FilaVacia("A");
+        Button2.Visible = true;
     }
 
     private DataTable EsctructuraMedidas()
@@ -64,6 +68,7 @@ public partial class form_reservas : System.Web.UI.Page
 
     void FilaVacia(string tipo)
     {
+
         DataTable dt = null;
 
         dt = EsctructuraMedidas();//EsctructuraMedidas()= es el objeto que va a conectar los registros
@@ -74,7 +79,7 @@ public partial class form_reservas : System.Web.UI.Page
             dr = dt.NewRow();
             dr[0] = 1;
             dr[1] = 0;
-            dr[2] = 123;
+            dr[2] = cod_usu;
             dr[3] = 1;
             dr[4] = 1;
             dt.Rows.Add(dr);
@@ -91,9 +96,9 @@ public partial class form_reservas : System.Web.UI.Page
                 //extraer el dato de la fecha
                 string fecha = fech.Text;
                 //se usa para mapear la lista desplegable que esta en la grilla en el campos usuario
-                DropDownList usu = (DropDownList)row.FindControl("tbUsuario");
+                TextBox usu = (TextBox)row.FindControl("tbUsuario");
                 //extraer el dato de la lista desplegable del usuario
-                string usuario = usu.SelectedValue;
+                string usuario = usu.Text;
                 //se usa para mapear la lista desplegable que esta en la grilla en el campo insumo
                 DropDownList insum = (DropDownList)row.FindControl("ddlInsumo");
                 //extraer el dato de la lista desplegable del insumo
@@ -107,7 +112,7 @@ public partial class form_reservas : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr[0] = n;
                 dr[1] = fecha;
-                dr[2] = usuario;
+                dr[2] = cod_usu;
                 dr[3] = insumos;
                 dr[4] = cantidad;
                 dt.Rows.Add(dr);
@@ -119,9 +124,9 @@ public partial class form_reservas : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr[0] = 1;
                 dr[1] = 0;
-                dr[2] = 123;
+                dr[2] = cod_usu;
                 dr[3] = 1;
-                dr[5] = 0;
+                dr[4] = 0;
                 dt.Rows.Add(dr);
             }
             ViewState["DateTemp"] = dt;
@@ -146,15 +151,15 @@ public partial class form_reservas : System.Web.UI.Page
             //se captura la fecha del sistema
             string fecha = fecha_sistema;
             //se captura el usuario
-            DropDownList usu = (DropDownList)GVRow.FindControl("ddlUsuario");
-            string usua = usu.SelectedValue;
+            TextBox usu = (TextBox)GVRow.FindControl("tbUsuario");
+            string usua = usu.Text;
             int usuario = Convert.ToInt32(usua);
             //se captura el insumo
             DropDownList ins = (DropDownList)GVRow.FindControl("ddlInsumo");
             string insu = ins.SelectedValue;
             int insumos = Convert.ToInt32(insu);
             //se captura la cantida
-            TextBox cant = (TextBox)GVRow.FindControl("tbCantidaDevolver");
+            TextBox cant = (TextBox)GVRow.FindControl("tbCantidadReserva");
             string can = cant.Text;
             int cantidad = Convert.ToInt32(can);
             //se captura la hora del sistema
@@ -164,13 +169,51 @@ public partial class form_reservas : System.Web.UI.Page
             if (cantidad > 0)
             {
                 //se prepara para mandar los datos a la clase
-                Label2.Text = reservas.Guardar_tbl_devolucion(fecha, usuario, insumos, cantidad, hora);
-                Label2.Text = "pedidos Gudados Correctamente";
+                //Label2.Text = reservas.Guardar_tbl_devolucion(fecha, usuario, insumos, cantidad, hora);
+                //Label2.Text = "pedidos Gudados Correctamente";
             }
             else
             {
                 Label3.Text = "Pofavor ingrese la cantidad";
             }
         }
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+
+            FilaVaciaa("B");
+
+    }
+
+    void FilaVaciaa(string tipo)
+    {
+        DataTable dt = null;
+
+        dt = EsctructuraMedidas();//EsctructuraMedidas()= es el objeto que va a conectar los registros
+        DataRow dr;//objeto que controla la insercion de cada registro
+
+        if (tipo == "B")
+        {
+            dr = dt.NewRow();
+            dr[0] = 1;
+            dr[1] = 0;
+            dr[2] = 123;
+            dr[3] = 1;
+            dr[4] = 1;
+            dt.Rows.Remove(dr);
+            ViewState["DateTemp"] = dt;
+            GridView1.DataBind();
+        }
+    }
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int index = Convert.ToInt32(e.RowIndex);
+        DataTable dt = ViewState["DateTemp"] as DataTable;
+        dt.Rows[index].Delete();
+        ViewState["DateTemp"] = dt;
+        GridView1.DataSource = ViewState["DateTemp"] as DataTable;
+        GridView1.DataBind();
     }
 }

@@ -20,43 +20,43 @@ public partial class form_inventario_insumosaspx : System.Web.UI.Page
 
     }
 
-    private Boolean ValidarExtension(string sExtension)
-    {
-        Boolean verif = false;
-        switch (sExtension)
-        {
-            case ".jpg":
-            case ".jpeg":
-            case ".png":
-            case ".gif":
-            case ".bmp":
-                verif = true;
-                break;
-            default:
-                verif = false;
-                break;
-        }
-        return verif;
-    }
+    //private Boolean ValidarExtension(string sExtension)
+    //{
+    //    Boolean verif = false;
+    //    switch (sExtension)
+    //    {
+    //        case ".jpg":
+    //        case ".jpeg":
+    //        case ".png":
+    //        case ".gif":
+    //        case ".bmp":
+    //            verif = true;
+    //            break;
+    //        default:
+    //            verif = false;
+    //            break;
+    //    }
+    //    return verif;
+    //}
 
-    private void ListarRegistro()
-    {
-        try
-        {
-            using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ToString()))
-            using (SqlDataAdapter da = new SqlDataAdapter("sp_Listar_Registro_tbl_img_productos", conexi))
-            {
-                DataTable tbRegistro = new DataTable();
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.Fill(tbRegistro);
-                GridView1.DataSource = tbRegistro;
-                GridView1.DataBind();
-                Session["Registro"] = tbRegistro;
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+    //private void ListarRegistro()
+    //{
+    //    try
+    //    {
+    //        using (SqlConnection conexi = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ToString()))
+    //        using (SqlDataAdapter da = new SqlDataAdapter("sp_Listar_Registro_tbl_img_productos", conexi))
+    //        {
+    //            DataTable tbRegistro = new DataTable();
+    //            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //            da.Fill(tbRegistro);
+    //            GridView1.DataSource = tbRegistro;
+    //            GridView1.DataBind();
+    //            Session["Registro"] = tbRegistro;
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        throw;
+    //    }
+    //}
 }

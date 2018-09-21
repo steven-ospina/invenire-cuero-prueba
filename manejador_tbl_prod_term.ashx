@@ -7,6 +7,7 @@ using System.Data;
 public class manejador_tbl_prod_term : IHttpHandler,System.Web.SessionState.IRequiresSessionState {
     
     public void ProcessRequest (HttpContext context) {
+
         if (context.Session["Registro"] != null)
             {
                 DataTable tbRegistro = (DataTable)context.Session["Registro"];

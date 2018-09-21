@@ -13,6 +13,8 @@ using System.Configuration;
 /// </summary>
 public class tbl_modulo
 {
+    string mensaje;
+
     public tbl_modulo()
     {
         //
@@ -90,4 +92,35 @@ public class tbl_modulo
         }
         return mensaje;
     }//fin del metodo Eliminar modulos
+
+    public string Guardar_tbl_modulo(string modulos)
+    {
+        try
+        {
+            //para conectarse al bd
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
+            //se prepara la sentecia sql para Eliminar
+            var insertar = "insert into tbl_modulo values('"+ modulos +"')";
+            //se empaqueta la sentencia sql y la conexion ala bd
+            var comando = new SqlCommand(insertar, conex);
+            //abrir la conexion
+            conex.Open();
+            //se ejecuta la sentencia sql
+            int resultado = comando.ExecuteNonQuery();
+            if (resultado == 0)
+            {
+                mensaje = "Error al insertar";
+            }
+            else
+            {
+                mensaje = "OK";
+            }
+            conex.Close();
+        }//fin try
+        catch (Exception ex)
+        {
+            mensaje = ex.Message;//presenta el erro que genera la bd
+        }
+        return mensaje;
+    }
 }

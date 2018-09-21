@@ -15,6 +15,7 @@ using System.Configuration;
 public class tbl_pedidos
 {
     string mensaje;
+    int cant;
 
     public tbl_pedidos()
     {
@@ -54,4 +55,33 @@ public class tbl_pedidos
         }
         return mensaje;
     }//fin del metodo: grabar_encabezado_productos_terminados()
+
+
+    public int validarexistencias(int insumos)
+    {
+        try
+        {   //Para conectarse a la BD
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
+            //se prepara la sentencia sql para insertar
+            var insertar = "select cant_prod from tbl_productos where cod_prod ="+ insumos ;
+            //se empaqueta la sentencia sql y la conexion a la bd
+            var comando = new SqlCommand(insertar, conex);
+            //abrir la conexion
+            conex.Open();
+            //se ejecuta la sentencia sql
+            SqlDataReader leerbd = comando.ExecuteReader();
+            if (leerbd.Read() == true)
+            {
+                cant = leerbd.GetInt32(0);
+            }
+            conex.Close();
+        }//fin del try    
+        catch (Exception e)
+        {
+            mensaje = e.Message;//presenta el error que genera la bd
+        }
+        return cant;
+    }//fin del metodo: grabar_encabezado_productos_terminados()
+
+
 }

@@ -11,9 +11,8 @@
     <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting">
         <Columns>
-            <asp:BoundField DataField="cod_res" HeaderText="Nro." />
             <asp:TemplateField HeaderText="Fecha de la Reserva">
                 <ItemTemplate>
                     <asp:TextBox ID="tbFechaReserva" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.fecha_res") %>' TextMode="Date"></asp:TextBox>
@@ -36,12 +35,13 @@
                     <asp:TextBox ID="tbCantidadReserva" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
         </Columns>
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
     <br />
     <br />
-    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Confirmar Reservas" />
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Confirmar Reservas" Visible="False" />
     <asp:Button ID="Button3" runat="server" Text="Enviar Reservas" Visible="False" OnClick="Button3_Click" />
 
     <br />

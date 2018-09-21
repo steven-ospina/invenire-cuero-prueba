@@ -186,4 +186,14 @@ public partial class form_devolucion : System.Web.UI.Page
         Button3.Visible = true;
     }
 
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int index = Convert.ToInt32(e.RowIndex);
+        DataTable dt = ViewState["DateTemp"] as DataTable;
+        dt.Rows[index].Delete();
+        ViewState["DateTemp"] = dt;
+        GridView1.DataSource = ViewState["DateTemp"] as DataTable;
+        GridView1.DataBind();
+    }
 }

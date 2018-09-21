@@ -9,7 +9,7 @@
     <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting">
         <Columns>
             <asp:BoundField DataField="cod_ped" HeaderText="Nro." />
             <asp:TemplateField HeaderText="Fecha ">
@@ -49,10 +49,13 @@
                     <asp:TextBox ID="tbCantidad" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
+
+            <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
+
         </Columns>
     </asp:GridView>
     <br />
-                        <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
+    <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
     <br />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Confirmar" />
     <asp:Button ID="Button2" runat="server" Text="Guardar Pedidos" OnClick="Button2_Click" Visible="False" />
