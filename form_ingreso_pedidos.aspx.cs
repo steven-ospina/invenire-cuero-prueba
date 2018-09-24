@@ -188,7 +188,6 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
                 Label3.Text = "Pofavor ingrese la cantidad";
             }
 
-
         }
 
     }
@@ -197,35 +196,6 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
     {
         Button2.Visible = true;
     }
-
-    //protected void Button4_Click(object sender, EventArgs e)
-    //{
-
-    //    FilaVaciaa("B");
-
-    //}
-
-    //void FilaVaciaa(string tipo)
-    //{
-    //    DataTable dt = null;
-
-    //    dt = EsctructuraMedidas();//EsctructuraMedidas()= es el objeto que va a conectar los registros
-    //    DataRow dr;//objeto que controla la insercion de cada registro
-
-    //    if (tipo == "B")
-    //    {
-    //        //dr = dt.New();
-    //        //dr[0] = 1;
-    //        //dr[1] = fecha_sistema;
-    //        //dr[2] = 123;
-    //        //dr[3] = "Cancelado";
-    //        //dr[4] = 1;
-    //        //dr[5] = 0;
-    //        dt.Rows.Remove(dr);
-    //        ViewState["DateTemp"] = dt;
-    //        GridView1.DataBind();
-    //    }
-    //}
 
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
