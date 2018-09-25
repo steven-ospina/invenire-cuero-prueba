@@ -4,10 +4,6 @@
         <title>Ingreso Productos</title>
     <link rel="stylesheet" href="file_css/style_tbl_productos.css" />
     <style type="text/css">
-        .auto-style4 {
-            margin-left: 75px;
-            margin-top: 19px;
-        }
         .auto-style8 {
             width: 51%;
             height: 302px;
@@ -40,11 +36,12 @@
             <table class="auto-style8">
                 <tr>
                     <td class="auto-style13">
-                        <asp:TextBox ID="TextBox1" runat="server" onpaste="return false" oncut="return false" oncopy="return false" placeholder="Codigo Del producto" ></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" placeholder="Nombre Del Insumo"  onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label7" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                     <td class="auto-style11">
-                        <asp:TextBox ID="TextBox2" runat="server" placeholder="Nombre Del Producto"></asp:TextBox>
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style14">
                         <asp:Label ID="Label5" runat="server" Text="Fecha De Ingreso"></asp:Label>
                     </td>
@@ -54,78 +51,43 @@
                 </tr>
                 <tr>
                     <td class="auto-style13">
-                        <asp:TextBox ID="TextBox3" runat="server" onpaste="return false" oncut="return false" oncopy="return false" placeholder="Cantidad Del Producto"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" onpaste="return false" oncut="return false" oncopy="return false" placeholder="Cantidad Del Insumo"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label8" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                     <td class="auto-style11">
-                        <asp:TextBox ID="TextBox7" runat="server" placeholder="Ubicacion"></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" placeholder="Ubicacion"  onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label9" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                     <td class="auto-style14">
                         <asp:Label ID="Label6" runat="server" Text="Fecha De Caducidad"></asp:Label>
                     </td>
                     <td class="auto-style12">
-                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Date" placeholder="Fecha De Caducidad"></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Date" placeholder="Fecha De Caducidad"  onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label10" runat="server" BorderColor="Black" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <asp:TextBox ID="TextBox4" runat="server" Height="39px" TextMode="MultiLine" Width="661px" placeholder="Descripcion Del Producto"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" Height="39px" TextMode="MultiLine" Width="661px" placeholder="Descripcion Del Insumo"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label11" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style13">
-                        &nbsp;</td>
+                        <asp:Label ID="Label12" runat="server" ForeColor="#006600"></asp:Label>
+                    </td>
                     <td class="auto-style3" colspan="2">
                         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" />
                     </td>
                     <td class="auto-style12">
-                        &nbsp;</td>
+                        <asp:Label ID="Label13" runat="server" ForeColor="#CC0000"></asp:Label>
+                    </td>
                 </tr>
                 </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="auto-style4" Width="1008px">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:BoundField DataField="cod_prod" HeaderText="cod_prod" ReadOnly="True" SortExpression="cod_prod" />
-                <asp:BoundField DataField="nom_prod" HeaderText="nom_prod" SortExpression="nom_prod" />
-                <asp:BoundField DataField="cant_prod" HeaderText="cant_prod" SortExpression="cant_prod" />
-                <asp:BoundField DataField="desc_prod" HeaderText="desc_prod" SortExpression="desc_prod" />
-                <asp:BoundField DataField="fecha_ing" HeaderText="fecha_ing" SortExpression="fecha_ing" />
-                <asp:BoundField DataField="fecha_caducidad" HeaderText="fecha_caducidad" SortExpression="fecha_caducidad" />
-                <asp:BoundField DataField="ubicacion" HeaderText="ubicacion" SortExpression="ubicacion" />
-            </Columns>
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" DeleteCommand="DELETE FROM [tbl_productos] WHERE [cod_prod] = @cod_prod" InsertCommand="INSERT INTO [tbl_productos] ([cod_prod], [nom_prod], [cant_prod], [desc_prod], [fecha_ing], [fecha_caducidad], [ubicacion]) VALUES (@cod_prod, @nom_prod, @cant_prod, @desc_prod, @fecha_ing, @fecha_caducidad, @ubicacion)" SelectCommand="SELECT * FROM [tbl_productos]" UpdateCommand="UPDATE [tbl_productos] SET [nom_prod] = @nom_prod, [cant_prod] = @cant_prod, [desc_prod] = @desc_prod, [fecha_ing] = @fecha_ing, [fecha_caducidad] = @fecha_caducidad, [ubicacion] = @ubicacion WHERE [cod_prod] = @cod_prod">
-            <DeleteParameters>
-                <asp:Parameter Name="cod_prod" Type="String" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="cod_prod" Type="String" />
-                <asp:Parameter Name="nom_prod" Type="String" />
-                <asp:Parameter Name="cant_prod" Type="Int32" />
-                <asp:Parameter Name="desc_prod" Type="String" />
-                <asp:Parameter Name="fecha_ing" Type="String" />
-                <asp:Parameter Name="fecha_caducidad" Type="String" />
-                <asp:Parameter Name="ubicacion" Type="String" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="nom_prod" Type="String" />
-                <asp:Parameter Name="cant_prod" Type="Int32" />
-                <asp:Parameter Name="desc_prod" Type="String" />
-                <asp:Parameter Name="fecha_ing" Type="String" />
-                <asp:Parameter Name="fecha_caducidad" Type="String" />
-                <asp:Parameter Name="ubicacion" Type="String" />
-                <asp:Parameter Name="cod_prod" Type="String" />
-            </UpdateParameters>
-        </asp:SqlDataSource>
-</asp:Content>
+        </asp:Content>
 

@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <h1>Detalle de los Insumos</h1>
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Volver" Width="40%" />
     <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="100%" AutoGenerateRows="False" DataKeyNames="cod_prod" DataSourceID="SqlDataSource1">
         <Fields>
@@ -19,6 +20,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Fields>
+        <RowStyle HorizontalAlign="Center" />
     </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT * FROM [tbl_productos] WHERE ([cod_prod] = @cod_prod)">
         <SelectParameters>

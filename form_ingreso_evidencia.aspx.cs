@@ -66,13 +66,17 @@ public partial class form_ingreso_evidencia : System.Web.UI.Page
         if(doc_usuario == "")
         {
             Label5.Text = "Ingrese por favor el Documento del usuario";
-
-        }else if (id_detalle_prodcuto == 0)
+            Label7.Text = "";
+        }
+        else if (id_detalle_prodcuto == 0)
         {
             Label6.Text = "";
+            Label5.Text = "";
             Label7.Text = "Ingrese por favor el id del detalle_del_producto";
         }else if (imagenbyte == null)
         {
+            Label6.Text = "";
+            Label5.Text = "";
             Label7.Text = "";
             Label8.Text = "Ingrese por favor una imagen";
         }

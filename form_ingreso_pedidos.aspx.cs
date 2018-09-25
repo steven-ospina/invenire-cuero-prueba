@@ -46,6 +46,7 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
         //EL_SOCIO_18_09_2018
         //Aqui se postea el codigo del boton
         FilaVacia("A");
+        Button3.Visible = true;
     }
 
     private DataTable EsctructuraMedidas()
@@ -175,6 +176,7 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
                     Label1.Text = pedido.Grabar_pedidos(fecha, usuario, estado, insumos, cantidad, hora);
                     Label1.Text = "pedidos Gudados Correctamente";
                     GridView1.DataBind();
+                    Button3.Visible = false;
                     Button2.Visible = false;
                 }
                 else

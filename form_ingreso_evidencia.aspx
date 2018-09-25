@@ -29,7 +29,7 @@
                 <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Expr1" DataValueField="doc_usu">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT tbl_usuario.nom_usu + ' ' + tbl_usuario.ape_usu AS Expr1, tbl_productos_terminados.doc_usu FROM tbl_usuario INNER JOIN tbl_productos_terminados ON tbl_usuario.doc_usu = tbl_productos_terminados.doc_usu"></asp:SqlDataSource>
-                <asp:Label ID="Label5" runat="server"></asp:Label>
+                <asp:Label ID="Label5" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
             <td class="auto-style4">
                 <asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
                 <br />
-                <asp:Label ID="Label6" runat="server"></asp:Label>
+                <asp:Label ID="Label6" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -50,7 +50,7 @@
                 <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_producto" DataValueField="id_det_pro">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT tbl_detalle_productos.id_det_pro, tbl_productos_terminados.nom_producto FROM tbl_productos_terminados INNER JOIN tbl_detalle_productos ON tbl_productos_terminados.id_prod = tbl_detalle_productos.id_prod"></asp:SqlDataSource>
-                <asp:Label ID="Label7" runat="server"></asp:Label>
+                <asp:Label ID="Label7" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -60,7 +60,7 @@
             <td>
                 <asp:FileUpload ID="FileUpload1" runat="server" />
                 <br />
-                <asp:Label ID="Label8" runat="server"></asp:Label>
+                <asp:Label ID="Label8" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -72,7 +72,7 @@
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar Evidencia" />
             </td>
             <td>
-                <asp:Label ID="Label9" runat="server"></asp:Label>
+                <asp:Label ID="Label9" runat="server" ForeColor="#006600"></asp:Label>
             </td>
         </tr>
     </table>

@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.master" AutoEventWireup="true" CodeFile="form_inventario_insumos.aspx.cs" Inherits="form_inventario_insumos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="file_css/style_view_insumos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">  
     <h1>inventario</h1>
     <asp:ListView ID="ListView1" runat="server">
         <ItemTemplate>
             <div class="list">
-                <table  border="1" style="display: inline-block;">
+                <table  border="1" class="a">
                     <tr><td><b>codigo:</b><span><%#Eval("cod_prod") %></td></tr>
                     <tr><td><asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("cod_prod", "manejador_img_insumos.ashx?cod_prod={0}") %>' Width="120px" Height="120px" /></td></tr>
                     <tr><td><b>Nombre del insumo:</b><h2><%#Eval("nom_prod") %></h2></td></tr>

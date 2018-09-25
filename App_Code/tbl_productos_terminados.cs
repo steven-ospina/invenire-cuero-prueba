@@ -136,13 +136,13 @@ public class tbl_productos_terminados
         return mensaje;
     }//fin del metodo: grabar_encabezado_productos_terminados()
 
-    public string grabar_detalle_productos_terminados(int codproducto, string cantdescrip,string cantubica)
+    public string grabar_detalle_productos_terminados(int codproducto, string cantdescrip,string cantubica,string hora)
     {
         try
         {   //Para conectarse a la BD
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
             //se prepara la sentencia sql para insertar
-            var insertar = "insert into tbl_detalle_productos values('" + codproducto + "','" + cantdescrip + "','" + cantubica + "')";
+            var insertar = "insert into tbl_detalle_productos values('" + codproducto + "','" + cantdescrip + "','" + cantubica + "','" + hora +"')";
             //se empaqueta la sentencia sql y la conexion a la bd
             var comando = new SqlCommand(insertar, conex);
             //abrir la conexion

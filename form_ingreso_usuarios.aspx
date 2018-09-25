@@ -27,13 +27,13 @@
                         <asp:TextBox ID="TextBox1" runat="server" TextMode="Number"  placeholder="Documento Usuario" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label5" runat="server"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox2" runat="server"  placeholder="Nombre Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                                                 <br />
                         <br />
-                        <asp:Label ID="Label7" runat="server"></asp:Label>
+                        <asp:Label ID="Label7" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                         <asp:TextBox ID="TextBox3" runat="server" placeholder="Apellidos Usuario" onpaste="return false" oncut="return false" oncopy="return false"  ></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label8" runat="server"></asp:Label>
+                        <asp:Label ID="Label8" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                     <td class="auto-style2 rol">
                         <asp:Label ID="Label1" runat="server" Text="Rol del Usuario" ></asp:Label>
@@ -66,7 +66,7 @@
                         <asp:TextBox ID="TextBox6" runat="server" TextMode="Email" placeholder="Email" onpaste="return false" oncut="return false" oncopy="return false" ></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label9" runat="server"></asp:Label>
+                        <asp:Label ID="Label9" runat="server" ForeColor="#CC0000"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -108,7 +108,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="2">
-                        <asp:Label ID="Label4" runat="server" ForeColor="#009933"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" ForeColor="Green"></asp:Label>
                     </td>
                 </tr>
                 </table>
@@ -118,14 +118,14 @@
         <asp:Button ID="Button2" runat="server" Text="Buscar" />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1076px" AllowPaging="True" CssClass="auto-style3">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="doc_usu" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" CssClass="auto-style3">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
-                <asp:BoundField DataField="doc_usu" HeaderText="doc_usu" ReadOnly="True" SortExpression="doc_usu" />
-                <asp:BoundField DataField="nom_usu" HeaderText="nom_usu" SortExpression="nom_usu" />
-                <asp:BoundField DataField="ape_usu" HeaderText="ape_usu" SortExpression="ape_usu" />
-                <asp:TemplateField HeaderText="cod_rol" SortExpression="cod_rol">
+                <asp:BoundField DataField="doc_usu" HeaderText="Documento Usuario" ReadOnly="True" SortExpression="doc_usu" />
+                <asp:BoundField DataField="nom_usu" HeaderText="Nombre " SortExpression="nom_usu" />
+                <asp:BoundField DataField="ape_usu" HeaderText="Apellidos" SortExpression="ape_usu" />
+                <asp:TemplateField HeaderText="Rol" SortExpression="cod_rol">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource2" DataTextField="nom_rol" DataValueField="cod_rol" SelectedValue='<%# Bind("cod_rol") %>'>
                         </asp:DropDownList>
@@ -135,7 +135,7 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="estado" SortExpression="estado">
+                <asp:TemplateField HeaderText="Estado" SortExpression="estado">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind("estado") %>'>
                             <asp:ListItem>Activo</asp:ListItem>
@@ -149,9 +149,9 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
-                <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
-                <asp:BoundField DataField="telefono" HeaderText="telefono" SortExpression="telefono" />
+                <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
+                <asp:BoundField DataField="genero" HeaderText="Genero" SortExpression="genero" />
+                <asp:BoundField DataField="telefono" HeaderText="Telefono" SortExpression="telefono" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

@@ -17,14 +17,25 @@ public partial class form_ingreso_productos : System.Web.UI.Page
     //que es instanciar? consiste en crear un apodo(productos) para la clase
     //OJO: LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_productos producto = new tbl_productos();
-    string fecha_sistema;
+    string fecha_sistema, hora_sistema;
     protected void Page_Load(object sender, EventArgs e)
     {
         //SE EJECUTA AL CARGAR LA PAGINA
+        TextBox2.Attributes["onkeypress"] = " return  blocknum(event);";
+        TextBox2.Attributes.Add("autocomplete", "off");
         TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
+        TextBox3.Attributes.Add("autocomplete", "off");
+        TextBox6.Attributes["onkeypress"] = " return blocklet(event);";
+        TextBox7.Attributes.Add("autocomplete", "off");
+        TextBox4.Attributes.Add("autocomplete", "off");
+
 
         //capturo la fecha del sistemas
         fecha_sistema = TextBox5.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+        //se captura la hora del sistema
+        hora_sistema = DateTime.Now.ToString("HH:mm:ss");
+
 
     }
 
@@ -34,11 +45,10 @@ public partial class form_ingreso_productos : System.Web.UI.Page
         //Aquí se postea el código del Botón
 
         //PRIMERO: SE CAPTURAN LOS DATOS DEL FORMULARIO
-        string nomProducto, descProducto, fechIngreso, fechCaducidad, ubicacion, codProducto;
+        string nomProducto, descProducto, fechIngreso, fechCaducidad, ubicacion,hora;
         int cantProducto;
 
         //se convierte el "valor" en numerico
-        codProducto = TextBox1.Text;
         nomProducto = TextBox2.Text;
         //se convierte el "valor" en numerico
         if(TextBox3.Text == "")
@@ -53,53 +63,62 @@ public partial class form_ingreso_productos : System.Web.UI.Page
         fechIngreso = fecha_sistema;
         fechCaducidad = TextBox6.Text;
         ubicacion = TextBox7.Text;
+        hora = hora_sistema;
 
         //SE VALIDAN LOS CAMPOS
-        if (codProducto == "")
+        if (nomProducto == "")
         {
-            Response.Write("<script>alert('Ingrese Código del producto')</script>");
-        }
-        else if (nomProducto == "")
-        {
-            Response.Write("<script>alert('Ingrese Nombre del prodcuto')</script>");
+            Label7.Text = "Ingrese Nombre del prodcuto";
+            Label8.Text = "";
         }
         else if (cantProducto == 0)
         {
-            Response.Write("<script>alert('Ingrese la cantida del producto')</script>");
+            Label7.Text = "";
+            Label8.Text = "Ingrese la cantida del producto";
         }
-        else if (descProducto == "")
+        else if (ubicacion == "")
         {
-            Response.Write("<script>alert('Ingrese  la descripcion del producto del producto')</script>");
+            Label7.Text = "";
+            Label8.Text = "";
+            Label9.Text = "Ingrese  el descuento del producto";
         }
         else if (fechIngreso == "")
         {
-            Response.Write("<script>alert('Ingrese la fecha de ingreso')</script>");
+            Label7.Text = "";
+            Label8.Text = "";
+            Label9.Text = "";
+            Label10.Text = "Ingrese la fecha de ingreso";
         }
-        //else if (fechCaducidad == "")
-        //{
-        //    Response.Write("<script>alert('Ingrese la fecha de caducidad')</script>");
-        //}
-        else if (ubicacion == "")
+        else if (descProducto == "")
         {
-            Response.Write("<script>alert('Ingrese  el descuento del producto')</script>");
+            Label7.Text = "";
+            Label8.Text = "";
+            Label9.Text = "";
+            Label10.Text = "";
+            Label11.Text = "Ingrese  la descripcion del producto del producto";
         }
         else
         {
             //SEGUNDO:SE ENVIAN LOS DATOS AL MODELO
-            int rdo = producto.guardar_tbl_productos(codProducto, nomProducto, cantProducto, descProducto, fechIngreso, fechCaducidad, ubicacion);
+            int rdo = producto.guardar_tbl_productos(nomProducto, cantProducto, descProducto, fechIngreso, fechCaducidad, ubicacion,hora);
 
             if (rdo == 1)
             {
-                Response.Write("<script>alert(' producto guardo correctamente')</script>");
-                Response.Redirect("form_ingreso_productos.aspx");
-            }
-            else if (rdo == 0)
-            {
-                Response.Write("<script>alert('Error al guardar el producto')</script>");
+                Label7.Text = "";
+                Label8.Text = "";
+                Label9.Text = "";
+                Label10.Text = "";
+                Label11.Text = "";
+                TextBox2.Text= "";
+                TextBox3.Text = "";
+                TextBox6.Text = "";
+                TextBox7.Text = "";
+                TextBox4.Text = "";
+                Label12.Text = "producto guardo correctamente";
             }
             else
             {
-                Response.Write("<script>alert('Verificar, Código del producto repetido')</script>");
+                Label13.Text = "ERROR al Guardar el Insumo";
             }
 
         }

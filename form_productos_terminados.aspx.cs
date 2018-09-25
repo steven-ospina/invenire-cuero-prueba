@@ -20,16 +20,23 @@ public partial class form_productos_terminados : System.Web.UI.Page
     //que es intancia? consiste en crear un apodo (productos) para la clase
     //OJO:LAS CLASES NO SE PUEDEN USAR DIRECTAMENTE
     tbl_productos_terminados productos = new tbl_productos_terminados();
-    string fecha_sistema;
+
+    string fecha_sistema, hora_sistema;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         //validaciones
         TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox2.Attributes.Add("autocomplete", "off");
         TextBox3.Attributes["onkeypress"] = " return blocklet(event);";
+        TextBox3.Attributes.Add("autocomplete", "off");
+
 
         //capturo la fecha del sistemas
         fecha_sistema = TextBox1.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+        //se captura la hora del sistema
+        hora_sistema = DateTime.Now.ToString("HH:mm:ss");
 
         try
         {
@@ -49,6 +56,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
         //EL_SOCIO_05_09_2018
         //Aqui se postea el codigo del boton
         FilaVacia("A");
+        Button3.Visible = true;
 
     }
 
@@ -141,20 +149,50 @@ public partial class form_productos_terminados : System.Web.UI.Page
         //se captura el nombre del articulo
         nom_articulo = TextBox2.Text;
 
-        //se captura la cantidad del producto
-        cant_producto = Convert.ToInt32(TextBox3.Text);
-        //estado de la articulo
-        estado = "Activa";
-
-        //se envian los datos a la tabla tbl_venta en la bd
-        string rdo = productos.grabar_encabezado_productos_terminados(fec_actual, instructor, nom_articulo,cant_producto, estado);
-        if (rdo == "OK")
+        if(TextBox3.Text == "")
         {
-            Label5.Text = "Articulo Nuevo Gurdado Correcta Mente";
+            cant_producto = 0;
         }
         else
         {
-            Label5.Text = "ERROR Al Guardar el Articulo Nuevo";
+            //se captura la cantidad del producto
+            cant_producto = Convert.ToInt32(TextBox3.Text);
+        }
+
+        //se validan los campos
+        if(fec_actual == "")
+        {
+            Label7.Text = "Ingrese la fecha Actual del Sistema";
+        }
+        else if(instructor == "")
+        {
+            Label8.Text = "Ingrese por favor el Documento del Instructor";
+
+        }else if (nom_articulo == "")
+        {
+            Label9.Text = "Ingrese Por favor el Nombre del Nuevo Producto";
+
+        }else if (cant_producto == 0)
+        {
+            Label9.Text = "";
+            Label10.Text = "Ingrese Por favor la cantidad del Nuevo Producto";
+        }
+        else {
+
+            //estado de la articulo
+            estado = "Activa";
+
+            //se envian los datos a la tabla tbl_venta en la bd
+            string rdo = productos.grabar_encabezado_productos_terminados(fec_actual, instructor, nom_articulo, cant_producto, estado);
+            if (rdo == "OK")
+            {
+                Label5.Text = "Articulo Nuevo Gurdado Correcta Mente";
+                Label7.Text = ""; Label8.Text = ""; Label9.Text = ""; Label10.Text = "";
+            }
+            else
+            {
+                Label5.Text = "ERROR Al Guardar el Articulo Nuevo";
+            }
         }
     }
 
@@ -175,15 +213,54 @@ public partial class form_productos_terminados : System.Web.UI.Page
             string codpro = combo.SelectedValue;
             codproducto = Convert.ToInt32(codpro);
 
+
             TextBox descrip = (TextBox)GVRow.FindControl("descripcion");
             string cantdescrip = descrip.Text;
+
 
             TextBox ubica = (TextBox)GVRow.FindControl("ubicacion");
             string cantubica = ubica.Text;
 
-            //se van grabando los registros en la tabla: tbl_detalle_productos
-            Label4.Text = productos.grabar_detalle_productos_terminados(codproducto, cantdescrip, cantubica);
+
+            string hora = hora_sistema;
+
+            if (descrip.Text == "")
+            {
+                Label11.Text = "Ingrese por favor la Descripcion del Artiuclo Nuevo";
+                Label12.Text = "";
+            }
+            else if (ubica.Text == "")
+            {
+                Label11.Text = "";
+                Label12.Text = "Ingrese Por favor la Ubicacion";
+            }
+            else
+            {
+                //se van grabando los registros en la tabla: tbl_detalle_productos
+                Label4.Text = productos.grabar_detalle_productos_terminados(codproducto, cantdescrip, cantubica, hora);
+                if(Label4.Text != "OK")
+                {
+                    Label4.Text = "ERROR al guardar el Detalle";
+                }
+                else
+                {
+                    Label4.Text = "Detalle Del Articulo Guadar Correctamente";
+                    GridView1.DataBind();
+                    Button3.Visible = false;
+                    Label11.Text = ""; Label12.Text = "";
+                }
+            }
         }
-        Label4.Text = "Detalle Del Articulo Guadar Correctamente";
+    }
+
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int index = Convert.ToInt32(e.RowIndex);
+        DataTable dt = ViewState["DateTemp"] as DataTable;
+        dt.Rows[index].Delete();
+        ViewState["DateTemp"] = dt;
+        GridView1.DataSource = ViewState["DateTemp"] as DataTable;
+        GridView1.DataBind();
     }
 }

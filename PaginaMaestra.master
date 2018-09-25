@@ -47,20 +47,19 @@
                 <li><img src="../file_img/caja-invenire-cuero.png" alt="logo invenire-cuero" width="90" class="logo-caja"/></li>
                 <li><a href="form_ingreso_usuarios.aspx">Ingreso Nuevos Usuarios</a></li>
                 <li><a href="form_ingreso_rol.aspx">Ingreso Nuevos roles</a></li>
-                <li><a href="form_permisos.aspx">Ingreso Permiso</a></li>
-                <li><a href="form_permisos_rol.aspx">Ingreso Permiso Por Rol</a></li>
                 <li><a href="form_ingreso_pedidos.aspx">Ingreso Pedidos</a></li>
-                <li><a href="form_detalle_pedidos.aspx">Ingreso Detalle Pedidos</a></li>
                 <li><a href="form_ingreso_productos.aspx">Ingreso Productos</a></li>
-                <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos</a></li>
                 <li><a href="form_productos_terminados.aspx">Ingreso Prodcutos Terminados</a></li>
-               <%-- <li><a href="form_detalle_productos.aspx">Ingreso Detalle Productos Terminados</a></li>--%>
-                <li><a href="form_reservas.aspx">Ingreso Reserva</a></li>
-                <li><a href="form_detalle_reserva.aspx">Ingreso Detalle Reserva</a></li>
+<%--                <li><a href="form_reservas.aspx">Ingreso Reserva</a></li>--%>
                 <li><a href="form_devolucion.aspx">Ingreso Devolucion</a></li>
-                <li><a href="form_detalle_devolucion.aspx">Ingreso Detalle Devolucion</a></li>
+                <li><a href="form_ingreso_evidencia.aspx">Ingreso Evidencias</a></li>
+                <li><a href="form_img_insumos.aspx">Subir img Insumos</a></li>
+                <li><a href="form_img_productos_terminados.aspx">Subir img Productos Terminados</a></li>
                 <li><a href="form_prod_caducar.aspx">Alertas Productos a Caducar</a></li>
-<%--                <li><a href="#">Visualizar Inventario</a></li>--%>
+                <li><a href="form_view_inventario.aspx">Visualizar Inventario</a></li>
+                <li><a href="form_view_productos_terminados.aspx">Visualizar Inventario Productos Terminados</a></li>
+                <li><a href="form_inventario_insumos.aspx">Visualizar Inventario Para los Instructores</a></li>
+                <%--<li><a href="form_permisos.aspx">Ingreso Permiso</a></li>--%>
         </ul>
     </nav>
     </div>

@@ -27,6 +27,7 @@ public partial class detail : System.Web.UI.Page
         Session["Registro"] = dt;
     }
 
+
     protected void Button1_Click1(object sender, EventArgs e)
     {
         Response.Redirect("form_view_inventario.aspx");

@@ -29,21 +29,36 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        <asp:Label ID="Label3" runat="server" ForeColor="#CC0000"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
                     <td>&nbsp;</td>
                     <td>
                         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Guardar" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label5" runat="server" ForeColor="#CC0000"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="Label4" runat="server" ForeColor="#006600"></asp:Label>
+                    </td>
+                </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_rol" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" >
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cod_rol" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="100%" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
-                <asp:BoundField DataField="cod_rol" HeaderText="cod_rol" ReadOnly="True" SortExpression="cod_rol" />
-                <asp:TemplateField HeaderText="nom_rol" SortExpression="nom_rol">
+                <asp:BoundField DataField="cod_rol" HeaderText="Codigo Rol" ReadOnly="True" SortExpression="cod_rol" />
+                <asp:TemplateField HeaderText="Nombre Rol" SortExpression="nom_rol">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("nom_rol") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("nom_rol") %>' onpaste="return false" oncut="return false" oncopy="return false"></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("nom_rol") %>'></asp:Label>

@@ -6,9 +6,9 @@
     margin: 0;
     padding: 0;
 }
-a{
+a {
     text-decoration: none;
-    color: black;
+    color: #238276;
     font-family: 'Roboto', sans-serif;
 }
 /*========================================================================================*/
@@ -76,7 +76,7 @@ body.active{
     color: rgb(226, 12, 12);
 }
 a:hover{
-    color: rgb(226, 12, 12);
+    color: black;
 }
 #sidebar::after{
     content: '';
@@ -97,7 +97,7 @@ a:hover{
 .closeSeccion {
     width:120px;
     height:90px;
-    border:2px solid black;
+    /*border:2px solid black;*/
     float:right;
 }
 /*========================================================================================*/

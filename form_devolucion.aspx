@@ -13,7 +13,6 @@
             <br />
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting">
                 <Columns>
-                    <asp:BoundField DataField="id_devol" HeaderText="Nro." />
                     <asp:TemplateField HeaderText="Fecha Devolucion">
                         <ItemTemplate>
                             <asp:TextBox ID="tbFechaDevolucion" runat="server" Enabled="False" Text='<%# DataBinder.Eval(Container, "DataItem.fec_devol") %>'></asp:TextBox>
@@ -49,13 +48,13 @@
                             <asp:TextBox ID="tbCantidaDevolver" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
+                    <asp:CommandField ShowDeleteButton="True" ButtonType="Button" />
                 </Columns>
             </asp:GridView>
                         <br />
                         <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Confirmar Devolucion" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Confirmar Devolucion" Visible="False" />
             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Guardar todas las Devoluciones" Visible="False" />
             <br />
             <asp:Label ID="Label2" runat="server" ForeColor="#00CC00"></asp:Label>

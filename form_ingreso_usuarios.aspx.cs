@@ -32,9 +32,14 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
     {
         //VALIDACIONES JS
         TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
+        TextBox1.Attributes.Add("autocomplete", "off");
         TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox2.Attributes.Add("autocomplete", "off");
         TextBox3.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox3.Attributes.Add("autocomplete", "off");
         TextBox7.Attributes["onkeypress"] = " return blocklet(event);";
+        TextBox7.Attributes.Add("autocomplete", "off");
+        TextBox6.Attributes.Add("autocomplete", "off");
         //SE REDIRECIONA AL LOGIN SI NO TIENE CREDENCIALES VALIDAS
         //if(Session["usuario"] == null)
         //{
@@ -70,44 +75,60 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         //SE VALIAM LOS CAMPOS
         if (docUsuario == "")
         {
-            //Response.Write("<script>alert('Ingrese el documento del Usuario')</script>");
             Label5.Text = "Ingrese el documento del Usuario";
+            Label7.Text = "";
         }
         else if (NombreUsuario == "")
         {
-            //Response.Write("<script>alert('Ingrese el Nombre del Usuario')</script>");
  	        Label5.Text = "";
             Label7.Text = "Ingrese el Nombre del Usuario";
         }
         else if (apeUsuario == "")
         {
-            //Response.Write("<script>alert('Ingrese Los Apellidos del Usuario')</script>");
-	        Label7.Text = "";
+            Label5.Text = "";
+            Label7.Text = "";
             Label8.Text = "Ingrese Los Apellidos del Usuario";
         }
         else if (codRol == 0)
         {
+            Label8.Text = "";
+            Label7.Text = "";
             Response.Write("<script>alert('Ingrese el Codigo del Usuario')</script>");
         }
         else if (estado == "")
         {
-            Response.Write("<script>alert('Ingrese el Estado del usuario')</script>");
-        }
-        else if (contrasena == "")
-        {
-            //Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
-            //Label6.Visible = true;
-            Label6.Text = "Ingrese la Contraseña del usuario";
-        }
-        else if (repecontrasena != contrasena)
-        {
-            //Response.Write("<script>alert('Ingrese la Contraseña del usuario')</script>");
-            Label10.Text = "la contrase no concide";
+            Response.Write("<script>alert('Ingrese el Estado')</script>");
         }
         else if (email == "")
         {
-            //Response.Write("<script>alert('Ingrese el correo del usuario')</script>");
+            Label5.Text = "";
+            Label7.Text = "";
+            Label8.Text = "";
+            Label10.Text = "";
+            Label8.Text = "";
             Label9.Text = "Ingrese el correo del usuario";
+        }
+        else if (contrasena == "")
+        {
+            Label5.Text = "";
+            Label7.Text = "";
+            Label8.Text = "";
+            Label10.Text = "";
+            Label8.Text = "";
+            Label9.Text = "";
+            Label6.Text = "Ingrese la Contraseña del usuario";
+            Label10.Text = "";
+        }
+        else if (repecontrasena != contrasena)
+        {
+            Label5.Text = "";
+            Label7.Text = "";
+            Label8.Text = "";
+            Label10.Text = "";
+            Label8.Text = "";
+            Label9.Text = "";
+            Label6.Text = "";
+            Label10.Text = "la contrase no concide";
         }
         else if (genero == "")
         {
@@ -115,7 +136,13 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
         }
         else if (telefono == "")
         {
-            //Response.Write("<script>alert('Ingrese el Telefono del usuario')</script>");
+            Label5.Text = "";
+            Label7.Text = "";
+            Label8.Text = "";
+            Label10.Text = "";
+            Label8.Text = "";
+            Label9.Text = "";
+            Label6.Text = "";
             Label11.Text = "Ingrese el Telefono del usuario";
         }
         else
@@ -123,10 +150,7 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
             if (TextBox5.Text.Length<8)
             {
 
-                //Response.Write("<script>alert('la contraseña debe tener minimo 8 caracteres')</script>");
-                //Label6.Visible = true;
                 Label6.Text = "la contraseña debe tener minimo 8 caracteres";
-
             }
             else
             {
@@ -135,7 +159,7 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
 
                 if (resultado == 1)
                 {
-                    Response.Write("<script>alert('Usuario registrado correctamente')</script>");
+                    //Response.Write("<script>alert('Usuario registrado correctamente')</script>");
                     TextBox1.Text = "";
                     TextBox2.Text = "";
                     TextBox3.Text = "";
@@ -151,9 +175,6 @@ public partial class form_ingreso_usuarios : System.Web.UI.Page
                     Label10.Text = "";
                     Label11.Text = "";
                     Label4.Text = "Usuario registrado correctamente";
-                    //Label4.Text = "Usuario registrado correctamente";
-                    //Response.Redirect("form_ingreso_usuarios.aspx");
-                    //Label4.Visible = true;
                 }
                 else
                 {

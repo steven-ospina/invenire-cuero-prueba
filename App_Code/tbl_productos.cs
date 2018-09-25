@@ -23,13 +23,13 @@ public class tbl_productos
     //25_05_2018
     //EL_SOCIO: AQUI VA EL CODIGO PARA INSERTAR EL REGSITRO EN LA BD
     //este metodo se usa para insertar registros de productos en la BD
-    public int guardar_tbl_productos(string codProducto, string nomProducto, int cantProducto, string descProducto, string fechIngreso, string fechCaducidad, string ubicacion)
+    public int guardar_tbl_productos( string nomProducto, int cantProducto, string descProducto, string fechIngreso, string fechCaducidad, string ubicacion,string hora)
     {
         int REsultado = 1; //por defecto
         try//intentar
         {
             var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
-            var insertar = "insert into tbl_productos values('" + codProducto + "','" + nomProducto + "'," + cantProducto + ",'" + descProducto + "','" + fechIngreso + "','" + fechCaducidad + "','" + ubicacion + "')";
+            var insertar = "insert into tbl_productos values('" + nomProducto + "'," + cantProducto + ",'" + descProducto + "','" + fechIngreso + "','" + fechCaducidad + "','" + ubicacion + "','" + hora +"')";
             var comando = new SqlCommand(insertar, conex);
             conex.Open();
             int resultado = comando.ExecuteNonQuery();//Significado:ejecutarconsulta

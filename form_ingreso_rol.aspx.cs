@@ -23,6 +23,7 @@ public partial class form_ingreso_rol : System.Web.UI.Page
         //VALIDACIONES JS
         //TextBox1.Attributes["onkeypress"] = " return blocklet(event);";
         TextBox1.Attributes["onkeypress"] = " return blocknum(event);";
+        TextBox1.Attributes.Add("autocomplete", "off");
         //TextBox2.Attributes["onkeypress"] = " return blocknum(event);";
     }
 
@@ -46,7 +47,7 @@ public partial class form_ingreso_rol : System.Web.UI.Page
         //}
         if (nombre_rol == "")
         {
-            Response.Write("<script>alert('Ingrese rol del  usuario')</script>");
+            Label3.Text = "Ingrese rol del  usuario";
         }
         else
         {
@@ -55,12 +56,14 @@ public partial class form_ingreso_rol : System.Web.UI.Page
 
             if (resultado == 1)
             {
-                Response.Write("<script>alert('el rol registrado correctamente')</script>");
-                Response.Redirect("form_ingreso_rol.aspx");
+                Label3.Text = "";
+                Label4.Text = "El Rol Registrado Correctamente";
+                GridView1.DataBind();
             }
             else
             {
-                Response.Write("<script>alert('Erro al registrar el rol')</script>");
+                Label4.Text = "";
+                Label5.Text = "ERROR al Registrar el Rol";
             }
         }
     }

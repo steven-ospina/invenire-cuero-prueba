@@ -49,6 +49,7 @@ public partial class form_devolucion : System.Web.UI.Page
         //EL_SOCIO_19_09_2018
         //Aqui se postea el codigo del boton
         FilaVacia("A");
+        Button2.Visible = true;
     }
 
     private DataTable EsctructuraMedidas()
@@ -173,6 +174,7 @@ public partial class form_devolucion : System.Web.UI.Page
                 //se prepara para mandar los datos a la clase
                 Label2.Text = devolucion.Guardar_tbl_devolucion(fecha, usuario, codigoPedido, insumos, cantidad, hora);
                 Label2.Text = "pedidos Gudados Correctamente";
+                GridView2.DataBind();
             }
             else
             {
