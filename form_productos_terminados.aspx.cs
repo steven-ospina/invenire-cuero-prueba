@@ -244,7 +244,7 @@ public partial class form_productos_terminados : System.Web.UI.Page
                 }
                 else
                 {
-                    Label4.Text = "Detalle Del Articulo Guadar Correctamente";
+                    Label4.Text = "Detalle Del Articulo Guardado Correctamente";
                     GridView1.DataBind();
                     Button3.Visible = false;
                     Label11.Text = ""; Label12.Text = "";

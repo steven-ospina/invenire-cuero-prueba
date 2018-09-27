@@ -34,7 +34,7 @@
     <form id="form1" runat="server">
         <header>
             <div class="closeSeccion">
-                <asp:Label ID="Label1" runat="server" Text="Cerrar Seccion"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Cerrar Sesion"></asp:Label>
                 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton1_Click">Salir</asp:LinkButton>
             </div>
         </header>

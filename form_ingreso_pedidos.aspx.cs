@@ -53,11 +53,12 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
     {
         DataTable medidatabla = new DataTable();
         medidatabla.Columns.Add("cod_ped", typeof(Int32));
-        medidatabla.Columns.Add("fecha", typeof(string));
-        medidatabla.Columns.Add("doc_usu", typeof(string));
-        medidatabla.Columns.Add("estado", typeof(string));
         medidatabla.Columns.Add("cod_prod", typeof(Int32));
-        medidatabla.Columns.Add("cant_prod", typeof(Int32));
+        medidatabla.Columns.Add("color_referencia", typeof(string));
+        medidatabla.Columns.Add("consumo_x_producto", typeof(Int32));
+        medidatabla.Columns.Add("valor_uni_consumo", typeof(Int32));
+        medidatabla.Columns.Add("valor_prod_final", typeof(Int32));
+        medidatabla.Columns.Add("valor_producion", typeof(Int32));
         return medidatabla;
     }
 
@@ -72,11 +73,12 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
         {
             dr = dt.NewRow();
             dr[0] = 1;
-            dr[1] = 0;
-            dr[2] = 123;
-            dr[3] = "Cancelado";
-            dr[4] = 1;
-            dr[5] = 0;
+            dr[1] = 1;
+            dr[2] = "cafe";
+            dr[3] = 4000;
+            dr[4] = 0.7;
+            dr[5] = 47.355;
+            dr[6] = 1.657417;
             dt.Rows.Add(dr);
             ViewState["DateTemp"] = dt;
         }
@@ -86,35 +88,56 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
 
             foreach (GridViewRow row in this.GridView1.Rows)
             {
-                //se mapea el dato la fecha
-                TextBox fech = (TextBox)row.FindControl("tbFecha");
-                //extraer el dato de la fecha
-                string fecha = fech.Text;
-                //se usa para mapear la lista desplegable que esta en la grilla en el campos usuario
-                DropDownList usu = (DropDownList)row.FindControl("ddlUsuario");
-                //extraer el dato de la lista desplegable del usuario
-                string usuario = usu.SelectedValue;
-                //se usa para mapear la lista desplegable que esta en la grilla en el campo estado
-                DropDownList esta = (DropDownList)row.FindControl("ddlEstado");
-                //extraer el dato de la lista desplegable del estado
-                string estado = esta.SelectedValue;
-                //se usa para mapear la lista desplegable que esta en la grilla en el campo insumo
-                DropDownList insum = (DropDownList)row.FindControl("ddlIsumos");
+                //se mapea el dato del consecutivo
+                TextBox con = (TextBox)row.FindControl("tbConsecutivo");
+                //extraer el dato del consecutivo
+                string conse = con.Text;
+                //se convierte a int por que se manda un numero
+                int consecutivo = Convert.ToInt32(conse);
+                //se usa para mapear la lista desplegable que esta en la grilla en el campos insumos
+                DropDownList ins = (DropDownList)row.FindControl("ddlInsumo");
                 //extraer el dato de la lista desplegable del insumo
-                string insumos = insum.SelectedValue;
-                //se mapea el dato la cantidad
-                TextBox cant = (TextBox)row.FindControl("tbCantidad");
+                string insu = ins.SelectedValue;
+                //se convierte a int por que se manda un numero
+                int insumos = Convert.ToInt32(insu);
+                //se usa para mapear el TEXTBOX que esta en la grilla en el campo color o referencia
+                TextBox col = (TextBox)row.FindControl("tbColorOreferencia");
+                //extraer el dato del textbox del campo color o referencia
+                string color = col.Text;
+                //se usa para mapear el TEXTBOX que esta en la grilla en el campo Consumo x Producto
+                TextBox consu = (TextBox)row.FindControl("tbConsumoXproducto");
+                //extraer el dato del textbox del campo Consumo x Producto
+                string consum = consu.Text;
+                //se convierte a int por que se manda un numero
+                int consumoXproducto = Convert.ToInt32(consum);
+                //se mapea el dato del TEXTBOX que esta en ka grilla en el campo Valor Unidad de Consumo
+                TextBox val = (TextBox)row.FindControl("tbValorUnidadConsumo");
                 //extraer el dato de la cantidad
-                string cantidad = cant.Text;
+                string valo = val.Text;
+                //se convierte a int por que se manda un numero
+                int valorUnidadConsumo = Convert.ToInt32(valo);
+                //se mapea el dato del TEXTBOX que esta en ka grilla en el campo Valor Unidad de Consumo
+                TextBox valor = (TextBox)row.FindControl("tbValorProductoFinal");
+                //extraer el dato de la cantidad
+                string valorPr = valor.Text;
+                //se convierte a int por que se manda un numero
+                int valorProductoFinal = Convert.ToInt32(valorPr);
+                //se mapea el dato del TEXTBOX que esta en ka grilla en el campo Valor Unidad de Consumo
+                TextBox valorP = (TextBox)row.FindControl("tbValorProduccion");
+                //extraer el dato de la cantidad
+                string valorProd = valorP.Text;
+                //se convierte a int por que se manda un numero
+                int valorProduccion = Convert.ToInt32(valorProd);
 
                 //
                 dr = dt.NewRow();
-                dr[0] = n;
-                dr[1] = fecha;
-                dr[2] = usuario;
-                dr[3] = estado;
-                dr[4] = insumos;
-                dr[5] = cantidad;
+                dr[0] = consecutivo;
+                dr[1] = insumos;
+                dr[2] = color;
+                dr[3] = consumoXproducto;
+                dr[4] = valorUnidadConsumo;
+                dr[5] = valorProductoFinal;
+                dr[6] = valorProduccion;
                 dt.Rows.Add(dr);
                 n += 1;
             }
@@ -123,11 +146,12 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
                 ViewState["DataTemp"] = dt;
                 dr = dt.NewRow();
                 dr[0] = 1;
-                dr[1] = fecha_sistema;
-                dr[2] = 123;
-                dr[3] = "Cancelado";
-                dr[4] = 1;
-                dr[5] = 0;
+                dr[1] = 1;
+                dr[2] = "cafe";
+                dr[3] = 4000;
+                dr[4] = 0.7;
+                dr[5] = 47.355;
+                dr[6] = 1.657417;
                 dt.Rows.Add(dr);
             }
             ViewState["DateTemp"] = dt;
@@ -139,6 +163,10 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
+        //se define la variables a Utilizar
+        int costo_x_par_prod, canti_a_producir;
+
+
         //se envian los datos a la tabla tbl_productos_terminados en la bd
         //Se recorre la grilla del detalle  se inserta fila por fila en la tabla: tbl_detalle_productos
         DataSet dataset = new DataSet();//localizar la bd  
@@ -194,10 +222,6 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
 
     }
 
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        Button2.Visible = true;
-    }
 
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
@@ -207,5 +231,15 @@ public partial class form_ingreso_pedidos : System.Web.UI.Page
         ViewState["DateTemp"] = dt;
         GridView1.DataSource = ViewState["DateTemp"] as DataTable;
         GridView1.DataBind();
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        Button2.Visible = true;
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        TextBox10.Visible = true;
     }
 }
