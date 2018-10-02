@@ -97,6 +97,8 @@ public partial class form_validar_login : System.Web.UI.Page
                 //Se compara la fecha de caducidad en la bd
                 string rdo = prod.consultar_caducidad(fecha_actual);
 
+                //
+
                 //se reconece la fechas actua
                 //se comparan las fechas
                 if (rdo == "Exito")

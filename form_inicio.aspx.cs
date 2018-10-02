@@ -15,5 +15,7 @@ public partial class form_inicio : System.Web.UI.Page
             Response.Cache.SetAllowResponseInBrowserHistory(false);
             Response.Cache.SetNoStore();
         }
+
+        Label2.Text = "Pendiente";
     }
 }

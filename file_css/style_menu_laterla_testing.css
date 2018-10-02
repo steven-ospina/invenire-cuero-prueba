@@ -56,8 +56,8 @@ body.active{
 
 #sidebar .icon-menu{
     position: absolute;
-    left: 280px;
-    top: 20px;
+    left: 260px;
+    top: 10px;
     cursor: pointer;
 }
 
@@ -87,7 +87,8 @@ a:hover{
 .section{
     width:80vw;
     height:100vh;
-    margin:auto 250px;
+    margin-left:50px;
+    margin-top:50px;
     /*border: 1px solid black;*/
 }
 #LinkButton2 {

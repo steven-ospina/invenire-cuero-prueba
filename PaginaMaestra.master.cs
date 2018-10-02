@@ -14,6 +14,7 @@ public partial class PaginaMaestra : System.Web.UI.MasterPage
             Response.Redirect("form_validar_login.aspx");
         }
 
+
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetExpires(DateTime.UtcNow.AddYears(-1));
 

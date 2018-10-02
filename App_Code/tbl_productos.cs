@@ -78,5 +78,28 @@ public class tbl_productos
         }
         return mensaje;
     }//fin del metodo consultar_caduicidad()
+
+    public int Consultar_img(int cod_prod)
+    {
+        int resultado = 0;
+        try
+        {
+            var conex = new SqlConnection(ConfigurationManager.ConnectionStrings["invenire_cuero_ConnectionString"].ConnectionString);
+            var consulta = "select imagen from tbl_img_productos where cod_prod = " + cod_prod + "";
+            var cmd = new SqlCommand(consulta, conex);
+            conex.Open();
+            SqlDataReader leerbd = cmd.ExecuteReader();
+            if (leerbd.Read() == true)
+            {
+                resultado = 1;
+            }
+            conex.Close();
+        }//fin del try
+        catch (Exception e)
+        {
+            string mensaje = e.Message;
+        }
+        return resultado;
+    }
 }
 

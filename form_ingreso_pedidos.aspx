@@ -48,9 +48,10 @@
                 <asp:Label ID="Label4" runat="server" Text="Docente Encargado"></asp:Label>
             </td>
             <td colspan="2">
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="Expr1" DataValueField="doc_usu">
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="Expr1" DataValueField="doc_usu" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT tbl_rol.cod_rol, tbl_rol.nom_rol + ' ' + tbl_usuario.nom_usu + ' ' + tbl_usuario.ape_usu AS Expr1, tbl_usuario.doc_usu FROM tbl_rol INNER JOIN tbl_usuario ON tbl_rol.cod_rol = tbl_usuario.cod_rol WHERE (tbl_rol.cod_rol = 4)"></asp:SqlDataSource>
+                <asp:Label ID="Label13" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td class="auto-style8">
                 <asp:Label ID="Label8" runat="server" Text="Curso/ Tecnico"></asp:Label>
@@ -65,12 +66,15 @@
             </td>
             <td colspan="2" class="auto-style13">
                 <asp:TextBox ID="TextBox2" runat="server" CssClass="auto-style9"></asp:TextBox>
+                <asp:Label ID="Label14" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td class="auto-style14">
                 <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <br />
+                <asp:Label ID="Label20" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td class="auto-style13">
-                <asp:TextBox ID="TextBox4" runat="server" CssClass="auto-style7" Enabled="False"></asp:TextBox>
+                <asp:TextBox ID="TextBox4" runat="server" CssClass="auto-style7"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -79,6 +83,8 @@
             </td>
             <td class="auto-style10">
                 <asp:TextBox ID="TextBox5" runat="server" Enabled="False" EnableTheming="False"></asp:TextBox>
+                <br />
+                <asp:Label ID="Label15" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td class="auto-style4">
                 <asp:Label ID="Label11" runat="server" Text=" Numero De Cedula"></asp:Label>
@@ -96,15 +102,22 @@
             </td>
             <td class="auto-style10">
                 <asp:TextBox ID="TextBox6" runat="server" TextMode="Date"></asp:TextBox>
+                <br />
+                <asp:Label ID="Label16" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td class="auto-style4">
-                <asp:TextBox ID="TextBox7" runat="server" EnableTheming="False"></asp:TextBox>
+                <asp:TextBox ID="TextBox7" runat="server" EnableTheming="False" Enabled="False"></asp:TextBox>
+                <br />
             </td>
             <td class="auto-style8">
                 <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                <br />
+                <asp:Label ID="Label18" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+                <br />
+                <asp:Label ID="Label19" runat="server" ForeColor="#CC0000"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -120,13 +133,9 @@
     <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" Width="60%">
         <Columns>
-            <asp:TemplateField HeaderText="cod_pedido">
-                <ItemTemplate>
-                    <asp:TextBox ID="tbConsecutivo" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cod_ped") %>'></asp:TextBox>
-                </ItemTemplate>
-            </asp:TemplateField>
+            <asp:BoundField DataField="cod_ped" HeaderText="Nr." />
             <asp:TemplateField HeaderText="Materia E Insumos.">
                 <ItemTemplate>
                     <asp:DropDownList ID="ddlInsumo" runat="server" DataSourceID="SqlDataSource4" DataTextField="nom_prod" DataValueField="cod_prod" SelectedValue='<%# DataBinder.Eval(Container, "DataItem.cod_prod") %>'>
@@ -134,7 +143,26 @@
                     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:invenire_cuero_ConnectionString %>" SelectCommand="SELECT [cod_prod], [nom_prod] FROM [tbl_productos]"></asp:SqlDataSource>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Mediddas"></asp:TemplateField>
+            <asp:TemplateField HeaderText="Cantidad">
+                <ItemTemplate>
+                    <asp:TextBox ID="tbCantidad" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.cant_prod") %>'></asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Medidas">
+                <ItemTemplate>
+                    <asp:DropDownList ID="ddlMedidas" runat="server" SelectedValue='<%# DataBinder.Eval(Container, "DataItem.medida") %>'>
+                        <asp:ListItem Value="Unidad"></asp:ListItem>
+                        <asp:ListItem>CM²</asp:ListItem>
+                        <asp:ListItem>CM</asp:ListItem>
+                        <asp:ListItem>DM</asp:ListItem>
+                        <asp:ListItem>DM²</asp:ListItem>
+                        <asp:ListItem>DM</asp:ListItem>
+                        <asp:ListItem>M²</asp:ListItem>
+                        <asp:ListItem>M</asp:ListItem>
+                        <asp:ListItem>Ninguna</asp:ListItem>
+                    </asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Color o Referencia">
                 <ItemTemplate>
                     <asp:TextBox ID="tbColorOreferencia" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.color_referencia") %>'></asp:TextBox>
@@ -147,17 +175,17 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valor Unidad de Consumo">
                 <ItemTemplate>
-                    <asp:TextBox ID="tbValorUnidadConsumo" runat="server" Enabled="False" Text='<%# DataBinder.Eval(Container, "DataItem.valor_uni_consumo") %>'></asp:TextBox>
+                    <asp:TextBox ID="tbValorUnidadConsumo" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.valor_uni_consumo") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valor del Producto Final">
                 <ItemTemplate>
-                    <asp:TextBox ID="tbValorProductoFinal" runat="server" Enabled="False" Text='<%# DataBinder.Eval(Container, "DataItem.valor_prod_final") %>'></asp:TextBox>
+                    <asp:TextBox ID="tbValorProductoFinal" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.valor_prod_final") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valor de la Produccion">
                 <ItemTemplate>
-                    <asp:TextBox ID="tbValorProduccion" runat="server" Enabled="False" Text='<%# DataBinder.Eval(Container, "DataItem.valor_producion") %>'></asp:TextBox>
+                    <asp:TextBox ID="tbValorProduccion" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.valor_producion") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
 
@@ -166,7 +194,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Observaciones" />
+    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="+Agregar-Observaciones" />
     <br />
     <asp:TextBox ID="TextBox10" runat="server" TextMode="MultiLine" Visible="False" Width="100%"></asp:TextBox>
     <br />
